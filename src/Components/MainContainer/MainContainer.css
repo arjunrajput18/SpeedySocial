@@ -1,0 +1,5 @@
+.mainContainer{
+    background-color: #edf2f6;
+    display: flex;
+    justify-content: space-between;
+}
