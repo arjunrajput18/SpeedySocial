@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  align-items: center;
+  background-color: #0b2239;
+  height: 10vh;
+  color: white;
+  position: sticky;
+  top: 0%;
+  z-index: 2;
+}
+
+.nav-heading {
+  font-weight: bolder;
+  font-size: larger;
+  font-family: cursive;
+  width: 25%;
+}
+.search-navbar {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+@media (min-width: 720) {
+  .search-navbar {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+  }
+}

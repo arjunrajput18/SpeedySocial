@@ -1,0 +1,12 @@
+.size-2{
+    font-size:x-large;
+}
+.flex{
+    display: flex;
+}
+.justify-center{
+    justify-content: center;
+}
+.align-center{
+    align-items: center;
+}
