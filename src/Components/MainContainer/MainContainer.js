@@ -1,12 +1,16 @@
-import React from 'react'
-import { MenuBar } from '../MenuBar/MenuBar'
-import { FollowBar } from '../FollowBar/FollowBar'
-import "./MainContainer.css"
-export const MainContainer = () => {
+import React from "react";
+import { FollowBar } from "../FollowBar/FollowBar";
+import { MenuBar } from "../MenuBar/MenuBar";
+import "./MainContainer.css";
+
+export const MainContainer = ({ children }) => {
   return (
-    <div className='mainContainer'>
-        <MenuBar/>
-        <FollowBar/>
+    <div className="mainContainer">
+      <div>
+        <MenuBar />
+      </div>
+      <div>{children}</div>
+      <FollowBar />
     </div>
-  )
-}
+  );
+};

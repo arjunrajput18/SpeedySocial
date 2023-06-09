@@ -1,0 +1,71 @@
+.singlePost-MainContainer {
+  background-color: white;
+  margin-top: 1rem;
+  padding: 0.6rem;
+
+}
+
+.single-profile-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.single-profile-Username {
+  display: flex;
+}
+.single-profile-userName {
+  font-size: large;
+  font-weight: 500;
+}
+.single-profile-userId {
+  font-size: smaller;
+  color: lightcoral;
+}
+.single-profile-date-time {
+  font-size: smaller;
+}
+.btn-single-profile {
+  display: flex;
+}
+.btn-like-single-profile {
+  margin: 0.4rem;
+}
+.single-profile-photo-comment {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+.comment-box {
+  display: flex;
+  padding-top: 1rem;
+}
+.inner-comment-box{
+    position: relative;
+    width: 100%;
+}
+.single-profile-input-ccomment {
+  margin-top: 0.3rem;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: large;
+  border-radius: 0.7rem;
+  -webkit-border-radius: 0.7rem;
+  -moz-border-radius: 0.7rem;
+  -ms-border-radius: 0.7rem;
+  -o-border-radius: 0.7rem;
+  border: 1px solid lightcoral;
+}
+.post-btn-comment{
+    position: absolute;
+    top: 38%;
+    right: 3%;
+    background-color: inherit;
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    /* font-size: 1rem; */
+}
+
+.text-comment-box{
+    padding :1rem;
+}

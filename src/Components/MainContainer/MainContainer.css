@@ -1,5 +1,12 @@
-.mainContainer{
-    background-color: #edf2f6;
-    display: flex;
-    justify-content: space-between;
+.mainContainer {
+  height: 100vh;
+  background-color: #edf2f6;
+}
+
+@media (min-width: 720px) {
+  .mainContainer {
+    display: grid;
+    grid-template-columns: 300px 500px 300px;
+    justify-content: center;
+  }
 }

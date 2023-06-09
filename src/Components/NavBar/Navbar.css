@@ -1,20 +1,30 @@
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #0B2239;
-    height: 10vh;
-    text-align: center;
-    color: white;
+nav {
+  display: flex;
+  align-items: center;
+  background-color: #0b2239;
+  height: 10vh;
+  color: white;
+  position: sticky;
+  top: 0%;
+  z-index: 2;
 }
 
-.nav-heading{
-    font-weight: bolder;
-    font-size: larger;
-    padding-top: 0.8rem;
-    font-family:  cursive;
+.nav-heading {
+  font-weight: bolder;
+  font-size: larger;
+  font-family: cursive;
+  width: 25%;
 }
-.nav-logo{
-    /* position: absolute; */
-    left: 24%;
+.search-navbar {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+@media (min-width: 720) {
+  .search-navbar {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+  }
 }
