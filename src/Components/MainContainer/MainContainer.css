@@ -1,12 +1,23 @@
 .mainContainer {
-  height: 100vh;
+
   background-color: #edf2f6;
+}
+.dektop-followbar{
+  display: none;
 }
 
 @media (min-width: 720px) {
   .mainContainer {
     display: grid;
-    grid-template-columns: 300px 500px 300px;
+    grid-template-columns: 2.5fr 4fr 2.5fr;
     justify-content: center;
+  }
+  .dektop-followbar{
+    position: sticky;
+    top: 10%;
+    /* right: 1%; */
+    display: block;
+    height: fit-content;
+    z-index: 2;
   }
 }

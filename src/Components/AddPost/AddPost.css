@@ -1,0 +1,97 @@
+.AddPost-mainDiv{
+    height: 100%;
+    width: 100%;
+    /* border: solid; */
+    /* background-color:rgba(0, 0, 0, 0.525); */
+    position: absolute;
+    z-index: 99;
+    /* position: fixed; */
+    left: 0%;
+}
+
+
+.AddPost-MainContainer{
+    background-color:rgba(0, 0, 0, 0.525);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    top: 0%;
+   width: 100%;
+    z-index: 2;
+}
+
+.AddPost-innerContainer{
+    border: 1px solid black;
+    height: 53vh;
+    width: 30%;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+}
+
+.addPost-input{
+    height: 180px;
+    width: 95%;
+    background-color: white;
+    resize: none;
+}
+.btn-add-post{
+    background-color: var(--primary);
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    -o-border-radius: 0.3rem;
+}
+.logo-back-addPost{
+    font-size: 1.6rem;
+}
+
+
+
+.file-upload {
+    display: inline-block;
+    position: relative;
+    margin-top: 0.5rem;
+  }
+  
+  .input-file {
+    display: none;
+  }
+  
+  .file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    /* padding: 0.6rem; */
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .file-label:hover {
+    background-color: #2980b9;
+  }
+  
+  .file-label span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+  
+  
+  .addPost-upload-file-post{
+    display: flex;
+    justify-content: space-between;
+  }

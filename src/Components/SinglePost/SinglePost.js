@@ -3,7 +3,8 @@ import "./SinglePost.css";
 import profile1 from "../../Assets/profile1.png";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
-
+import { FaRegComment } from "react-icons/fa";
+import { BiShareAlt } from "react-icons/bi";
 export const SinglePost = () => {
   return (
     <div className="singlePost-MainContainer">
@@ -18,18 +19,24 @@ export const SinglePost = () => {
 
             <p className="single-profile-date-time">20/06/2023 16:30</p>
           </div>
-
         </div>
-        
-        <p className="text-comment-box">The best investments are buy and forget.</p>
+
+        <p className="text-comment-box">
+          The best investments are buy and forget.
+        </p>
+
         <div className="btn-single-profile">
           <p className="btn-like-single-profile">
             <AiOutlineHeart />
-            Like
           </p>
           <p className="btn-like-single-profile">
             <BsBookmark />
-            Bookmark
+          </p>
+          <p className="btn-like-single-profile">
+            <FaRegComment />
+          </p>
+          <p className="btn-like-single-profile">
+            <BiShareAlt />
           </p>
         </div>
         <div className="comment-box">
@@ -44,6 +51,17 @@ export const SinglePost = () => {
               className="single-profile-input-ccomment"
             />
             <button className="post-btn-comment">POST</button>
+          </div>
+        </div>
+        <div className="comments-added">
+          <img
+            src={profile1}
+            alt="img1"
+            className="single-profile-photo-comment"
+          />
+          <div className="comments-add-by-user">
+            <p>Arjunsingh Rajput</p>
+            <p>nice post , keep it up Bro</p>
           </div>
         </div>
       </div>

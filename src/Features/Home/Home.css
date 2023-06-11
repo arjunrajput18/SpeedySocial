@@ -1,5 +1,9 @@
+
+
 .home {
   background-color: #edf2f6;
+  height: fit-content;
+  padding-top: 1rem;
 }
 
 .home-input-box {
@@ -13,7 +17,7 @@
 .addPost {
   padding: 0.5rem;
   padding-left: 2.5rem;
-  width: 100%;
+  width: 98%;
   font-size: 1.1rem;
   border: none;
   border-radius: 0.4rem;
@@ -61,11 +65,43 @@
   width: 50%;
   padding: 0.5rem;
   margin-top: 1rem;
+  background-color: white;
+  border: none;
+}
+.trending-btn {
+  -webkit-border-top-left-radius: 18px;
+  -webkit-border-bottom-left-radius: 18px;
+  -moz-border-radius-topleft: 18px;
+  -moz-border-radius-bottomleft: 18px;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+.latest-btn{
+    -webkit-border-top-right-radius: 18px;
+    -webkit-border-bottom-right-radius: 18px;
+    -moz-border-radius-topright: 18px;
+    -moz-border-radius-bottomright: 18px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+}
+.btn-L {
+  border: none;
+  border-right: 2px solid black;
+}
+.follow-bar {
+  display: block; 
 }
 @media (min-width: 720px) {
+  .followbar-mobile{
+    display: none;
+  }
+  
   .home {
     display: flex;
     flex-direction: column;
     margin: 1rem;
+  }
+  .follow-bar {
+    display: none; /* Hide the FollowBar component */
   }
 }
