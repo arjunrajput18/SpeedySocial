@@ -2,7 +2,6 @@
   background-color: white;
   margin-top: 1rem;
   padding: 0.6rem;
-
 }
 
 .single-profile-photo {
@@ -16,6 +15,7 @@
 .single-profile-userName {
   font-size: large;
   font-weight: 500;
+ 
 }
 .single-profile-userId {
   font-size: smaller;
@@ -26,9 +26,15 @@
 }
 .btn-single-profile {
   display: flex;
+  padding-top: 0.6rem;
 }
 .btn-like-single-profile {
   margin: 0.4rem;
+  font-size: larger;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .single-profile-photo-comment {
   height: 45px;
@@ -39,9 +45,9 @@
   display: flex;
   padding-top: 1rem;
 }
-.inner-comment-box{
-    position: relative;
-    width: 100%;
+.inner-comment-box {
+  position: relative;
+  width: 100%;
 }
 .single-profile-input-ccomment {
   margin-top: 0.3rem;
@@ -55,17 +61,37 @@
   -o-border-radius: 0.7rem;
   border: 1px solid lightcoral;
 }
-.post-btn-comment{
-    position: absolute;
-    top: 38%;
-    right: 3%;
-    background-color: inherit;
-    border: none;
-    color: var(--primary);
-    font-weight: 600;
-    /* font-size: 1rem; */
+.post-btn-comment {
+  position: absolute;
+  top: 38%;
+  right: 3%;
+  background-color: inherit;
+  border: none;
+  color: var(--primary);
+  font-weight: 600;
+  /* font-size: 1rem; */
+}
+.comments-added {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
 }
 
-.text-comment-box{
-    padding :1rem;
+.text-comment-box {
+  padding: 1rem;
+  border-bottom: 1px solid lightcoral;
+
+}
+
+.comments-add-by-user {
+  background-color: var(--secondary);
+  padding-left: 0.5rem;
+  padding-right: 3rem;
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  border-radius: 0.9rem;
+  -webkit-border-radius: 0.9rem;
+  -moz-border-radius: 0.9rem;
+  -ms-border-radius: 0.9rem;
+  -o-border-radius: 0.9rem;
 }

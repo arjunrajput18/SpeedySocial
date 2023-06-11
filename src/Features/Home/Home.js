@@ -4,6 +4,7 @@ import { BsFire } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { SinglePost } from "../../Components/SinglePost/SinglePost";
+import { FollowBar } from "../../Components/FollowBar/FollowBar";
 export const Home = () => {
   return (
     <div className="home">
@@ -21,16 +22,23 @@ export const Home = () => {
         </button>
       </div>
       <div className="trend-latest">
-        <button className="btn-TL trending-btn">
+        <button className="btn-TL btn-L trending-btn">
           <BsFire />
           Trending
         </button>
         <button className="btn-TL latest-btn">Latest Post</button>
       </div>
+      <div  className="follow-bar">
+      <FollowBar/>
+      </div>
+      {/* <AddPost/> */}
       <SinglePost />
-      
-      
-      
+      <SinglePost/>
+      <SinglePost/>
+      <SinglePost/>
+      <SinglePost/>
+      <SinglePost/>
+
 
     </div>
   );

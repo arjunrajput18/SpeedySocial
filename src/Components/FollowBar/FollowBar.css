@@ -1,72 +1,178 @@
-
-.FollowBar{
-    display: none;
+.user-follow-name{
+  width: max-content;
 }
 
+.FollowBar {
+  /* width: ; */
+  /* background-color: white; */
+  /* height: 50vh; */
+  /* z-index: 10; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 6rem;
+  padding:1.2rem;
+  /* margin-top: 5rem; */
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  /* margin-right:5% ; */
+  /* margin-left: 5%; */
+  overflow-x: scroll;
+ 
+}
+.FollowBar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
 
+.FollowBar::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #eeeeee;
+}
+
+.FollowBar::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: var(--primary);
+}
+
+.followbar-heading {
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  font-size: large;
+  text-align: center;
+  display: none;
+}
+
+.profileImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.followBar-list-item {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+
+.profile-follow {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+.btn-follow {
+  background-color: #312d7a;
+  border: none;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  /* margin-left: 0.8rem; */
+  border-radius: 0.9rem;
+  -webkit-border-radius: 0.9rem;
+  -moz-border-radius: 0.9rem;
+  -ms-border-radius: 0.9rem;
+  -o-border-radius: 0.9rem;
+  color: white;
+}
+.userId {
+  font-size: small;
+  color: lightcoral;
+}
+
+.followBar-list{
+  display: flex;
+  flex-direction:row ;
+}
 @media (min-width: 720px) {
-    .FollowBar {
-        /* width: ; */
-        background-color: white;
-        height: 50vh;
-        position: sticky;
-        top: 24%;
-        
-        /* z-index: 10; */
-        display: flex;
-        flex-direction: column;
-        padding-top: 6rem;
-        padding: 1.8rem;
-        margin-top: 5rem;
-        border-radius: 1rem;
-        -webkit-border-radius: 1rem;
-        -moz-border-radius: 1rem;
-        -ms-border-radius: 1rem;
-        -o-border-radius: 1rem;
-        /* margin-right:5% ; */
-        margin-left: 5%;
-      }
-      .followbar-heading {
-        margin-bottom: 0.8rem;
-        font-weight: 500;
-        font-size: large;
-        text-align: center;
-      }
-      .profileImg {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-      }
-      .followBar-list-item {
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .profile-follow {
-        display: flex;
-        padding-top: 0.5rem;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 0.4rem;
-      }
-      .btn-follow {
-        background-color: aqua;
-        border: none;
-        padding: 0.6rem;
-        margin-top: 0.5rem;
-        margin-left: 0.8rem;
-        border-radius: 0.9rem;
-        -webkit-border-radius: 0.9rem;
-        -moz-border-radius: 0.9rem;
-        -ms-border-radius: 0.9rem;
-        -o-border-radius: 0.9rem;
-      }
-      .userId {
-        font-size: small;
-        color: lightcoral;
-      }
+  .FollowBar {
+    /* width: ; */
+    background-color: white;
+    height: 50vh;
+
+    /* z-index: 10; */
+    display: flex;
+    flex-direction: column;
+    padding-top: 6rem;
+    padding: 1.8rem;
+    
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    /* margin-right:5% ; */
+    margin-left: 5%;
+  }
+  .followBar-list{
+    display: flex;
+    flex-direction:column ;
+  }
+  .followbar-heading {
+
+    font-weight: 500;
+    font-size: large;
+    text-align: center;
+    margin-top: 5rem;
+    display: block;
+    /* border-bottom: 1px solid var(--primary); */
+  }
+  .profileImg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+  .followBar-list-item {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0rem;
+  }
+
+  .profile-follow {
+    display: flex;
+    flex-direction: row;
+    padding-top: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.8rem;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+    padding-bottom: 0.4rem;
+
+}
+  .btn-follow {
+    background-color: #312d7a;
+    border: none;
+    padding: 0.6rem;
+    margin-top: 0.1rem;
+    margin-left: 0.8rem;
+    border-radius: 0.9rem;
+    -webkit-border-radius: 0.9rem;
+    -moz-border-radius: 0.9rem;
+    -ms-border-radius: 0.9rem;
+    -o-border-radius: 0.9rem;
+    
+  }
+  .userId {
+    font-size: small;
+    color: lightcoral;
+  }
 }

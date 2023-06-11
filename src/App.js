@@ -5,12 +5,15 @@ import { Home } from "./Features/Home/Home";
 import "./utils.css";
 import { MainContainer } from "./Components/MainContainer/MainContainer";
 import { Navbar } from "./Components/NavBar/Navbar";
-import { MenuBar } from "./Components/MenuBar/MenuBar";
+import { Profile } from "./Features/Profile/Profile";
+import { Explore } from "./Features/Explore/Explore";
+import { Bookmark } from "./Features/Bookmark/Bookmark";
+import { Login } from "./Features/Login/Login";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+ 
       {/* <MenuBar /> */}
       <Routes>
         <Route
@@ -21,6 +24,10 @@ function App() {
             </MainContainer>
           }
         />
+        <Route path="/explore" element={<MainContainer><Explore/></MainContainer>}/>
+       <Route path="/bookmark" element={<MainContainer><Bookmark/></MainContainer>}/>
+        <Route path="/profile" element={<MainContainer><Profile/></MainContainer>}/>
+       <Route path="/login" element={<Login/>}/>
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
