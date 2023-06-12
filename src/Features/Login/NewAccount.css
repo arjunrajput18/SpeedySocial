@@ -1,0 +1,31 @@
+.mainSignup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* width: 100%; */
+    /* max-width: 300px; */
+    background-color: var(--secondary);
+
+
+}
+
+.innerSignUp-container{
+    /* border: solid; */
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.innerHeading-signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgb(54, 109, 109);
+}

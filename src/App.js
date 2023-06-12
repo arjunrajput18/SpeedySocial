@@ -4,11 +4,12 @@ import { Route, Routes } from "react-router";
 import { Home } from "./Features/Home/Home";
 import "./utils.css";
 import { MainContainer } from "./Components/MainContainer/MainContainer";
-import { Navbar } from "./Components/NavBar/Navbar";
+
 import { Profile } from "./Features/Profile/Profile";
 import { Explore } from "./Features/Explore/Explore";
 import { Bookmark } from "./Features/Bookmark/Bookmark";
 import { Login } from "./Features/Login/Login";
+import { NewAccount } from "./Features/Login/NewAccount";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
        <Route path="/bookmark" element={<MainContainer><Bookmark/></MainContainer>}/>
         <Route path="/profile" element={<MainContainer><Profile/></MainContainer>}/>
        <Route path="/login" element={<Login/>}/>
+       <Route path="/signup" element={<NewAccount/>}/>
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
