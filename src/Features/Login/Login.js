@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import logo from "../../Assets/twitter.png";
-import { NewAccount } from "./NewAccount";
+import { NewAccount } from "./Signup";
 export const Login = () => {
   return (
     <div className="login-mainConatiner">

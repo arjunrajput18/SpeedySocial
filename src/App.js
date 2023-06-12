@@ -9,7 +9,7 @@ import { Profile } from "./Features/Profile/Profile";
 import { Explore } from "./Features/Explore/Explore";
 import { Bookmark } from "./Features/Bookmark/Bookmark";
 import { Login } from "./Features/Login/Login";
-import { NewAccount } from "./Features/Login/NewAccount";
+import {  Signup } from "./Features/Login/Signup";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
        <Route path="/bookmark" element={<MainContainer><Bookmark/></MainContainer>}/>
         <Route path="/profile" element={<MainContainer><Profile/></MainContainer>}/>
        <Route path="/login" element={<Login/>}/>
-       <Route path="/signup" element={<NewAccount/>}/>
+       <Route path="/signup" element={<Signup/>}/>
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>

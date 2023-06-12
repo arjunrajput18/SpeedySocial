@@ -1,7 +1,7 @@
 import React from "react";
-import "./NewAccount.css"
+import "./Signup.css"
 import logo from "../../Assets/twitter.png";
-export const NewAccount = () => {
+export const Signup = () => {
   return (
     <div className="mainSignup-container">
       <div className="innerSignUp-container">
