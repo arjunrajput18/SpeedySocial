@@ -5,7 +5,8 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
-export const SinglePost = () => {
+export const SinglePost = ({ data }) => {
+  const { _id, content, likes:{likeCount}, username } = data;
   return (
     <div className="singlePost-MainContainer">
       <div>
@@ -14,7 +15,7 @@ export const SinglePost = () => {
           <div>
             <p className="single-profile-userName">
               Arjunsingh Rajput{" "}
-              <span className="single-profile-userId">@arjunrajput18</span>
+              <span className="single-profile-userId">@{username}</span>
             </p>
 
             <p className="single-profile-date-time">20/06/2023 16:30</p>
@@ -22,12 +23,12 @@ export const SinglePost = () => {
         </div>
 
         <p className="text-comment-box">
-          The best investments are buy and forget.
+         {content}
         </p>
 
         <div className="btn-single-profile">
           <p className="btn-like-single-profile">
-            <AiOutlineHeart />
+           {likeCount} <AiOutlineHeart />
           </p>
           <p className="btn-like-single-profile">
             <BsBookmark />

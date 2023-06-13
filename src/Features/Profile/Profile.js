@@ -4,6 +4,8 @@ import "./Profile.css";
 // import { NavLink } from "react-router-dom";
 
 export const Profile = () => {
+    const token=JSON.parse(localStorage.getItem("socialUser"))
+    console.log(token)
   return (
     <div className="profile-outerContainer">
     <div className="profile-mainContainer">
@@ -12,8 +14,8 @@ export const Profile = () => {
         <div>
           <div className="profile-heading">
             <div>
-              <h4>ArjunSingh Rajput</h4>
-              <p>@arjunsingh18</p>
+              <h4>{token.firstName} {token.lastname}</h4>
+              <p>{token.username}</p>
             </div>
             <div>
               <button className="profile-edit-btn">Edit</button>

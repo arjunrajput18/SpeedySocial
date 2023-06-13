@@ -5,7 +5,13 @@ import { CgProfile } from "react-icons/cg";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { SinglePost } from "../../Components/SinglePost/SinglePost";
 import { FollowBar } from "../../Components/FollowBar/FollowBar";
+import { useData } from "../../Context/DataContext";
 export const Home = () => {
+
+const {dataState:{posts}}=useData()
+
+// console.log(posts,"postsss")
+
   return (
     <div className="home">
       <div className="home-input-box">
@@ -32,12 +38,10 @@ export const Home = () => {
       <FollowBar/>
       </div>
       {/* <AddPost/> */}
-      <SinglePost />
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
+
+ {posts.map((data)=> <SinglePost data={data} key={data._id}/>)}      
+
+ 
 
 
     </div>

@@ -6,7 +6,15 @@ import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext";
 export const MenuBar = () => {
+  const {setIsLoggedIn}=useAuth()
+
+  const handleLogout=()=>{
+    setIsLoggedIn(false)
+    localStorage.removeItem("socialUser")
+    localStorage.removeItem("socialToken")
+  }
   return (
     <div className="Menubar">
       <ul className="Menubar-list">
@@ -35,7 +43,7 @@ export const MenuBar = () => {
             <span className="item-name">Profile</span>
           </NavLink>
         </li>
-        <li className="Menubar-list-item size-1">
+        <li className="Menubar-list-item size-1" onClick={handleLogout}>
           <IoMdLogOut />
           <span className="item-name">Logout</span>
         </li>
