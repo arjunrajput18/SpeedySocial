@@ -9,12 +9,11 @@ import { Profile } from "./Features/Profile/Profile";
 import { Explore } from "./Features/Explore/Explore";
 import { Bookmark } from "./Features/Bookmark/Bookmark";
 import { Login } from "./Features/Login/Login";
-import {  Signup } from "./Features/Login/Signup";
+import { Signup } from "./Features/Login/Signup";
 
 function App() {
   return (
     <div className="App">
- 
       {/* <MenuBar /> */}
       <Routes>
         <Route
@@ -25,11 +24,32 @@ function App() {
             </MainContainer>
           }
         />
-        <Route path="/explore" element={<MainContainer><Explore/></MainContainer>}/>
-       <Route path="/bookmark" element={<MainContainer><Bookmark/></MainContainer>}/>
-        <Route path="/profile" element={<MainContainer><Profile/></MainContainer>}/>
-       <Route path="/login" element={<Login/>}/>
-       <Route path="/signup" element={<Signup/>}/>
+        <Route
+          path="/explore"
+          element={
+            <MainContainer>
+              <Explore />
+            </MainContainer>
+          }
+        />
+        <Route
+          path="/bookmark"
+          element={
+            <MainContainer>
+              <Bookmark />
+            </MainContainer>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <MainContainer>
+              <Profile />
+            </MainContainer>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
