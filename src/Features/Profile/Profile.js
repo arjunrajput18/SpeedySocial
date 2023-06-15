@@ -5,7 +5,6 @@ import "./Profile.css";
 
 export const Profile = () => {
     const token=JSON.parse(localStorage.getItem("socialUser"))
-    console.log(token)
   return (
     <div className="profile-outerContainer">
     <div className="profile-mainContainer">

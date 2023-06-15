@@ -96,27 +96,27 @@
 }
 @media (min-width: 720px) {
   .FollowBar {
-    /* width: ; */
-    background-color: white;
+    /*width: 100%;
+    */background-color: white;
     height: 50vh;
-
-    /* z-index: 10; */
-    display: flex;
+    /*flex-wrap: wrap;
+    *//*z-index: 10;
+    */display: flex;
     flex-direction: column;
     padding-top: 6rem;
-    padding: 1.8rem;
-    
+    padding: 1.2rem;
+    /*max-width: 19rem;
+    */
     border-radius: 1rem;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
-    /* margin-right:5% ; */
-    margin-left: 5%;
-  }
+ 
+    /*margin-right:5% ;
+    */
+    
+}
   .followBar-list{
     display: flex;
     flex-direction:column ;
+    
   }
   .followbar-heading {
 
@@ -138,16 +138,18 @@
   }
   .followBar-list-item {
     display: flex;
-    flex-direction: column;
-    padding-left: 0rem;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* padding-left: 0rem; */
   }
 
   .profile-follow {
     display: flex;
     flex-direction: row;
     padding-top: 0.5rem;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     margin-bottom: 0.4rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 0.8rem;
@@ -156,7 +158,9 @@
     -ms-border-radius: 0.8rem;
     -o-border-radius: 0.8rem;
     padding-bottom: 0.4rem;
-
+    width: 19rem;
+    /* width: 100%; */
+    /* flex-wrap: wrap; */
 }
   .btn-follow {
     background-color: #312d7a;

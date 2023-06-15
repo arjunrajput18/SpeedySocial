@@ -1,12 +1,49 @@
 import React from "react";
 import "./SinglePost.css";
 import profile1 from "../../Assets/profile1.png";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsBookmark } from "react-icons/bs";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { BsBookmark, BsBookmarkFill, BsFillBookmarkFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
+import {
+  getBookMark,
+  getDislikeData,
+  getlikeData,
+} from "../../Services/DataServices";
+import { useData } from "../../Context/DataContext";
 export const SinglePost = ({ data }) => {
-  const { _id, content, likes:{likeCount}, username } = data;
+  const {
+    _id,
+    content,
+    likes: { likeCount, likedBy },
+    username,
+    userHandler,
+  } = data;
+  const {
+    dataState: { users },
+    posts,
+    dataDispatch,
+  } = useData();
+
+  const sociaToken = localStorage.getItem("socialToken");
+  const socialUser = JSON.parse(localStorage.getItem("socialUser"));
+  const bookmarksMatch = users?.find(({ _id }) => _id === socialUser._id);
+  const newBookmark = bookmarksMatch.bookmarks.some((data) => data === _id);
+  console.log(newBookmark);
+  const handleLike = () => {
+    getlikeData(_id, dataDispatch, sociaToken);
+  };
+  // console.log(likedBy.some(({_id})=>_id===data._id))
+  const handledisLike = () => {
+    getDislikeData(_id, dataDispatch, sociaToken);
+  };
+  const btnLike = likedBy?.some((ele) => ele._id === socialUser._id);
+  const socialUserId = socialUser._id;
+  const handleBookmark = () => {
+    getBookMark(dataDispatch, sociaToken, _id, socialUserId);
+    // console.log(users);
+  };
+
   return (
     <div className="singlePost-MainContainer">
       <div>
@@ -14,7 +51,7 @@ export const SinglePost = ({ data }) => {
           <img src={profile1} alt="profile1" className="single-profile-photo" />
           <div>
             <p className="single-profile-userName">
-              Arjunsingh Rajput{" "}
+              {userHandler}{" "}
               <span className="single-profile-userId">@{username}</span>
             </p>
 
@@ -22,17 +59,33 @@ export const SinglePost = ({ data }) => {
           </div>
         </div>
 
-        <p className="text-comment-box">
-         {content}
-        </p>
+        <p className="text-comment-box">{content}</p>
 
         <div className="btn-single-profile">
-          <p className="btn-like-single-profile">
-           {likeCount} <AiOutlineHeart />
-          </p>
-          <p className="btn-like-single-profile">
-            <BsBookmark />
-          </p>
+          {btnLike ? (
+            <span className="btn-like-single-profile">
+              <AiFillHeart onClick={handledisLike} />
+              {likeCount}
+            </span>
+          ) : (
+            <span className="btn-like-single-profile">
+              <AiOutlineHeart onClick={handleLike} />
+              {likeCount}
+            </span>
+          )}
+
+          <>
+            {!newBookmark ? (
+              <span className="btn-like-single-profile">
+                <BsBookmark onClick={handleBookmark} />
+              </span>
+            ) : (
+              <span className="btn-like-single-profile">
+                <BsBookmarkFill onClick={handleBookmark} />
+              </span>
+            )}{" "}
+          </>
+
           <p className="btn-like-single-profile">
             <FaRegComment />
           </p>
