@@ -30,7 +30,10 @@ export const getUserData = async (dataDispatch) => {
 
 export const getlikeData = async (_id, dataDispatch, sociaToken) => {
   try {
-    const {status,data:{posts}} = await axios.post(
+    const {
+      status,
+      data: { posts },
+    } = await axios.post(
       `/api/posts/like/${_id}`,
       {},
       {
@@ -39,19 +42,21 @@ export const getlikeData = async (_id, dataDispatch, sociaToken) => {
         },
       }
     );
-    if(status===200 || status===201){
-
-        // console.log(posts);
-        dataDispatch({type:"ALL_POST_DATA",payload:posts})
+    if (status === 200 || status === 201) {
+      // console.log(posts);
+      dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getDislikeData=async (_id, dataDispatch, sociaToken)=>{
+export const getDislikeData = async (_id, dataDispatch, sociaToken) => {
   try {
-    const {status,data:{posts}} = await axios.post(
+    const {
+      status,
+      data: { posts },
+    } = await axios.post(
       `/api/posts/dislike/${_id}`,
       {},
       {
@@ -60,41 +65,63 @@ export const getDislikeData=async (_id, dataDispatch, sociaToken)=>{
         },
       }
     );
-    if(status===200 || status===201){
-
-        // console.log(posts);
-        dataDispatch({type:"ALL_POST_DATA",payload:posts})
+    if (status === 200 || status === 201) {
+      // console.log(posts);
+      dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-
-export const getBookMark=async (dataDispatch,sociaToken,_id,userId)=>{
+export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
   try {
-    const {status,data:{bookmarks}}=await axios.post(`/api/users/bookmark/${_id}`, {},
-    {
-      headers: {
-        authorization: sociaToken, 
-      },
+    const {
+      status,
+      data: { bookmarks },
+    } = await axios.post(
+      `/api/users/bookmark/${_id}`,
+      {},
+      {
+        headers: {
+          authorization: sociaToken,
+        },
+      }
+    );
+    if (status === 200 || status === 201) {
+      dataDispatch({ type: "BOOKMARK", payload: { username, bookmarks } });
     }
-  );
-  if(status===200 ||status===201){
-    dataDispatch({type:"BOOKMARK",payload:{userId,bookmarks }})
-  }
-
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
-
-export const getprofileData=async (id)=>{
+export const getRemoveBookmarkData = async (dataDispatch, sociaToken, _id, username) => {
   try {
-    const resp=await axios.get(`/api/users/${id}`)
-    console.log("resp",resp)
+    const {status,data:{bookmarks}} = await axios.post(
+      `/api/users/remove-bookmark/${_id}`,
+      {},
+      {
+        headers: {
+          authorization: sociaToken,
+        },
+      }
+    );
+    // console.log(bookmarks)
+    if (status === 200 || status === 201) {
+      dataDispatch({ type: "BOOKMARK", payload: { username, bookmarks } });
+    }
+    // console.log(resp);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
+
+export const getprofileData = async (id) => {
+  try {
+    const resp = await axios.get(`/api/users/${id}`);
+    console.log("resp", resp);
+  } catch (error) {
+    console.log(error);
+  }
+};

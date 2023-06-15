@@ -16,24 +16,9 @@ export const DataReducer = (state, action) => {
         ...state,
         users: action.payload,
       };
-      case "BOOKMARK":
-        const { userId, bookmarks } = action.payload;
-      
-        const updatedUsers = state.users.map((user) => {
-          if (user._id === userId) {
-            return {
-              ...user,
-              bookmarks: [...user.bookmarks, ...bookmarks],
-            };
-          }
-          return user;
-        });
-      
-        return {
-          ...state,
-          users: updatedUsers, 
-        };
-
+    case "BOOKMARK":return{
+      ...state,users:state.users.map((data)=>data.username===action.payload.username?{...data,bookmarks:action.payload.bookmarks}:data)
+    }
     default:
       return {
         state,

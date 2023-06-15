@@ -8,6 +8,7 @@ import { BiShareAlt } from "react-icons/bi";
 import {
   getBookMark,
   getDislikeData,
+  getRemoveBookmarkData,
   getlikeData,
 } from "../../Services/DataServices";
 import { useData } from "../../Context/DataContext";
@@ -27,9 +28,12 @@ export const SinglePost = ({ data }) => {
 
   const sociaToken = localStorage.getItem("socialToken");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
-  const bookmarksMatch = users?.find(({ _id }) => _id === socialUser._id);
-  const newBookmark = bookmarksMatch.bookmarks.some((data) => data === _id);
-  console.log(newBookmark);
+  const loggedInuser = users?.find(({ _id }) => _id === socialUser._id);
+  // const newBookmark = bookmarksMatch.bookmarks.some((data) => data === _id);
+  
+
+  const isBookmark=loggedInuser.bookmarks.includes(_id)
+  // console.log(newBookmark);
   const handleLike = () => {
     getlikeData(_id, dataDispatch, sociaToken);
   };
@@ -38,11 +42,22 @@ export const SinglePost = ({ data }) => {
     getDislikeData(_id, dataDispatch, sociaToken);
   };
   const btnLike = likedBy?.some((ele) => ele._id === socialUser._id);
-  const socialUserId = socialUser._id;
+
+
+
+  // const socialUserId = socialUser._id;
+
+
+
   const handleBookmark = () => {
-    getBookMark(dataDispatch, sociaToken, _id, socialUserId);
+    getBookMark(dataDispatch, sociaToken, _id, socialUser.username);
     // console.log(users);
   };
+const handleRemoveBookmark=()=>{
+  getRemoveBookmarkData(dataDispatch, sociaToken, _id, socialUser.username)
+}
+
+
 
   return (
     <div className="singlePost-MainContainer">
@@ -75,15 +90,13 @@ export const SinglePost = ({ data }) => {
           )}
 
           <>
-            {!newBookmark ? (
+            {isBookmark ? <span className="btn-like-single-profile">
+                <BsBookmarkFill onClick={handleRemoveBookmark} />
+              </span>:(
               <span className="btn-like-single-profile">
                 <BsBookmark onClick={handleBookmark} />
               </span>
-            ) : (
-              <span className="btn-like-single-profile">
-                <BsBookmarkFill onClick={handleBookmark} />
-              </span>
-            )}{" "}
+            )  }{" "}
           </>
 
           <p className="btn-like-single-profile">

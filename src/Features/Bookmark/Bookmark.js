@@ -7,12 +7,13 @@ export const Bookmark = () => {
 const {dataState:{users,posts}}=useData()
 const socialUser=JSON.parse(localStorage.getItem("socialUser"))
 
-const bookmarksdata=users?.find(({_id})=>_id===socialUser._id)
-const newBookmark=posts?.filter(({_id})=>bookmarksdata?.bookmarks.some((data)=>data===_id))
-// console.log(newBookmark) 
+const loggedInUser=users?.find(({_id})=>_id===socialUser._id)
+// console.log(bookmarksdata,"booooo")
+const newBookmark=posts?.filter(({_id})=>loggedInUser?.bookmarks.includes(_id))
+// console.log(newBookmark,"newww") 
   return (
     <div>
-  {newBookmark?.map((data)=><SinglePost data={data}/>)}
+  {newBookmark?.map((data)=><SinglePost data={data} key={data._id}/>)}
     </div>
   )
 }
