@@ -1,46 +1,67 @@
 import React from "react";
 import "./FollowBar.css";
 import profile1 from "../../Assets/profile1.png";
-import profile2 from "../../Assets/profile2.png";
 import { useData } from "../../Context/DataContext";
-import { getprofileData } from "../../Services/DataServices";
+import { useNavigate } from "react-router-dom";
+import { getFollowHandler } from "../../Services/DataServices";
+// import { getprofileData } from "../../Services/DataServices";
 
 export const FollowBar = () => {
-  const {dataState:{users}}=useData()
+  const {
+    dataState: { users },dataDispatch
+  } = useData();
+  const socialToken = localStorage.getItem("socialToken");
+  const socialUser = JSON.parse(localStorage.getItem("socialUser"));
+  const navigate = useNavigate();
 
+  const handleClick = (userHandler) => {
+    navigate(`/profile/${userHandler}`);
+  };
 
-const handleClick=(id)=>{
-
-  console.log("clicked",id)
-  getprofileData(id)
-
+const handleFollow=(_id,socialToken,dataDispatch)=>{
+  getFollowHandler(_id,socialToken,dataDispatch)
 }
+const user = users.find(el => el.username === socialUser.username)
 
+const notFollowedUsers = users?.filter(el => el.username !== socialUser.username && user.following.every(item => item.username !== el.username))
 
-// const HandleFollow=()=>{
-//   console.log("following")
-// }
 
   return (
     <div className="main-followbar">
       <p className="followbar-heading">Suggested Users</p>
       <div className="FollowBar">
         <ul className="followBar-list">
-        {users?.map(data=>
-          <li className="followBar-list-item" key={data._id} onClick={()=>handleClick(data._id)}>
-            <div className="profile-follow">
-              <img src={profile1} alt="profile1" className="profileImg" />
-              <div>
-                <p className="user-follow-name">{data.firstName} {data.lastName}</p>
-                <span className="userId">{data.username}</span>
+          {notFollowedUsers?.map((data) => (
+            <li className="followBar-list-item" key={data._id}>
+              <div className="profile-follow">
+                <img
+                  src={profile1}
+                  alt="profile1"
+                  className="profileImg"
+                  onClick={() => handleClick(data.userHandler)}
+                />
+                <div>
+                  <p
+                    className="user-follow-name"
+                    onClick={() => handleClick(data.userHandler)}
+                  >
+                    {data.firstName} {data.lastName}
+                  </p>
+                  <span
+                    className="userId"
+                    onClick={() => handleClick(data.userHandler)}
+                  >
+                    {data.userHandler}
+                  </span>
+                </div>
+                <div>
+                  <button className="btn-follow" onClick={()=>handleFollow(data._id,socialToken,dataDispatch)}>+Follow</button>
+                </div>
               </div>
-              <div>
-                <button className="btn-follow" >+Follow</button>
-              </div>
-            </div>
-      
-            {/* <hr /> */}
-          </li>)}
+
+              {/* <hr /> */}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

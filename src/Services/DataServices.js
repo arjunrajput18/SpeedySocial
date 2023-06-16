@@ -43,7 +43,7 @@ export const getlikeData = async (_id, dataDispatch, sociaToken) => {
       }
     );
     if (status === 200 || status === 201) {
-      // console.log(posts);
+      console.log(posts);
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
@@ -96,9 +96,17 @@ export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
   }
 };
 
-export const getRemoveBookmarkData = async (dataDispatch, sociaToken, _id, username) => {
+export const getRemoveBookmarkData = async (
+  dataDispatch,
+  sociaToken,
+  _id,
+  username
+) => {
   try {
-    const {status,data:{bookmarks}} = await axios.post(
+    const {
+      status,
+      data: { bookmarks },
+    } = await axios.post(
       `/api/users/remove-bookmark/${_id}`,
       {},
       {
@@ -121,6 +129,57 @@ export const getprofileData = async (id) => {
   try {
     const resp = await axios.get(`/api/users/${id}`);
     console.log("resp", resp);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getFollowHandler = async (
+  followUserId,
+  socialToken,
+  dataDispatch
+) => {
+  try {
+    const {
+      status,
+      data: { user, followUser },
+    } = await axios.post(
+      `/api/users/follow/${followUserId}`,
+      {},
+      {
+        headers: {
+          authorization: socialToken,
+        },
+      }
+    );
+    if (status === 200 || status === 201) {
+      dataDispatch({ type: "ADD_FOLLOWING", payload: { user: user } });
+      dataDispatch({
+        type: "ADD_FOLLOWER",
+        payload: { followUser: followUser },
+      });
+      localStorage.setItem("socialUser", JSON.stringify(user))
+    }
+    console.log(followUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createPostHandler = async ( postData,socialToken,dataDispatch) => {
+  try {
+    const { status, data: { posts }} = await axios.post(
+      `/api/posts/`,
+      {postData},
+      {
+        headers: {
+          authorization: socialToken,
+        },
+      }
+    );
+    if (status === 200 || status === 201) {
+      dataDispatch({ type: "POST_OPERATIONS", payload: posts })
+    }
   } catch (error) {
     console.log(error);
   }
