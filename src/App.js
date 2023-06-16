@@ -48,6 +48,7 @@ function App() {
             </MainContainer>
           }
         />
+        <Route path="/profile/:userHandler" element={<MainContainer><Profile/></MainContainer>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mockman" element={<Mockman />} />

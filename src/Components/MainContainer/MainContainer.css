@@ -9,7 +9,7 @@
 @media (min-width: 720px) {
   .mainContainer {
     display: grid;
-    grid-template-columns: 2.5fr 4fr 2.5fr;
+    grid-template-columns: 2fr 3fr 2fr;
     justify-content: center;
   }
   .dektop-followbar{

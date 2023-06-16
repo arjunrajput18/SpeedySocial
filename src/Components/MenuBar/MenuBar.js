@@ -15,6 +15,10 @@ export const MenuBar = () => {
     localStorage.removeItem("socialUser")
     localStorage.removeItem("socialToken")
   }
+
+
+const socialUser=JSON.parse(localStorage.getItem("socialUser"))
+const userHandler=socialUser.userHandler
   return (
     <div className="Menubar">
       <ul className="Menubar-list">

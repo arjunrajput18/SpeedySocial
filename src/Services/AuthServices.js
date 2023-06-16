@@ -25,7 +25,6 @@ export const signupUser = async (data, navigate,setIsLoggedIn) => {
       status,
       data: { encodedToken, createdUser },
     } = await axios.post("/api/auth/signup", { ...data });
-    console.log(data)
     if (status === 200 || status === 201) {
       localStorage.setItem("socialToken", encodedToken);
       localStorage.setItem("socialUser", JSON.stringify(createdUser));
