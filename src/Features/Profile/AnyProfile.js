@@ -19,7 +19,7 @@ const socialUser = JSON.parse(localStorage.getItem("socialUser"));
 // const loggedInUser = users?.find(user => user.username === socialUser.username);
 
 const foundUser = users?.find(el => el.userHandler === userHandler);
-  const { firstName, lastName, username, followers, following } = foundUser;
+  const {profilePic,firstName, lastName, username, followers, following } = foundUser;
 
 
 
@@ -50,7 +50,7 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
     <div className="profile-outerContainer">
     <div className="profile-mainContainer">
       <div className="profile-innerContainer">
-        <img src={profile1} alt="img1" className="profile-user-logo" />
+        <img src={profilePic} alt="img1" className="profile-user-logo" />
         <div>
           <div className="profile-heading">
             <div>

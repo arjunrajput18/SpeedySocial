@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 export const SinglePost = ({ data }) => {
   const {
     _id,
+    profilePic,
     content,
     likes: { likeCount, likedBy },
     username,
@@ -69,7 +70,7 @@ const handleRemoveBookmark=()=>{
     <div className="singlePost-MainContainer">
       <div>
         <div className="single-profile-Username">
-          <img src={profile1} alt="profile1" className="single-profile-photo" onClick={() => handleClick(userHandler)}/>
+          <img src={profilePic} alt="profile1" className="single-profile-photo" onClick={() => handleClick(userHandler)}/>
           <div>
             <p className="single-profile-userName">
               {userHandler}{" "}

@@ -7,7 +7,7 @@ import { getFollowHandler } from "../../Services/DataServices";
 // import { getprofileData } from "../../Services/DataServices";
 
 export const FollowBar = () => {
-  const {
+  const {userSearch,
     dataState: { users },dataDispatch
   } = useData();
   const socialToken = localStorage.getItem("socialToken");
@@ -24,8 +24,10 @@ const handleFollow=(_id,socialToken,dataDispatch)=>{
 const user = users?.find(el => el.username === socialUser.username)
 
 const notFollowedUsers = users?.filter(el => el.username !== socialUser.username && user.following.every(item => item.username !== el.username))
-
-
+// const {userSearch, dataState: { users } } =useData()
+// const searchValue = userSearch
+// ? users?.filter(item => item.username.toLowerCase().includes(userSearch.toLowerCase()))
+// : users;
   return (
     <div className="main-followbar">
       <p className="followbar-heading">Suggested Users</p>
@@ -35,7 +37,7 @@ const notFollowedUsers = users?.filter(el => el.username !== socialUser.username
             <li className="followBar-list-item" key={data._id}>
               <div className="profile-follow">
                 <img
-                  src={profile1}
+                  src={data.profilePic}
                   alt="profile1"
                   className="profileImg"
                   onClick={() => handleClick(data.userHandler)}
