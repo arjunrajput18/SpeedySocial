@@ -19,7 +19,7 @@ export const loginUser = async (creds, navigate,setIsLoggedIn) => {
   }
 };
 
-export const signupUser = async (data, navigate,setIsLoggedIn) => {
+export const signupUser = async (data, navigate,setIsLoggedIn,dataDispatch) => {
   try {
     const {
       status,
@@ -29,7 +29,9 @@ export const signupUser = async (data, navigate,setIsLoggedIn) => {
       localStorage.setItem("socialToken", encodedToken);
       localStorage.setItem("socialUser", JSON.stringify(createdUser));
       setIsLoggedIn(true)
+      dataDispatch({type:"Add_NEW_USER",payload:createdUser})
       navigate("/");
+
     }
   } catch (error) {
     console.log(error);

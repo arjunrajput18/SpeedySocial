@@ -166,6 +166,41 @@ export const getFollowHandler = async (
   }
 };
 
+export const getUnfollowHandler = async (
+  followUserId,
+  socialToken,
+  dataDispatch
+) => {
+  try {
+    const {
+      status,
+      data: { user, followUser },
+    } = await axios.post(
+      `/api/users/unfollow/${followUserId}`,
+      {},
+      {
+        headers: {
+          authorization: socialToken,
+        },
+      }
+    );
+    if (status === 200 || status === 201) {
+      // dataDispatch({ type: "REMOVE_FOLLOWER", payload: { user: user } });
+      dataDispatch({
+        type: "REMOVE_FOLLOWER",
+        payload: { unfollowedUser: followUser },
+      });
+      localStorage.setItem("socialUser", JSON.stringify(user))
+    }
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
 export const createPostHandler = async ( postData,socialToken,dataDispatch) => {
   try {
     const { status, data: { posts }} = await axios.post(

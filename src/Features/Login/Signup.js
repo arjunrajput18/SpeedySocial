@@ -5,12 +5,20 @@ import { signupUser } from "../../Services/AuthServices";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
+import { useData } from "../../Context/DataContext";
 export const Signup = () => {
+
+const {dataDispatch}=useData()
+
   const [signUpDetails, setSignUpDetails] = useState({
     firstName: "",
     lastName: "",
     username: "",
     password: "",
+    followers:[],
+    following:[],
+    bookmarks:[],
+    // userHandler:this.firstName
   });
   const navigate = useNavigate();
 const {setIsLoggedIn}=useAuth()
@@ -19,13 +27,13 @@ const {setIsLoggedIn}=useAuth()
     setSignUpDetails((prev) => ({ ...prev, [name]: value }));
   };
 
+  const { firstName, lastName, username, password } = signUpDetails;
   const handleSignUp = () => {
     if ((firstName, lastName, username, password)) {
-      signupUser(signUpDetails, navigate,setIsLoggedIn);
+      signupUser(signUpDetails, navigate,setIsLoggedIn,dataDispatch);
     }
   };
 
-  const { firstName, lastName, username, password } = signUpDetails;
 
   return (
     <div className="mainSignup-container">

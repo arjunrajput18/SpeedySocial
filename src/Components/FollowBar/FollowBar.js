@@ -21,7 +21,7 @@ export const FollowBar = () => {
 const handleFollow=(_id,socialToken,dataDispatch)=>{
   getFollowHandler(_id,socialToken,dataDispatch)
 }
-const user = users.find(el => el.username === socialUser.username)
+const user = users?.find(el => el.username === socialUser.username)
 
 const notFollowedUsers = users?.filter(el => el.username !== socialUser.username && user.following.every(item => item.username !== el.username))
 

@@ -12,6 +12,7 @@ import {
   getlikeData,
 } from "../../Services/DataServices";
 import { useData } from "../../Context/DataContext";
+import { useNavigate } from "react-router-dom";
 export const SinglePost = ({ data }) => {
   const {
     _id,
@@ -26,7 +27,7 @@ export const SinglePost = ({ data }) => {
     dataDispatch,
   } = useData();
 
-  const sociaToken = localStorage.getItem("socialToken");
+  const socialToken = localStorage.getItem("socialToken");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInuser = users?.find(({ _id }) => _id === socialUser._id);
   // const newBookmark = bookmarksMatch.bookmarks.some((data) => data === _id);
@@ -35,26 +36,31 @@ export const SinglePost = ({ data }) => {
   const isBookmark=loggedInuser.bookmarks.includes(_id)
   // console.log(newBookmark);
   const handleLike = () => {
-    getlikeData(_id, dataDispatch, sociaToken);
+    getlikeData(_id, dataDispatch, socialToken);
   };
   // console.log(likedBy.some(({_id})=>_id===data._id))
   const handledisLike = () => {
-    getDislikeData(_id, dataDispatch, sociaToken);
+    getDislikeData(_id, dataDispatch, socialToken);
   };
   const btnLike = likedBy?.some((ele) => ele._id === socialUser._id);
 
+  const navigate = useNavigate();
 
 
   // const socialUserId = socialUser._id;
-
+  const handleClick = (userHandler) => {
+    navigate(`/profile/${userHandler}`);
+  };
 
 
   const handleBookmark = () => {
-    getBookMark(dataDispatch, sociaToken, _id, socialUser.username);
+    getBookMark(dataDispatch, socialToken, _id, socialUser.username);
     // console.log(users);
+    // bookmarkPostHandler(_id, socialToken, dataDispatch, socialUser)
+
   };
 const handleRemoveBookmark=()=>{
-  getRemoveBookmarkData(dataDispatch, sociaToken, _id, socialUser.username)
+  getRemoveBookmarkData(dataDispatch, socialToken, _id, socialUser.username)
 }
 
 
@@ -63,11 +69,11 @@ const handleRemoveBookmark=()=>{
     <div className="singlePost-MainContainer">
       <div>
         <div className="single-profile-Username">
-          <img src={profile1} alt="profile1" className="single-profile-photo" />
+          <img src={profile1} alt="profile1" className="single-profile-photo" onClick={() => handleClick(userHandler)}/>
           <div>
             <p className="single-profile-userName">
               {userHandler}{" "}
-              <span className="single-profile-userId">@{username}</span>
+              {/* <span className="single-profile-userId">{username}</span> */}
             </p>
 
             <p className="single-profile-date-time">20/06/2023 16:30</p>

@@ -45,8 +45,18 @@ export const DataReducer = (state, action) => {
             : data
         ),
       };
+      case "REMOVE_FOLLOWER": return {
+        ...state, users: state.users.map(el => el.username === action.payload.unfollowedUser.username ? {
+          ...el, followers: action.payload.unfollowedUser.followers
+        } : el)
+      }
       case "POST_OPERATIONS": return {
         ...state, posts: action.payload
+      }
+
+
+      case "Add_NEW_USER":return{
+        ...state,users:[...state.users,action.payload]
       }
   
     default:

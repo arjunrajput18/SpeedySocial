@@ -17,7 +17,7 @@ export const posts = [
       dislikedBy: [],
     },
     username: "adarshbalika@gmail.com",
-    userHandler:"adarshbalika24",
+    userHandler: "adarshbalika24",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
