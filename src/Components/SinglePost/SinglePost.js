@@ -21,6 +21,7 @@ export const SinglePost = ({ data }) => {
     likes: { likeCount, likedBy },
     username,
     userHandler,
+    
   } = data;
   const {
     dataState: { users },
@@ -64,7 +65,9 @@ const handleRemoveBookmark=()=>{
   getRemoveBookmarkData(dataDispatch, socialToken, _id, socialUser.username)
 }
 
-
+const handleProductDetailClick=()=>{
+  
+}
 
   return (
     <div className="singlePost-MainContainer">
@@ -80,8 +83,8 @@ const handleRemoveBookmark=()=>{
             <p className="single-profile-date-time">20/06/2023 16:30</p>
           </div>
         </div>
-
-        <p className="text-comment-box">{content}</p>
+       {data?.file && <img src={data?.file} alt="Uploaded"  height={200} width={200}/>}
+        <p className="text-comment-box" onClick={handleProductDetailClick}>{content}</p>
 
         <div className="btn-single-profile">
           {btnLike ? (

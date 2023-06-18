@@ -11,6 +11,7 @@ import { Bookmark } from "./Features/Bookmark/Bookmark";
 import { Login } from "./Features/Login/Login";
 import { Signup } from "./Features/Login/Signup";
 import { AnyProfile } from "./Features/Profile/AnyProfile";
+import { PostDetails } from "./Features/PostDetails/PostDetails";
 
 function App() {
   return (
@@ -46,6 +47,14 @@ function App() {
           element={
             <MainContainer>
               <Profile />
+            </MainContainer>
+          }
+        />
+         <Route
+          path="/post/:postId"
+          element={
+            <MainContainer>
+              <PostDetails/>
             </MainContainer>
           }
         />

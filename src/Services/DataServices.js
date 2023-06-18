@@ -43,7 +43,7 @@ export const getlikeData = async (_id, dataDispatch, sociaToken) => {
       }
     );
     if (status === 200 || status === 201) {
-      console.log(posts);
+      // console.log(posts);
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
@@ -160,7 +160,7 @@ export const getFollowHandler = async (
       });
       localStorage.setItem("socialUser", JSON.stringify(user))
     }
-    console.log(followUser);
+    // console.log(followUser);
   } catch (error) {
     console.log(error);
   }
@@ -213,6 +213,7 @@ export const createPostHandler = async ( postData,socialToken,dataDispatch) => {
       }
     );
     if (status === 200 || status === 201) {
+      console.log(posts)
       dataDispatch({ type: "POST_OPERATIONS", payload: posts })
     }
   } catch (error) {

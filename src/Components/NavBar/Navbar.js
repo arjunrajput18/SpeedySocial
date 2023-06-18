@@ -16,7 +16,7 @@ export const Navbar = () => {
   const searchValue = userSearch
   ? users?.filter(item => item.username.toLowerCase().includes(userSearch.toLowerCase()))
   : [];
-  console.log(searchValue,"userSearch")
+  // console.log(searchValue,"userSearch")
   const handleClick = (userHandler) => {
     setUserSearch("")
     navigate(`/profile/${userHandler}`);
