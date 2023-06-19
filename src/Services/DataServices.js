@@ -43,7 +43,7 @@ export const getlikeData = async (_id, dataDispatch, sociaToken) => {
       }
     );
     if (status === 200 || status === 201) {
-      console.log(posts);
+      // console.log(posts);
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
@@ -160,13 +160,49 @@ export const getFollowHandler = async (
       });
       localStorage.setItem("socialUser", JSON.stringify(user))
     }
-    console.log(followUser);
+    // console.log(followUser);
   } catch (error) {
     console.log(error);
   }
 };
 
+export const getUnfollowHandler = async (
+  followUserId,
+  socialToken,
+  dataDispatch
+) => {
+  try {
+    const {
+      status,
+      data: { user, followUser },
+    } = await axios.post(
+      `/api/users/unfollow/${followUserId}`,
+      {},
+      {
+        headers: {
+          authorization: socialToken,
+        },
+      }
+    );
+    if (status === 200 || status === 201) {
+      // dataDispatch({ type: "REMOVE_FOLLOWER", payload: { user: user } });
+      dataDispatch({
+        type: "REMOVE_FOLLOWER",
+        payload: { unfollowedUser: followUser },
+      });
+      localStorage.setItem("socialUser", JSON.stringify(user))
+    }
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
 export const createPostHandler = async ( postData,socialToken,dataDispatch) => {
+  
   try {
     const { status, data: { posts }} = await axios.post(
       `/api/posts/`,
@@ -178,9 +214,27 @@ export const createPostHandler = async ( postData,socialToken,dataDispatch) => {
       }
     );
     if (status === 200 || status === 201) {
+      console.log(posts)
       dataDispatch({ type: "POST_OPERATIONS", payload: posts })
     }
   } catch (error) {
     console.log(error);
   }
 };
+
+
+
+export const getPostDetails=async (postId,dataDispatch)=>{
+console.log(postId,"fff")
+
+  try {
+
+    const {status,data:{post}}= await axios.get(`/api/posts/${postId}`)
+    if(status===200 ||status===201){
+      console.log(post)
+      dataDispatch({type:"POST_DETAILS",payload:post})
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}

@@ -20,11 +20,37 @@ nav {
   justify-content: center;
   width: 70%;
 }
+.searchOutput{
+  position: absolute;
+  top: 100%;
+  border: 1px solid black;
+  background-color: var(--secondary);
+  color: black;
+  height: auto;
+  width: auto;
+  max-height: 10rem;
+  max-width: 30%;
+  overflow-y: scroll;
+  
+
+}
 
 @media (min-width: 720) {
   .search-navbar {
     display: flex;
     justify-content: center;
     width: 70%;
+  }
+  .searchOutput{
+    position: absolute;
+    top:100%;
+    border:solid;
+    background-color: var(--secondary);
+    color: black;
+    height: 30px;
+    /* width: 20vh; */
+    width: 10%;
+    overflow-y: scroll;
+  
   }
 }

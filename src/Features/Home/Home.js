@@ -9,9 +9,11 @@ import { useData } from "../../Context/DataContext";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { createPostHandler } from "../../Services/DataServices";
+import {AddPost} from "../../Components/AddPost/AddPost"
+
 export const Home = () => {
   const {
-    dataState: { posts },dataDispatch
+    dataState: { posts },dataDispatch,setBtnAddPost,btnAddPost
   } = useData();
   const defaultPost = {
     _id: uuid(),
@@ -40,6 +42,9 @@ const sortPostsByLikes = [...likedPosts]?.sort((a, b) => a.likes.likedBy.length 
 
 const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts] : sortPostsByLikes;
 
+const HandleAddPost=()=>{
+  setBtnAddPost(true)
+}
 
 
   return (
@@ -49,11 +54,11 @@ const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts
           <CgProfile className="profile-logo-input" />
         </button>
         <input
-          type="text"
+          type="btn"
           placeholder="what's on your mind?"
           className="addPost"
-          value={newPost.content}
-          onChange={(e)=>setNewPost({...newPost,content:e.target.value})}
+         onClick={HandleAddPost}
+         disabled={btnAddPost}
         />
         <button className="plus-logo-input">
           <AiFillPlusCircle  onClick={addNoteHandler}/>
@@ -69,7 +74,7 @@ const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts
       <div className="follow-bar">
         <FollowBar />
       </div>
-      {/* <AddPost/> */}
+     {btnAddPost && <AddPost/>}
 
  
       {

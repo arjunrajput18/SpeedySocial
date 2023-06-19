@@ -8,84 +8,97 @@ import { BiShareAlt } from "react-icons/bi";
 import {
   getBookMark,
   getDislikeData,
+  getPostDetails,
   getRemoveBookmarkData,
   getlikeData,
 } from "../../Services/DataServices";
 import { useData } from "../../Context/DataContext";
+import { useNavigate } from "react-router-dom";
 export const SinglePost = ({ data }) => {
-  const {
-    _id,
-    content,
-    likes: { likeCount, likedBy },
-    username,
-    userHandler,
-  } = data;
+  // const {
+  //   _id,
+  //   profilePic,
+  //   content,
+  //   likes: { likeCount, likedBy },
+  //   username,
+  //   userHandler,
+    
+  // } = data;
   const {
     dataState: { users },
     posts,
     dataDispatch,
   } = useData();
 
-  const sociaToken = localStorage.getItem("socialToken");
+  const socialToken = localStorage.getItem("socialToken");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInuser = users?.find(({ _id }) => _id === socialUser._id);
   // const newBookmark = bookmarksMatch.bookmarks.some((data) => data === _id);
   
 
-  const isBookmark=loggedInuser.bookmarks.includes(_id)
+  const isBookmark=loggedInuser?.bookmarks?.includes(data?._id)
   // console.log(newBookmark);
   const handleLike = () => {
-    getlikeData(_id, dataDispatch, sociaToken);
+    getlikeData(data?._id, dataDispatch, socialToken);
   };
-  // console.log(likedBy.some(({_id})=>_id===data._id))
+  // console.log(likedBy.some(({_id})=>_id===data?._id))
   const handledisLike = () => {
-    getDislikeData(_id, dataDispatch, sociaToken);
+    getDislikeData(data?._id, dataDispatch, socialToken);
   };
-  const btnLike = likedBy?.some((ele) => ele._id === socialUser._id);
+  const btnLike = data?.likedBy?.some((ele) => ele._id === socialUser._id);
 
+  const navigate = useNavigate();
 
 
   // const socialUserId = socialUser._id;
-
+  const handleClick = (userHandler) => {
+    navigate(`/profile/${userHandler}`);
+  };
 
 
   const handleBookmark = () => {
-    getBookMark(dataDispatch, sociaToken, _id, socialUser.username);
+    getBookMark(dataDispatch, socialToken, data?._id, socialUser.username);
     // console.log(users);
+    // bookmarkPostHandler(_id, socialToken, dataDispatch, socialUser)
+
   };
 const handleRemoveBookmark=()=>{
-  getRemoveBookmarkData(dataDispatch, sociaToken, _id, socialUser.username)
+  getRemoveBookmarkData(dataDispatch, socialToken, data?._id, socialUser.username)
 }
 
-
+const handleProductDetailClick=(postId)=>{
+  getPostDetails(postId,dataDispatch)
+  navigate(`/post/${postId}`)
+ 
+}
 
   return (
     <div className="singlePost-MainContainer">
       <div>
         <div className="single-profile-Username">
-          <img src={profile1} alt="profile1" className="single-profile-photo" />
+          <img src={data?.profilePic} alt="profile1" className="single-profile-photo" onClick={() => handleClick(data?.userHandler)}/>
           <div>
             <p className="single-profile-userName">
-              {userHandler}{" "}
-              <span className="single-profile-userId">@{username}</span>
+              {data?.userHandler}{" "}
+              {/* <span className="single-profile-userId">{username}</span> */}
             </p>
 
             <p className="single-profile-date-time">20/06/2023 16:30</p>
           </div>
         </div>
-
-        <p className="text-comment-box">{content}</p>
+       {data?.file && <img src={data?.file} alt="Uploaded"  height={200} width={200}/>}
+        <p className="text-comment-box" onClick={()=>handleProductDetailClick(data?._id)}>{data?.content}</p>
 
         <div className="btn-single-profile">
           {btnLike ? (
             <span className="btn-like-single-profile">
               <AiFillHeart onClick={handledisLike} />
-              {likeCount}
+              {data?.likeCount}
             </span>
           ) : (
             <span className="btn-like-single-profile">
               <AiOutlineHeart onClick={handleLike} />
-              {likeCount}
+              {data?.likeCount}
             </span>
           )}
 
