@@ -51,24 +51,28 @@ const {setIsLoggedIn}=useAuth()
           onChange={handleChange}
           placeholder="First Name"
           className="login-input"
+          required
         />
         <input type="text"
           placeholder="Surname"
           name="lastname"
           onChange={handleChange}
           className="login-input"
+          required
         />
-        <input type="text"
-          placeholder="Username or Email"
+        <input type="email"
+          placeholder="Email"
           name="username"
           onChange={handleChange}
           className="login-input"
+          required
         />
         <input type="password"
           placeholder="Password"
           name="password"
           onChange={handleChange}
           className="login-input"
+          required
         />
         <button className="login-btn" onClick={handleSignUp}>
           Create Account

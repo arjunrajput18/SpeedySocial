@@ -25,6 +25,7 @@ import {
   unfollowUserHandler,
   editUserHandler,
 } from "./backend/controllers/UserController";
+import { addPostCommentHandler, deletePostCommentHandler } from "./backend/controllers/CommentsController";
 
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -46,6 +47,7 @@ export function makeServer({ environment = "development" } = {}) {
           followers: [],
           following: [],
           bookmarks: [],
+          comments: [],
           ...item,
         })
       );
@@ -69,6 +71,8 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/posts/edit/:postId", editPostHandler.bind(this));
       this.post("/posts/like/:postId", likePostHandler.bind(this));
       this.post("/posts/dislike/:postId", dislikePostHandler.bind(this));
+      this.post("/comments/add/:postId", addPostCommentHandler.bind(this));
+      this.delete("/comments/delete/:postId/:commentId", deletePostCommentHandler.bind(this));
 
       // user routes (public)
       this.get("/users", getAllUsersHandler.bind(this));

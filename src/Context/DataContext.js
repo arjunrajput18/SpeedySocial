@@ -5,7 +5,7 @@ import { getPostData, getPostDetails, getUserData } from "../Services/DataServic
 import { useReducer } from "react";
 import { DataReducer, initialState } from "../Reducers/DataReducer";
 import { useState } from "react";
-
+import { v4 as uuid } from "uuid";
 
 export const DataContext = createContext();
 
@@ -13,13 +13,19 @@ export const DataContextProvider = ({ children }) => {
     const [dataState,dataDispatch]=useReducer(DataReducer,initialState)
     const [userSearch, setUserSearch] = useState("")
     const [btnAddPost,setBtnAddPost]=useState(false)
+    const defaultPost = {
+      _id: uuid(),
+      content: "",
+      file:"",
+    };
+    const [newPost, setNewPost] = useState(defaultPost);
     // const {postId}=useParams()
    useEffect(()=>{
     getPostData(dataDispatch)
     getUserData(dataDispatch)
     // getPostDetails(postId,dataDispatch)
    },[])
-  return <DataContext.Provider value={{dataState,dataDispatch,userSearch,setUserSearch,btnAddPost,setBtnAddPost}}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{dataState,dataDispatch,userSearch,setUserSearch,btnAddPost,setBtnAddPost,newPost, setNewPost,defaultPost}}>{children}</DataContext.Provider>;
 };
 
 export const useData = () => useContext(DataContext);
