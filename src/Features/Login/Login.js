@@ -21,7 +21,7 @@ export const Login = () => {
   };
 
   const handleGuestLogin = () => {
-    const creds = { username: "adarshbalika@gmail.com", password: "adarshBalika123" };
+    const creds = { username: "ArjunsinghRajput@gmail.com", password: "123" };
     setLoginDetails(creds);
     loginUser(creds, navigate, setIsLoggedIn);
   };

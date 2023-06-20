@@ -8,7 +8,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id:uuid(),
+    _id:1,
     content:
       "The best way to predict the future is to create it. - Peter Drucker",
     likes: {
@@ -16,40 +16,55 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika@gmail.com",
+    username: "ArjunsinghRajput@gmail.com",
+    comments:[  {
+      _id: uuid(),
+      username: "angelinaJolie@gmail.com",
+      text: "Great post!"
+    }],
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
-    userHandler: "adarshbalika24",
+    userHandler: "arjunajput20",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
-  {
-    _id:uuid(),
-    content:
-      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    username: "shubhamsoni@gmail.com",
-    profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
-    userHandler:"shubhamsoni12",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  },
-  {
-    _id:uuid(),
-    content:
-      "Be yourself; everyone else is already taken",
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    username: "leonardodicaprio@gmail.com",
-    profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
-    userHandler:"leonardoDiCaprio123",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  }
+  // {
+  //   _id:uuid(),
+  //   content:
+  //     "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+  //   likes: {
+  //     likeCount: 0,
+  //     likedBy: [],
+  //     dislikedBy: [],
+  //   },
+  //   comments:[  {
+  //     _id: uuid(),
+  //     username: "angelinaJolie@gmail.com",
+  //     text: "Great post!"
+  //   }],
+  //   username: "shubhamsoni@gmail.com",
+  //   profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
+  //   userHandler:"shubhamsoni12",
+  //   createdAt: formatDate(),
+  //   updatedAt: formatDate(),
+  // },
+  // {
+  //   _id:uuid(),
+  //   content:
+  //     "Be yourself; everyone else is already taken",
+  //   likes: {
+  //     likeCount: 0,
+  //     likedBy: [],
+  //     dislikedBy: [],
+  //   },
+  //   comments:[  {
+  //     _id: uuid(),
+  //     username: "angelinaJolie@gmail.com",
+  //     text: "Great post!"
+  //   }],
+  //   username: "leonardodicaprio@gmail.com",
+  //   profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
+  //   userHandler:"leonardoDiCaprio123",
+  //   createdAt: formatDate(),
+  //   updatedAt: formatDate(),
+  // }
 ];

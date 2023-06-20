@@ -5,40 +5,71 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 // import { BsFillImageFill } from "react-icons/bs";
 import { BiImageAdd } from "react-icons/bi";
 import { useState } from "react";
-import { createPostHandler } from "../../Services/DataServices";
+import { createPostHandler, editPostHandle } from "../../Services/DataServices";
 import { useData } from "../../Context/DataContext";
+import { useEffect } from "react";
 export const AddPost = () => {
-  const { dataDispatch ,setBtnAddPost,btnAddPost} = useData();
-  const defaultPost = {
+  const {
+    dataState: { postId, posts },
+    dataDispatch,
+    setBtnAddPost,
+    btnAddPost,
+
+  } = useData();
+
+  const [images, setImages] = useState();
+  const [postDetails, setPostDetails] = useState({
     _id: uuid(),
     content: "",
-    file:"",
-  };
-  const [newPost, setNewPost] = useState(defaultPost);
-  const [images, setImages] = useState();
-
+    file: "",
+    comments: [],
+  });
   const socialToken = localStorage.getItem("socialToken");
   const addNoteHandler = () => {
-
-    if (newPost.content.length > 0) {
-      createPostHandler(newPost, socialToken, dataDispatch);
-      setNewPost(defaultPost);
-      setBtnAddPost(!btnAddPost)
+    if (postId) {
+      console.log(postId,"postId",postDetails)
+      editPostHandle(postId, postDetails, dataDispatch, socialToken);
+      dataDispatch({type:"EDIT_POST",payload:null})
+      setBtnAddPost(!btnAddPost);
+    } else {
+      if (postDetails.content.length > 0) {
+        createPostHandler(postDetails, socialToken, dataDispatch);
+        setBtnAddPost(!btnAddPost);
+      }
     }
   };
 
+  console.log(postId, "postId");
+
   const fileUploadHandle = (e) => {
- const file = e.target.files[0];
- setImages(URL.createObjectURL(file))
- setNewPost({...newPost,file:URL.createObjectURL(file)})
+    const file = e.target.files[0];
+    setImages(URL.createObjectURL(file));
+    setPostDetails({ ...postDetails, file: URL.createObjectURL(file) });
   };
+
+  useEffect(() => {
+    const postData = posts?.find(({ _id }) => postId === _id);
+    if (postId) {
+      setPostDetails(postData);
+    } else {
+      setPostDetails({
+        _id: uuid(),
+        content: "",
+        file: "",
+        comments: [],
+      })
+    }
+  }, []);
 
   return (
     <div className="AddPost-mainDiv">
       <div className="AddPost-MainContainer">
         <div className="AddPost-innerContainer">
           <div>
-            <IoMdArrowRoundBack className="logo-back-addPost"  onClick={()=>setBtnAddPost(!btnAddPost)}/>
+            <IoMdArrowRoundBack
+              className="logo-back-addPost"
+              onClick={() => setBtnAddPost(!btnAddPost)}
+            />
           </div>
           <div>
             <textarea
@@ -46,9 +77,9 @@ export const AddPost = () => {
               className="addPost-input"
               placeholder="What's on your mind?"
               onChange={(e) =>
-                setNewPost({ ...newPost, content: e.target.value })
+                setPostDetails({ ...postDetails, content: e.target.value })
               }
-              value={newPost.content}
+              value={postDetails.content}
             />
           </div>
           <div className="addPost-upload-file-post">
@@ -64,18 +95,19 @@ export const AddPost = () => {
                 <BiImageAdd />
               </label>
             </div>
-            {images && <img
-            src={images}
-            alt="img1"
-            className="single-profile-photo-comment"
-            height={100}
-            width={100}
-          />}
-            {images && <button onClick={()=>setImages(null)}>-</button>}
+            {images && (
+              <img
+                src={images}
+                alt="img1"
+                className="single-profile-photo-comment"
+                height={100}
+                width={100}
+              />
+            )}
+            {images && <button onClick={() => setImages(null)}>-</button>}
             <button className="btn-add-post" onClick={addNoteHandler}>
               Post
             </button>
-
           </div>
         </div>
       </div>

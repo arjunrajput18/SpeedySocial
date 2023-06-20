@@ -1,7 +1,7 @@
 export const initialState = {
   posts: [],
   users: [],
-  postDeatils:{}
+  postId:null
 };
 
 export const DataReducer = (state, action) => {
@@ -59,12 +59,18 @@ export const DataReducer = (state, action) => {
       case "Add_NEW_USER":return{
         ...state,users:[...state.users,action.payload]
       }
-      case "POST_DETAILS":return{
-        ...state,postDeatils:action.payload
+    
+      case "USER_OPERATIONS": return {
+        ...state, users: state.users.map(user => action.payload.username === user.username ? action.payload : user)
+      }
+
+
+      case "EDIT_POST":return{
+        ...state,postId:action.payload
       }
     default:
       return {
-        state,
+        state
       };
   }
 };

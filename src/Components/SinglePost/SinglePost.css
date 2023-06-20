@@ -1,97 +1,136 @@
 .singlePost-MainContainer {
-  background-color: white;
-  margin-top: 1rem;
-  padding: 0.6rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  align-items: center;
+  margin-top: 2rem;
+
+}
+
+.singlePost-MainContainer:hover {
+  transform: translateY(-2px);
+}
+
+.single-profile-Username {
+  display: flex;
+  align-items: center;
 }
 
 .single-profile-photo {
-  height: 50px;
-  width: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
-.single-profile-Username {
-  display: flex;
-}
+
 .single-profile-userName {
-  font-size: large;
-  font-weight: 500;
- 
+  margin: 0;
+  font-weight: bold;
+  color: #333;
 }
-.single-profile-userId {
-  font-size: smaller;
-  color: lightcoral;
-}
+
 .single-profile-date-time {
-  font-size: smaller;
-}
-.btn-single-profile {
-  display: flex;
-  padding-top: 0.6rem;
-}
-.btn-like-single-profile {
-  margin: 0.4rem;
-  font-size: larger;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.single-profile-photo-comment {
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
-}
-.comment-box {
-  display: flex;
-  padding-top: 1rem;
-}
-.inner-comment-box {
-  position: relative;
-  width: 100%;
-}
-.single-profile-input-ccomment {
-  margin-top: 0.3rem;
-  padding: 0.5rem;
-  width: 100%;
-  font-size: large;
-  border-radius: 0.7rem;
-  -webkit-border-radius: 0.7rem;
-  -moz-border-radius: 0.7rem;
-  -ms-border-radius: 0.7rem;
-  -o-border-radius: 0.7rem;
-  border: 1px solid lightcoral;
-}
-.post-btn-comment {
-  position: absolute;
-  top: 38%;
-  right: 3%;
-  background-color: inherit;
-  border: none;
-  color: var(--primary);
-  font-weight: 600;
-  /* font-size: 1rem; */
-}
-.comments-added {
-  display: flex;
-  padding: 1rem;
-  align-items: center;
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .text-comment-box {
-  padding: 1rem;
-  border-bottom: 1px solid lightcoral;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #333;
+  line-height: 1.4;
+}
 
+.btn-single-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-like-single-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.btn-like-single-profile:hover {
+  color: #ff3b3f;
+}
+
+.comment-box {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.single-profile-photo-comment {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.inner-comment-box {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.single-profile-input-ccomment {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  color: #333;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-btn-comment {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+
+.post-btn-comment:hover {
+  background-color: #e0292f;
+}
+
+.comments-added {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1rem
 }
 
 .comments-add-by-user {
-  background-color: var(--secondary);
-  padding-left: 0.5rem;
-  padding-right: 3rem;
-  padding-bottom: 1rem;
-  padding-top: 0.5rem;
-  border-radius: 0.9rem;
-  -webkit-border-radius: 0.9rem;
-  -moz-border-radius: 0.9rem;
-  -ms-border-radius: 0.9rem;
-  -o-border-radius: 0.9rem;
+  flex: 1;
+}
+
+.flex-edit-delete{
+  display: flex;
+  justify-content: space-between;
+  
 }

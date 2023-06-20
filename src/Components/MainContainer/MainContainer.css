@@ -9,8 +9,12 @@
 @media (min-width: 720px) {
   .mainContainer {
     display: grid;
-    grid-template-columns: 2fr 3fr 2fr;
-    justify-content: center;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  justify-content: center;
+  gap: 40px;
+  }
+  .mainContainer:last-child {
+    grid-column-end: span 3; /* Span the last item across all three columns */
   }
   .dektop-followbar{
     position: sticky;
