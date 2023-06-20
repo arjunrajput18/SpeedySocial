@@ -1,0 +1,115 @@
+.editInnerConatainer {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: var(--secondary);
+  z-index: 222;
+  border: solid;
+  max-width: 28rem;
+  top: 15%;
+  position: fixed;
+}
+
+.updateBtn {
+  padding: 0.4rem;
+  background-color: var(--primary);
+  color: white;
+  width: 5rem;
+  margin: 1rem;
+}
+
+  .editPost-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    resize: vertical;
+  }
+  
+  .editPost-input::placeholder {
+    color: #999;
+  }
+  
+  .editPost-input:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(102, 175, 233, 0.6);
+  }
+
+.editMainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.labelUpdateProfile {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.updateConatiner {
+  padding: 0.6rem;
+  width: 25rem;
+}
+.inputUpdate {
+  display: flex;
+  justify-content: space-between;
+}
+.updateAvatar {
+  display: flex;
+  justify-content: space-between;
+flex-wrap: wrap;
+padding-right:0.5rem;
+padding: 1rem;
+}
+.imgAvatar{
+    border: 2px solid var(--secondary);
+}
+.imgAvatar:hover {
+   
+    border-color:gold;
+    cursor: pointer;
+  }
+
+  .imgAvatarSelected{
+    border-color:gold;
+    cursor: pointer;
+  }
+  .inputp{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    width: 80%;
+  }
+  
+  .inputp:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(102, 175, 233, 0.6);
+  }
+  .avatarinfo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    /* Flexbox properties */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+margin-bottom: 0.5rem;
+  }
+  textarea{
+    margin-top: 0px;
+  }

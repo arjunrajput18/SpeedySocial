@@ -15,15 +15,15 @@ import {
 import { useData } from "../../Context/DataContext";
 import { useNavigate } from "react-router-dom";
 export const SinglePost = ({ data }) => {
-  // const {
-  //   _id,
-  //   profilePic,
-  //   content,
-  //   likes: { likeCount, likedBy },
-  //   username,
-  //   userHandler,
+  const {
+    _id,
+    profilePic,
+    content,
+    likes: { likeCount, likedBy },
+    username,
+    userHandler,
     
-  // } = data;
+  } = data;
   const {
     dataState: { users },
     posts,
@@ -39,13 +39,16 @@ export const SinglePost = ({ data }) => {
   const isBookmark=loggedInuser?.bookmarks?.includes(data?._id)
   // console.log(newBookmark);
   const handleLike = () => {
-    getlikeData(data?._id, dataDispatch, socialToken);
+    console.log("like")
+    // console.log(data?._id, dataDispatch, socialToken)
+    getlikeData(_id, dataDispatch, socialToken);
   };
   // console.log(likedBy.some(({_id})=>_id===data?._id))
   const handledisLike = () => {
-    getDislikeData(data?._id, dataDispatch, socialToken);
+    console.log("like")
+    getDislikeData(_id, dataDispatch, socialToken);
   };
-  const btnLike = data?.likedBy?.some((ele) => ele._id === socialUser._id);
+  const btnLike = likedBy?.some((ele) => ele._id === socialUser._id);
 
   const navigate = useNavigate();
 
@@ -57,19 +60,17 @@ export const SinglePost = ({ data }) => {
 
 
   const handleBookmark = () => {
-    getBookMark(dataDispatch, socialToken, data?._id, socialUser.username);
+    getBookMark(dataDispatch, socialToken, _id, socialUser.username);
     // console.log(users);
     // bookmarkPostHandler(_id, socialToken, dataDispatch, socialUser)
 
   };
 const handleRemoveBookmark=()=>{
-  getRemoveBookmarkData(dataDispatch, socialToken, data?._id, socialUser.username)
+  getRemoveBookmarkData(dataDispatch, socialToken, _id, socialUser.username)
 }
 
 const handleProductDetailClick=(postId)=>{
-  getPostDetails(postId,dataDispatch)
   navigate(`/post/${postId}`)
- 
 }
 
   return (
@@ -93,12 +94,12 @@ const handleProductDetailClick=(postId)=>{
           {btnLike ? (
             <span className="btn-like-single-profile">
               <AiFillHeart onClick={handledisLike} />
-              {data?.likeCount}
+              {likeCount}
             </span>
           ) : (
             <span className="btn-like-single-profile">
               <AiOutlineHeart onClick={handleLike} />
-              {data?.likeCount}
+              {likeCount}
             </span>
           )}
 

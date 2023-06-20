@@ -5,7 +5,7 @@ import { getPostData, getPostDetails, getUserData } from "../Services/DataServic
 import { useReducer } from "react";
 import { DataReducer, initialState } from "../Reducers/DataReducer";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+
 
 export const DataContext = createContext();
 

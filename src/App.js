@@ -51,7 +51,7 @@ function App() {
           }
         />
          <Route
-          path="/post/:postId"
+          path="/post/:_id"
           element={
             <MainContainer>
               <PostDetails/>

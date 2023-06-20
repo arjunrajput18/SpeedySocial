@@ -3,6 +3,8 @@ import profile1 from "../../Assets/profile1.png";
 import "./Profile.css";
 import {useData} from "../../Context/DataContext"
 import { SinglePost } from "../../Components/SinglePost/SinglePost";
+import { useState } from "react";
+import { EditProfile } from "./EditProfile";
 // import { useParams } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 
@@ -10,6 +12,8 @@ export const Profile = () => {
 
 // const {userHandler}=useParams()
 const {dataState:{users,posts}}=useData()
+
+const [editBtn,setEditBtn]=useState(false)
 // console.log(users,"usersssss")
 // const user=users
 const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -18,10 +22,18 @@ const socialUser = JSON.parse(localStorage.getItem("socialUser"));
 const loggedInUser = users?.find(user => user.username === socialUser.username);
 
 // const user=users?.find(data=>data.userHandler===userHandler)
-const {profilePic, firstName, lastName, username, followers, following } = loggedInUser;
+const {profilePic, firstName, lastName, username, followers, following,link,bio } = loggedInUser;
     // const token=JSON.parse(localStorage.getItem("socialUser"))
     
   const profileUserPosts = posts?.filter(post => post.username === socialUser.username)
+
+
+
+const handleEdit=()=>{
+  setEditBtn(!editBtn)
+}
+
+
   return (
     <div className="profile-outerContainer">
     <div className="profile-mainContainer">
@@ -34,11 +46,11 @@ const {profilePic, firstName, lastName, username, followers, following } = logge
               <p>{username}</p>
             </div>
             <div>
-              <button className="profile-edit-btn">Edit</button>
+              <button className="profile-edit-btn" onClick={handleEdit}>Edit</button>
             </div>
           </div>
           <div className="margin-top-1">
-            <p>An aspiring web developer</p>
+            <p>{bio}</p>
           </div>
           <div className="flex space-between margin-top-1">
             <span>3 Posts</span>{" "}
@@ -46,17 +58,22 @@ const {profilePic, firstName, lastName, username, followers, following } = logge
             <span>{following.length} Following</span>
           </div>
           <div className="profile-link">
-            <a href="https://arjunsinghportfolio.netlify.app" target="_blank" rel="noreferrer">https://arjunsinghportfolio.netlify.app/</a>
+            <a href={link} target="_blank" rel="noreferrer">{link}</a>
           </div>
         </div>
       </div>
     </div>
     
+    {editBtn && <div><EditProfile setEditBtn={setEditBtn} editBtn={editBtn} /></div>}
+
+
     <div className='posts'>
         {
           profileUserPosts?.map(post => <SinglePost key={post.username} data={post} />)
         }
       </div>
+
+
     </div>
   );
 };

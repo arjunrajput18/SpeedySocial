@@ -38,7 +38,7 @@ const loggedInUserPosts = posts?.filter(post => post?.username === socialUser?.u
 
 const likedPosts = posts?.filter(post => post?.likes?.likedBy?.length > 0);
 
-const sortPostsByLikes = [...likedPosts]?.sort((a, b) => a.likes.likedBy.length - b.likes.likedBy.length)
+const sortPostsByLikes = [likedPosts]?.sort((a, b) => a.likes.likedBy.length - b.likes.likedBy.length)
 
 const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts] : sortPostsByLikes;
 
