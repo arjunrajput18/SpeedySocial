@@ -7,7 +7,7 @@ export const Bookmark = () => {
 const {dataState:{users,posts}}=useData()
 const socialUser=JSON.parse(localStorage.getItem("socialUser"))
 
-const loggedInUser=users?.find(({_id})=>_id===socialUser._id) 
+const loggedInUser=users?.find(({username})=>username===socialUser.username) 
 const newBookmark=posts?.filter(({_id})=>loggedInUser?.bookmarks.includes(_id))
 
   return (

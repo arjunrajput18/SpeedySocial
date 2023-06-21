@@ -14,13 +14,14 @@
   gap: 20px;
   min-height:100vh ;
   max-height: fit-content;
+  padding: 25px;
   }
   .mainContainer:last-child {
-    grid-column-end: span 3; /* Span the last item across all three columns */
+    grid-column-end: span 2;
   }
   .dektop-followbar{
     position: sticky;
-    top: 10%;
+    top: 15%;
     /* right: 1%; */
     display: block;
     height: fit-content;
