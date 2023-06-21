@@ -1,10 +1,11 @@
 import React from "react";
 import "./SinglePost.css";
 import profile1 from "../../Assets/profile1.png";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart, AiOutlineMenu } from "react-icons/ai";
 import { BsBookmark, BsBookmarkFill, BsFillBookmarkFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
+import {CiMenuKebab} from "react-icons/ci"
 
 import {
   addCommentHandle,
@@ -28,7 +29,7 @@ export const SinglePost = ({ data }) => {
   } = data;
   const {
     dataState: { users },
-    posts,
+
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
@@ -42,13 +43,13 @@ export const SinglePost = ({ data }) => {
   const isBookmark = loggedInuser?.bookmarks?.includes(data?._id);
   // console.log(newBookmark);
   const handleLike = () => {
-    console.log("like");
+    // console.log("like");
     // console.log(data?._id, dataDispatch, socialToken)
     getlikeData(_id, dataDispatch, socialToken);
   };
   // console.log(likedBy.some(({_id})=>_id===data?._id))
   const handledisLike = () => {
-    console.log("like");
+    // console.log("like");
     getDislikeData(_id, dataDispatch, socialToken);
   };
   const btnLike = likedBy?.some((ele) => ele._id === socialUser._id);
@@ -75,13 +76,13 @@ export const SinglePost = ({ data }) => {
 
   const handleAddComment = () => {
     if (commentText) {
-      console.log(_id, commentText, socialToken, dataDispatch);
+      // console.log(_id, commentText, socialToken, dataDispatch);
       addCommentHandle(_id, commentText, socialToken, dataDispatch);
     }
   };
 
   const handleDeletePost = (postId) => {
-    console.log(postId, dataDispatch, socialToken);
+    // console.log(postId, dataDispatch, socialToken);
     deletePostHandle(postId, dataDispatch, socialToken);
   };
 
@@ -90,24 +91,26 @@ export const SinglePost = ({ data }) => {
     setBtnAddPost(!btnAddPost);
   };
 
-  console.log(data, "ll");
+  // console.log(data, "ll");
   return (
     <div className="singlePost-MainContainer">
-      <div>
-        <div className="single-profile-Username">
+      <div className="singlepost-innerContainer">
+        <div className="flex--singlepost-justify">
+         
+          <div className="flex--singlepost">
           <img
             src={data?.profilePic}
             alt="profile1"
             className="single-profile-photo"
             onClick={() => handleClick(data?.userHandler)}
           />
-          <div>
             <div className="flex-edit-delete">
               <p className="single-profile-userName">
                 {data?.userHandler}{" "}
                 {/* <span className="single-profile-userId">{username}</span> */}
               </p>
-              <button
+              <p className="single-profile-date-time">20/06/2023 16:30</p>
+              {/* <button
                 className="post-btn-comment"
                 onClick={() => handleDeletePost(data?._id)}
               >
@@ -118,11 +121,16 @@ export const SinglePost = ({ data }) => {
                 onClick={() => handleEditPost(data?._id)}
               >
                 Edit
-              </button>
+              </button> */}
+              
+
             </div>
 
-            <p className="single-profile-date-time">20/06/2023 16:30</p>
+           
           </div>
+          <div className="setting">
+              <CiMenuKebab/>
+              </div>
         </div>
         {data?.file && (
           <img src={data?.file} alt="Uploaded" height={200} width={200} />

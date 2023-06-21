@@ -111,6 +111,7 @@ export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
       }
     );
     if (status === 200 || status === 201) {
+      // console.log(bookmarks)
       dataDispatch({ type: "BOOKMARK", payload: { username, bookmarks } });
     }
   } catch (error) {
@@ -313,7 +314,7 @@ export const deletePostHandle = async (_id, dataDispatch, socialToken) => {
   }
 };
 
-export const editPostHandle = async (
+export const editPostHandler= async (
   postId,
   postDetails,
   dataDispatch,
@@ -326,7 +327,7 @@ export const editPostHandle = async (
       data: { posts },
     } = await axios.post(
       `/api/posts/edit/${postId}`,
-      { postDetails },
+      {postData:postDetails},
       {
         headers: {
           authorization: socialToken,
