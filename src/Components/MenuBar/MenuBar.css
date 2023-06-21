@@ -50,9 +50,10 @@
     display: flex;
     flex-direction: column;
     height: 60vh;
-    padding-left: 6rem;
+    padding-left: 5rem;
     align-items: flex-start;
     flex-wrap: wrap;
+    white-space: nowrap;
   }
   .item-name {
     display: inline-block;

@@ -39,7 +39,7 @@ export const SinglePost = ({ data }) => {
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInuser = users?.find(({ _id }) => _id === socialUser._id);
   // const newBookmark = bookmarksMatch.bookmarks.some((data) => data === _id);
-
+console.log(users)
   const isBookmark = loggedInuser?.bookmarks?.includes(data?._id);
   // console.log(newBookmark);
   const handleLike = () => {
@@ -67,11 +67,12 @@ export const SinglePost = ({ data }) => {
     // bookmarkPostHandler(_id, socialToken, dataDispatch, socialUser)
   };
   const handleRemoveBookmark = () => {
+    console.log({_id},"iddddddddddddd")
     getRemoveBookmarkData(dataDispatch, socialToken, _id, socialUser.username);
   };
 
   const handleProductDetailClick = (postId) => {
-    navigate(`/post/${postId}`);
+    navigate(`/post/${data.id}`);
   };
 
   const handleAddComment = () => {
@@ -90,6 +91,11 @@ export const SinglePost = ({ data }) => {
     dataDispatch({ type: "EDIT_POST", payload: postId });
     setBtnAddPost(!btnAddPost);
   };
+
+  const handleShare=()=>{
+    // const url=window.location.href
+    navigator.clipboard.writeText(`https://speedysocial.netlify.app/post/${data?.id}`)
+  }
 
   // console.log(data, "ll");
   return (
@@ -154,7 +160,7 @@ export const SinglePost = ({ data }) => {
               {likeCount}
             </span>
           )}
-
+          {/* <BsBookmarkFill onClick={handleRemoveBookmark} /> */}
           <>
             {isBookmark ? (
               <span className="btn-like-single-profile">
@@ -171,7 +177,7 @@ export const SinglePost = ({ data }) => {
             <FaRegComment />
           </p>
           <p className="btn-like-single-profile">
-            <BiShareAlt />
+            <BiShareAlt  onClick={handleShare}/>
           </p>
         </div>
         <div className="comment-box">
