@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  color: #999;
+  color: #333;
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -73,7 +73,9 @@
 .btn-like-single-profile:hover {
   color: #ff3b3f;
 }
-
+.liked{
+  color: red;
+}
 .comment-box {
   display: flex;
   align-items: center;
