@@ -97,6 +97,10 @@ export const getDislikeData = async (_id, dataDispatch, sociaToken) => {
 };
 
 export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
+  console.log({  dataDispatch,
+    sociaToken,
+    _id,
+    username})
   try {
     const {
       status,
@@ -125,6 +129,10 @@ export const getRemoveBookmarkData = async (
   _id,
   username
 ) => {
+  console.log({  dataDispatch,
+    sociaToken,
+    _id,
+    username})
   try {
     const {
       status,

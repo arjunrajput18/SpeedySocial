@@ -17,6 +17,8 @@
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
+  /* height: 425px; */
+  /* overflow: hidden; */
   /* margin-right:5% ; */
   /* margin-left: 5%; */
   overflow-x: scroll;
@@ -54,9 +56,14 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+.followBar-list{
+  display: flex;
+  
+}
 .followBar-list-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  /* flex-direction: column; */
   padding-left: 1rem;
 }
 
@@ -64,10 +71,10 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 0.8rem;
   padding: 1rem;
@@ -90,93 +97,93 @@
   color: lightcoral;
 }
 
-.followBar-list{
-  display: flex;
-  flex-direction:row ;
-}
 @media (min-width: 720px) {
   .FollowBar {
-    /*width: 100%;
-    */background-color: white;
     height: 50vh;
-    /*flex-wrap: wrap;
-    *//*z-index: 10;
-    */display: flex;
-    flex-direction: column;
-    padding-top: 6rem;
-    padding: 1.2rem;
-    /*max-width: 19rem;
-    */
-    border-radius: 1rem;
- 
-    margin-right: 9%;;
-    
-    
-}
-  .followBar-list{
     display: flex;
-    flex-direction:column ;
-    
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 1.2rem;
+    margin-top: 1rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #eeeeee;
   }
-  .followbar-heading {
 
-    font-weight: 500;
-    font-size: large;
-    text-align: center;
-    margin-top: 5rem;
-    display: block;
-    /* border-bottom: 1px solid var(--primary); */
+  .followBar-list {
+ 
+    flex-direction: column;
+    gap: 1rem;
   }
+
+  .followbar-heading {
+    display: inline;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
   .profileImg {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
+    object-fit: cover;
   }
+
   .followBar-list-item {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;
-    /* flex-direction: column; */
-    /* padding-left: 0rem; */
+    align-items: center;
   }
 
   .profile-follow {
     display: flex;
-    flex-direction: row;
-    padding-top: 0.5rem;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.4rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 0.8rem;
-    -webkit-border-radius: 0.8rem;
-    -moz-border-radius: 0.8rem;
-    -ms-border-radius: 0.8rem;
-    -o-border-radius: 0.8rem;
-    padding-bottom: 0.4rem;
-    width: 19rem;
-    /* width: 100%; */
-    /* flex-wrap: wrap; */
-}
+    padding: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    flex-direction: row;
+  }
+
+  .profile-follow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
   .btn-follow {
     background-color: #312d7a;
+    color: white;
     border: none;
-    padding: 0.6rem;
+    padding: 0.6rem 1.2rem;
     margin-top: 0.1rem;
     margin-left: 0.8rem;
     border-radius: 0.9rem;
-    -webkit-border-radius: 0.9rem;
-    -moz-border-radius: 0.9rem;
-    -ms-border-radius: 0.9rem;
-    -o-border-radius: 0.9rem;
-    
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
+
+  .btn-follow:hover {
+    background-color: #241f61;
+  }
+
   .userId {
-    font-size: small;
+    font-size: 0.8rem;
     color: lightcoral;
+    margin-left: 0.5rem;
+  }
+  .main-followbar{
+    padding-top: 3rem;
   }
 }
