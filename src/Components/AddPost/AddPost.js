@@ -5,7 +5,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 // import { BsFillImageFill } from "react-icons/bs";
 import { BiImageAdd } from "react-icons/bi";
 import { useState } from "react";
-import { createPostHandler, editPostHandle } from "../../Services/DataServices";
+import { createPostHandler,  editPostHandler } from "../../Services/DataServices";
 import { useData } from "../../Context/DataContext";
 import { useEffect } from "react";
 export const AddPost = () => {
@@ -27,8 +27,9 @@ export const AddPost = () => {
   const socialToken = localStorage.getItem("socialToken");
   const addNoteHandler = () => {
     if (postId) {
+      console.log(typeof postId)
       console.log(postId,"postId",postDetails)
-      editPostHandle(postId, postDetails, dataDispatch, socialToken);
+      editPostHandler(postId, postDetails, dataDispatch, socialToken);
       dataDispatch({type:"EDIT_POST",payload:null})
       setBtnAddPost(!btnAddPost);
     } else {

@@ -11,7 +11,9 @@
     display: grid;
   grid-template-columns: 1fr 2.5fr 1fr;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
+  min-height:100vh ;
+  max-height: fit-content;
   }
   .mainContainer:last-child {
     grid-column-end: span 3; /* Span the last item across all three columns */
