@@ -101,17 +101,22 @@ export const SinglePost = ({ data }) => {
     setMenuBtn(!menuBtn);
   };
 
+
+
   return (
     <div className="singlePost-MainContainer">
       <div className="singlepost-innerContainer">
         <div className="flex--singlepost-justify">
           <div className="flex--singlepost">
-            <img
+          <div className="flex-uploadimgg">
+          <img
               src={data?.profilePic}
               alt="profile1"
               className="single-profile-photo"
               onClick={() => handleClick(data?.userHandler)}
             />
+          </div>
+          
             <div className="flex-edit-delete">
               <p className="single-profile-userName">
                 {data?.userHandler}{" "}
@@ -152,9 +157,11 @@ export const SinglePost = ({ data }) => {
         >
           {data?.content}
         </p> 
+        <div className="flex-uploadimgg">
         {data?.file && (
           <img src={data?.file} alt="Uploaded" className="main-img" />
         )}
+        </div>
         {/* */}
 
         <div className="btn-single-profile">
@@ -208,7 +215,12 @@ export const SinglePost = ({ data }) => {
         </div>
 
         <div>
-          {data?.comments?.map((comment) => (
+          {data?.comments?.map((comment) =>{
+            
+            const currentUser=users?.find((user)=>user?.username===comment?.username)
+            {/* console.log(users) */}
+            console.log({currentUser})
+            return  (
             <div className="comments-added">
               <img
                 src={profile1}
@@ -217,12 +229,12 @@ export const SinglePost = ({ data }) => {
               />
               <div className="comments-add-by-user">
                 <div className="deleteFlex">
-                  <p>{comment?.username} </p>
+                  <p>{currentUser.firstName} {" "} {currentUser.lastName }</p>
                 </div>
                 <p>{comment?.text}</p>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </div>

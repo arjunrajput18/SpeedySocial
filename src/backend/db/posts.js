@@ -18,7 +18,7 @@ export const posts = [
     },
     comments:[  {
       _id: uuid(),
-      username: "angelinaJolie@gmail.com",
+      username: "mickeymouse@gmail.com",
       text: "Great post!"
     }],
     username: "ArjunsinghRajput@gmail.com",
@@ -39,7 +39,7 @@ export const posts = [
     },
     comments:[  {
       _id: uuid(),
-      username: "angelinaJolie@gmail.com",
+      username: "donaldduck@gmail.com",
       text: "Great post!"
     }],
     username: "ArjunsinghRajput@gmail.com",
@@ -59,7 +59,7 @@ export const posts = [
     },
     comments:[  {
       _id: uuid(),
-      username: "angelinaJolie@gmail.com",
+      username: "spongebob@gmail.com",
       text: "Great post!"
     }],
     username: "ArjunsinghRajput@gmail.com",
