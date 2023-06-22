@@ -3,18 +3,14 @@ import "./Navbar.css";
 import logo from "../../Assets/twitter.png";
 import { Search } from "../Search/Search";
 import { useData } from "../../Context/DataContext";
-import profile1 from "../../Assets/profile1.png";
-import { getFollowHandler } from "../../Services/DataServices";
+
 import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
-  const {userSearch,setUserSearch, dataState: { users } ,dataDispatch} =useData()
-  // const {userSearch, setUserSearch} =useData()
-  const socialToken = localStorage.getItem("socialToken");
-
+  const {userSearch,setUserSearch, dataState: { users } } =useData()
   const socialUser = JSON.parse(localStorage.getItem("socialUser"))
   const navigate = useNavigate();
   const searchValue = userSearch
-  ? users?.filter(item => item.username.toLowerCase().includes(userSearch.toLowerCase()))
+  ? users?.filter(item => item.username===socialUser.username?null:item.userHandler.toLowerCase().includes(userSearch.toLowerCase()))
   : [];
   // console.log(searchValue,"userSearch")
   const handleClick = (userHandler) => {
@@ -22,30 +18,29 @@ export const Navbar = () => {
     navigate(`/profile/${userHandler}`);
   };
 
-const handleFollow=(_id,socialToken,dataDispatch)=>{
-  getFollowHandler(_id,socialToken,dataDispatch)
-}
-  return (
-    <nav>
-      <div className="nav-main flex ">
-        <div className="nav-logo">
-          <img src={logo} alt="logo" height={50} width={50} />
-        </div>
-        <div className="nav-heading">Speedy Social</div>
-      </div>
-<div className="search-navbar">
 
+  return (
+    <nav className="navbar">
+    <div className="nav-main flex">
+      <div className="nav-logo">
+        <img src={logo} alt="logo" height={50} width={50} />
+      </div>
+      <div className="nav-heading">Speedy Social</div>
+    </div>
+    <div className="search-navbar">
       <Search />
-      {/* <div>{searchValue?.map((data)=>data.firstName)}</div> */}
-      <div className="searchOutput">{searchValue?.map((data)=> <li className="followBar-list-item" key={data._id}>
-              <div className="profile-follow">
+      <div className="searchOutput">
+        <ul className="searchResults">
+          {searchValue?.map((data) => (
+            <li className="searchResult-item" key={data._id}>
+              <div className="profile-container">
                 <img
-                  src={profile1}
+                  src={data.profilePic}
                   alt="profile1"
                   className="profileImg"
                   onClick={() => handleClick(data.userHandler)}
                 />
-                <div>
+                <div className="profile-info">
                   <p
                     className="user-follow-name"
                     onClick={() => handleClick(data.userHandler)}
@@ -59,14 +54,14 @@ const handleFollow=(_id,socialToken,dataDispatch)=>{
                     {data.userHandler}
                   </span>
                 </div>
-                <div>
-                  <button className="btn-follow" onClick={()=>handleFollow(data._id,socialToken,dataDispatch)}>+Follow</button>
-                </div>
               </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
 
-              {/* <hr /> */}
-            </li>)}</div>
-</div>
-    </nav>
   );
 };

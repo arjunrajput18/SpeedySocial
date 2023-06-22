@@ -5,7 +5,7 @@ import { loginUser } from "../../Services/AuthServices";
 import { NavLink,  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
-
+import { toast } from "react-toastify";
 export const Login = () => {
   const [loginDetails, setLoginDetails] = useState({
     username: "",
@@ -17,6 +17,9 @@ export const Login = () => {
   const handleLogin = () => {
     if (username && password) {
       loginUser({ username, password }, navigate, setIsLoggedIn);
+      setTimeout(() => {
+        toast.success('Login successful!');
+      }, 200);
     }
   };
 
@@ -24,6 +27,10 @@ export const Login = () => {
     const creds = { username: "ArjunsinghRajput@gmail.com", password: "123" };
     setLoginDetails(creds);
     loginUser(creds, navigate, setIsLoggedIn);
+    setTimeout(() => {
+      toast.success('Login successful!');
+    }, 200);
+    
   };
 
   return (

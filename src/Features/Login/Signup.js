@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { useData } from "../../Context/DataContext";
+import { toast } from "react-hot-toast";
 export const Signup = () => {
 
 const {dataDispatch}=useData()
@@ -31,6 +32,9 @@ const {setIsLoggedIn}=useAuth()
   const handleSignUp = () => {
     if ((firstName, lastName, username, password)) {
       signupUser(signUpDetails, navigate,setIsLoggedIn,dataDispatch);
+      setTimeout(() => {
+        toast.success('Signup successful!');
+      }, 200);
     }
   };
 

@@ -7,6 +7,8 @@ import { IoMdLogOut } from "react-icons/io";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
+import { toast } from "react-toastify";
+
 export const MenuBar = () => {
   const {setIsLoggedIn}=useAuth()
 
@@ -14,6 +16,9 @@ export const MenuBar = () => {
     setIsLoggedIn(false)
     localStorage.removeItem("socialUser")
     localStorage.removeItem("socialToken")
+    setTimeout(() => {
+      toast.success('Logout successful!');
+    }, 200);
   }
 
 

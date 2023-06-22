@@ -8,12 +8,13 @@ import { FollowBar } from "../../Components/FollowBar/FollowBar";
 import { useData } from "../../Context/DataContext";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import { createPostHandler } from "../../Services/DataServices";
+
 import {AddPost} from "../../Components/AddPost/AddPost"
+import {  BsClock } from "react-icons/bs";
 
 export const Home = () => {
   const {
-    dataState: { posts },dataDispatch,setBtnAddPost,btnAddPost
+    dataState: { posts },setBtnAddPost,btnAddPost
   } = useData();
   const defaultPost = {
     _id: uuid(),
@@ -26,22 +27,16 @@ export const Home = () => {
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const homePosts = posts?.filter(post => socialUser?.following?.some(el => el.username === post.username));
   console.log(homePosts,"home")
-const addNoteHandler=()=>{
 
-  console.log("hii")
-  if (newPost.content.length > 0) {
-    createPostHandler(newPost, socialToken,dataDispatch );
-    setNewPost(defaultPost);
-  }
-}
 const loggedInUserPosts = posts?.filter(post => post?.username === socialUser?.username);
 
 const likedPosts = posts?.filter(post => post?.likes?.likedBy?.length > 0);
+console.log(likedPosts,"likedPosts")
 
-const sortPostsByLikes = [likedPosts]?.sort((a, b) => a.likes.likedBy.length - b.likes.likedBy.length)
+const sortPostsByLikes = likedPosts?.sort((a, b) => a?.likes?.likedBy.length - b?.likes?.likedBy.length)
 
-const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts] : sortPostsByLikes;
-
+const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts] :sortPostsByLikes;
+console.log("aaaaaa",postsByType)
 const HandleAddPost=()=>{
   setBtnAddPost(true)
 }
@@ -61,15 +56,18 @@ const HandleAddPost=()=>{
          disabled={btnAddPost}
         />
         <button className="plus-logo-input">
-          <AiFillPlusCircle  onClick={addNoteHandler}/>
+          <AiFillPlusCircle  onClick={HandleAddPost}/>
         </button>
       </div>
       <div className="trend-latest">
-        <button onClick={() => setPostsType("trending")}  className="btn-TL btn-L trending-btn">
+      <button onClick={() => setPostsType("latest")} className="btn-TL btn-L trending-btn ">
+      <BsClock/>
+      Latest Post</button>
+        <button onClick={() => setPostsType("trending")}  className="btn-TL latest-btn">
           <BsFire />
           Trending
         </button>
-        <button onClick={() => setPostsType("latest")} className="btn-TL latest-btn">Latest Post</button>
+      
       </div>
       <div className="follow-bar">
         <FollowBar />
@@ -78,7 +76,7 @@ const HandleAddPost=()=>{
 
  
       {
-        postsByType?.length > 0 ? <div className='posts'>
+        postsByType.length > 0 ? <div className='posts'>
           {
             postsByType?.reverse()?.map(post => <SinglePost key={post._id} data={post} />)
           }
