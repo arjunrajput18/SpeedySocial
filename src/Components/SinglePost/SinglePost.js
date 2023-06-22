@@ -167,7 +167,7 @@ console.log(userDetails,"aaaa")
         >
           {data?.content}
         </p> 
-        <div className="flex-uploadimgg">
+        <div className="flex-uploadimgg"     onClick={() => handleProductDetailClick(data?._id)}>
         {data?.file && (
           <img src={data?.file} alt="Uploaded" className="main-img" />
         )}
