@@ -30,6 +30,7 @@ const notFollowedUsers = users?.filter(el => el.username !== socialUser.username
 // : users;
   return (
     <div className="main-followbar">
+    <div className="inner-followbar">
       <p className="followbar-heading">Suggested Users</p>
       <div className="FollowBar">
         <ul className="followBar-list">
@@ -66,6 +67,7 @@ const notFollowedUsers = users?.filter(el => el.username !== socialUser.username
           ))}
         </ul>
       </div>
+    </div>
     </div>
   );
 };
