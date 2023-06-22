@@ -5,16 +5,20 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 // import { BsFillImageFill } from "react-icons/bs";
 import { BiImageAdd } from "react-icons/bi";
 import { useState } from "react";
-import { createPostHandler,  editPostHandler } from "../../Services/DataServices";
+import {
+  createPostHandler,
+  editPostHandler,
+} from "../../Services/DataServices";
 import { useData } from "../../Context/DataContext";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { AiFillMinusCircle } from "react-icons/ai";
 export const AddPost = () => {
   const {
     dataState: { postId, posts },
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
-
   } = useData();
 
   const [images, setImages] = useState();
@@ -27,25 +31,32 @@ export const AddPost = () => {
   const socialToken = localStorage.getItem("socialToken");
   const addNoteHandler = () => {
     if (postId) {
-      console.log(typeof postId)
-      console.log(postId,"postId",postDetails)
-      editPostHandler(postId, postDetails, dataDispatch, socialToken);
-      dataDispatch({type:"EDIT_POST",payload:null})
-      setBtnAddPost(!btnAddPost);
+      if (postDetails.content.length > 0 || postDetails.file) {
+        console.log(typeof postId);
+        console.log(postId, "postId", postDetails);
+        editPostHandler(postId, postDetails, dataDispatch, socialToken);
+        dataDispatch({ type: "EDIT_POST", payload: null });
+        setBtnAddPost(!btnAddPost);
+        toast.success("Post Updated!");
+      } else {
+        toast.warn("Please add post or photo/gif!");
+      }
     } else {
-      if (postDetails.content.length > 0) {
+      if (postDetails.content.length > 0 || postDetails.file) {
         createPostHandler(postDetails, socialToken, dataDispatch);
         setBtnAddPost(!btnAddPost);
+        toast.success("Post Added!");
+      } else {
+        toast.warn("Please add post or photo/gif!");
       }
     }
   };
-
-  console.log(postId, "postId");
 
   const fileUploadHandle = (e) => {
     const file = e.target.files[0];
     setImages(URL.createObjectURL(file));
     setPostDetails({ ...postDetails, file: URL.createObjectURL(file) });
+    toast.success("Post Selected!");
   };
 
   useEffect(() => {
@@ -58,10 +69,15 @@ export const AddPost = () => {
         content: "",
         file: "",
         comments: [],
-      })
+      });
     }
   }, []);
 
+  const handleImageRemove = () => {
+    setImages(null);
+    setPostDetails({ ...postDetails, file: "" });
+    toast.success("Post Removed!");
+  };
   return (
     <div className="AddPost-mainDiv">
       <div className="AddPost-MainContainer">
@@ -97,15 +113,22 @@ export const AddPost = () => {
               </label>
             </div>
             {images && (
-              <img
-                src={images}
-                alt="img1"
-                className="single-profile-photo-comment"
-                height={100}
-                width={100}
-              />
+              <div className="image-preview-container">
+                <div className="image-preview">
+                  <img
+                    src={images}
+                    alt="img1"
+                  
+                  />
+                  <button
+                    className="image-preview-button"
+                    onClick={handleImageRemove}
+                  >
+                    <AiFillMinusCircle />
+                  </button>
+                </div>
+              </div>
             )}
-            {images && <button onClick={() => setImages(null)}>-</button>}
             <button className="btn-add-post" onClick={addNoteHandler}>
               Post
             </button>

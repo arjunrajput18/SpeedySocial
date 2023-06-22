@@ -247,7 +247,7 @@ export const createPostHandler = async (
       }
     );
     if (status === 200 || status === 201) {
-      console.log(posts);
+      console.log({posts});
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {

@@ -11,8 +11,12 @@ const loggedInUser=users?.find(({username})=>username===socialUser.username)
 const newBookmark=posts?.filter(({_id})=>loggedInUser?.bookmarks.includes(_id))
 
   return (
-    <div >
-  {newBookmark?.map((data)=><SinglePost data={data} key={data._id}/>)}
-    </div>
+    <div>
+    {newBookmark?.length > 0 ? (
+      newBookmark.map((data) => <SinglePost data={data} key={data._id} />)
+    ) : (
+      <p className='followbar-heading'>No bookmarks available.</p>
+    )}
+  </div>
   )
 }

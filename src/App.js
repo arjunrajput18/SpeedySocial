@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router";
 import { Home } from "./Features/Home/Home";
 import "./utils.css";
 import { MainContainer } from "./Components/MainContainer/MainContainer";
+// import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Profile } from "./Features/Profile/Profile";
 import { Explore } from "./Features/Explore/Explore";
@@ -11,12 +13,19 @@ import { Bookmark } from "./Features/Bookmark/Bookmark";
 import { Login } from "./Features/Login/Login";
 import { Signup } from "./Features/Login/Signup";
 import { AnyProfile } from "./Features/Profile/AnyProfile";
+import {PageNotFound} from "./Features/PageNotFound/PageNotFound"
+// import { SinglePost } from "./Components/SinglePost/SinglePost";
+// import { Toaster } from "react-hot-toast";
 import { PostDetails } from "./Features/PostDetails/PostDetails";
-
+import { ToastContainer } from "react-toastify";
+// import './ToastContainer.css';
 function App() {
   return (
     <div className="App">
-      {/* <MenuBar /> */}
+      <ToastContainer
+  position="top-center" autoClose={1200}
+  reverseOrder={false}
+/>
       <Routes>
         <Route
           path="/"
@@ -50,7 +59,7 @@ function App() {
             </MainContainer>
           }
         />
-         <Route
+        <Route
           path="/post/:_id"
           element={
             <MainContainer>
@@ -58,10 +67,18 @@ function App() {
             </MainContainer>
           }
         />
-        <Route path="/profile/:userHandler" element={<MainContainer><AnyProfile/></MainContainer>}/>
+        <Route
+          path="/profile/:userHandler"
+          element={
+            <MainContainer>
+              <AnyProfile />
+            </MainContainer>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mockman" element={<Mockman />} />
+        <Route path="*" element={<PageNotFound/>} />
       </Routes>
     </div>
   );

@@ -9,7 +9,7 @@ import { SinglePost } from '../../Components/SinglePost/SinglePost'
 export const PostDetails = () => {
   const {dataState:{posts}}=useData()
     const {_id}=useParams()
-    console.log(_id,"postId")
+
 
   
 const postDeatils=posts?.find((post)=>post.id.toString()===_id.toString())

@@ -4,6 +4,7 @@ import profile1 from "../../Assets/profile1.png";
 import { useState } from "react";
 import { useData } from "../../Context/DataContext";
 import { editUserHandler, getUserData, postUserData } from "../../Services/DataServices";
+import { toast } from "react-toastify";
 
 export const EditProfile = ({ setEditBtn, editBtn }) => {
   const {
@@ -41,6 +42,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   const handleUpdate = () => {
     editUserHandler(updatedProfile, socialToken, dataDispatch);
     setEditBtn(!editBtn);
+    toast.success('Post Updated!');
   };
 
 const updateDetails=(e)=>{
