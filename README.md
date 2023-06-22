@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/assets/twitter.png" height="100" width="100" alt="logo"/>
+  <img src="src/Assets/twitter.png" height="100" width="100" alt="logo"/>
   
 # SpeedySocial
   A Social Media App 
