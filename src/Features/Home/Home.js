@@ -14,7 +14,7 @@ import {  BsClock } from "react-icons/bs";
 
 export const Home = () => {
   const {
-    dataState: { posts },setBtnAddPost,btnAddPost
+    dataState: { posts,users },setBtnAddPost,btnAddPost
   } = useData();
   const defaultPost = {
     _id: uuid(),
@@ -24,19 +24,50 @@ export const Home = () => {
   const [postsType, setPostsType] = useState("latest");
   // const [newPost, setNewPost] = useState(defaultPost);
   // const socialToken = localStorage.getItem("socialToken");
-  const socialUser = JSON.parse(localStorage.getItem("socialUser"));
-  const homePosts = posts?.filter(post => socialUser?.following?.some(el => el.username === post.username));
-  console.log(homePosts,"home")
+//   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
+//   const homePosts = posts?.filter(post => socialUser?.following?.some(el => el.username === post.username));
+//   console.log(homePosts,"home")
 
-const loggedInUserPosts = posts?.filter(post => post?.username === socialUser?.username);
+// const loggedInUserPosts = posts?.filter(post => post?.username === socialUser?.username);
+
+// const likedPosts = posts?.filter(post => post?.likes?.likedBy?.length > 0);
+// console.log(likedPosts,"likedPosts")
+
+// const sortPostsByLikes = likedPosts?.sort((a, b) => a?.likes?.likedBy.length - b?.likes?.likedBy.length)
+
+// const postsByType = postsType === "latest" ? [ ...homePosts,...loggedInUserPosts] :sortPostsByLikes;
+// console.log("aaaaaa",postsByType)
+
+
+
+
+const socialUser = JSON.parse(localStorage.getItem("socialUser"));
+const loggedInUser = users?.find(el => el.username === socialUser.username)
+
+
+
+
+const loggedInUserPosts = posts?.filter(post => post?.username === loggedInUser?.username);
+
+const homePosts = posts?.filter(post => loggedInUser?.following?.some(el => el.username === post.username));
+
 
 const likedPosts = posts?.filter(post => post?.likes?.likedBy?.length > 0);
-console.log(likedPosts,"likedPosts")
 
-const sortPostsByLikes = likedPosts?.sort((a, b) => a?.likes?.likedBy.length - b?.likes?.likedBy.length)
+const sortPostsByLikes = [...likedPosts]?.sort((a, b) => a.likes.likedBy.length - b.likes.likedBy.length)
 
-const postsByType = postsType === "latest" ? [ ...homePosts,...loggedInUserPosts] :sortPostsByLikes;
-console.log("aaaaaa",postsByType)
+const postsByType = postsType === "latest" ? [...loggedInUserPosts.reverse(), ...homePosts].reverse() : sortPostsByLikes;
+
+
+
+
+
+
+
+
+
+
+
 const HandleAddPost=()=>{
   setBtnAddPost(true)
 }
