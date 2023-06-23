@@ -154,5 +154,26 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  {
+    _id:uuid(),
+    content:
+      "Be Like Water🌊 ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments:[  {
+      _id: uuid(),
+      username: "bugsbunny@gmail.com",
+      text: "Great post!"
+    }],
+    username: "spongebob@gmail.com",
+    file:"https://media3.giphy.com/media/LpkhKVwp6dpCg/giphy.webp?cid=ecf05e476hf4n0pnew9mrrqm0m2n628kwvgnpiv5mnc4vy3t&ep=v1_gifs_related&rid=giphy.webp&ct=g",
+    profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
+    userHandler:"spongeBob123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
 
 ];

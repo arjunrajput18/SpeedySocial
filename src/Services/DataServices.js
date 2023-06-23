@@ -278,6 +278,11 @@ export const addCommentHandle = async (
   socialToken,
   dataDispatch
 ) => {
+
+  console.log({  postId,
+    commentData,
+    socialToken,
+    dataDispatch})
   try {
     const {
       status,
@@ -296,6 +301,40 @@ export const addCommentHandle = async (
 
     if (status === 200 || status === 201) {
       console.log(posts);
+      dataDispatch({ type: "POST_OPERATIONS", payload: posts });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteCommentHandle = async (
+  postId,commentId,
+  commentData,
+  socialToken,
+  dataDispatch
+) => {
+
+  console.log({  postId,commentId,
+    commentData,
+    socialToken,
+    dataDispatch})
+  try {
+    const {
+      status,
+      data: { posts },
+    } = await axios.delete(
+      `/api/comments/delete/${postId}/${commentId}`,
+    
+      {
+        headers: {
+          authorization: socialToken,
+        },
+      }
+    );
+
+    console.log(posts);
+    if (status === 200 || status === 201) {
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {

@@ -16,7 +16,7 @@ const postDeatils=posts?.find((post)=>post.id.toString()===_id.toString())
 
   return (
     <div>
-    <SinglePost data={postDeatils}/>
+    <SinglePost data={postDeatils} showComment/>
     </div>
   )
 }

@@ -1,9 +1,28 @@
 .mainContainer {
 
   background-color: #edf2f6;
+  margin-bottom: 3rem;
+  position: relative;
+  min-height:100vh ;
+  max-height: fit-content;
 }
 .dektop-followbar{
   display: none;
+}
+.overComment{
+position: fixed;
+z-index: 1000;
+top: 0%;
+right: 0%;
+border: solid;
+min-height: 100vh;
+max-height: 100%;
+width: 100%;
+background-color: rgba(14, 96, 96, 0.696);
+display: flex;
+justify-content: center;
+align-items: center;
+  
 }
 
 @media (min-width: 720px) {
@@ -15,6 +34,7 @@
   min-height:90vh ;
   max-height: fit-content;
   padding: 25px;
+  margin-bottom: 0rem;
   }
   .mainContainer:last-child {
     grid-column-end: span 2;

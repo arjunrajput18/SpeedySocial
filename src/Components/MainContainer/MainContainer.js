@@ -4,8 +4,11 @@ import { MenuBar } from "../MenuBar/MenuBar";
 import "./MainContainer.css";
 import { Navbar } from "../NavBar/Navbar";
 import { RequireAuth } from "../../Auth/RequireAuth";
+import { CommentBox } from "../CommentBox/CommentBox";
+import { useData } from "../../Context/DataContext";
 
 export const MainContainer = ({ children }) => {
+  const {commentToggle}=useData()
   return (
     <>
       <RequireAuth>
@@ -15,6 +18,9 @@ export const MainContainer = ({ children }) => {
             <MenuBar />
           </div>
           <div> {children}</div>
+          
+         {commentToggle && <div className="overComment"><CommentBox/></div>}
+         
           <div className="dektop-followbar">
             <FollowBar />
           </div>

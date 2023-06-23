@@ -23,6 +23,7 @@ $ npm start
 - Follow / Unfollow
 - Search User
 - Like and Comment on Post
+- share post
 - Authentication:
   - User Signup
   - User Login

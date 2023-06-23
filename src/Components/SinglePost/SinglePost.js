@@ -8,12 +8,13 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import { BsBookmark, BsBookmarkFill, BsFillBookmarkFill } from "react-icons/bs";
-import { FaEdit, FaRegComment } from "react-icons/fa";
+import { FaEdit, FaRegComment, FaTrash } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import { CiMenuKebab } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import {
   addCommentHandle,
+  deleteCommentHandle,
   deletePostHandle,
   getBookMark,
   getDislikeData,
@@ -25,14 +26,19 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export const SinglePost = ({ data }) => {
-  const [commentText, setCommentText] = useState();
+export const SinglePost = ({ data, showComment }) => {
   const [menuBtn, setMenuBtn] = useState(false);
+  // const [commentToggle,setCommentToggle]=useState(false)
   const {
     dataState: { users },
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
+    commentText,
+    setCommentText,
+    commentToggle,
+    setCommentToggle,
+    setCommentId,
   } = useData();
 
   const socialToken = localStorage.getItem("socialToken");
@@ -56,11 +62,17 @@ export const SinglePost = ({ data }) => {
   const navigate = useNavigate();
 
   const handleClick = (userHandler) => {
-    navigate(`/profile/${userHandler}`);
+    const viewUser = userHandler === socialUser.userHandler;
+    console.log(userHandler,"userHandler")
+    if (!viewUser) {
+      navigate(`/profile/${userHandler}`);
+    } else {
+      navigate(`/profile`);
+    }
   };
   const handleBookmark = () => {
     getBookMark(dataDispatch, socialToken, data?._id, socialUser.username);
-    toast.success('Added To Bookmark!');
+    toast.success("Added To Bookmark!");
   };
   const handleRemoveBookmark = () => {
     getRemoveBookmarkData(
@@ -69,67 +81,74 @@ export const SinglePost = ({ data }) => {
       data?._id,
       socialUser.username
     );
-    toast.success('Removed from Bookmark!');
+    toast.success("Removed from Bookmark!");
   };
 
   const handleProductDetailClick = (postId) => {
     navigate(`/post/${data.id}`);
   };
 
-  const handleAddComment = () => {
-    if (commentText) {
-      // console.log(_id, commentText, socialToken, dataDispatch);
-      addCommentHandle(data?._id, commentText, socialToken, dataDispatch);
-    }
+  const handleDeleteComment = (commentId, commentData) => {
+    // console.log(_id, commentText, socialToken, dataDispatch);
+    deleteCommentHandle(
+      data?._id,
+      commentId,
+      commentData,
+      socialToken,
+      dataDispatch
+    );
+    setCommentText("");
   };
 
   const handleDeletePost = (postId) => {
     // console.log(postId, dataDispatch, socialToken);
     deletePostHandle(postId, dataDispatch, socialToken);
     setMenuBtn(!menuBtn);
-      toast.success('Post Deleted successful!');
+    toast.success("Post Deleted successful!");
   };
 
   const handleEditPost = (postId) => {
     dataDispatch({ type: "EDIT_POST", payload: postId });
     setBtnAddPost(!btnAddPost);
     setMenuBtn(!menuBtn);
-
   };
 
   const handleShare = () => {
     navigator.clipboard.writeText(
       `https://speedysocial.netlify.app/post/${data?.id}`
     );
-    
-      toast.success('Copied To Clipboard');
-    
+
+    toast.success("Copied To Clipboard");
   };
 
   const handleMenuClick = () => {
     setMenuBtn(!menuBtn);
   };
 
+  const handleCommentEnable = () => {
+    setCommentId(data._id);
+    setCommentToggle(!commentToggle);
+  };
 
-const userDetails=users?.find((el)=>el.username===data.username)
-console.log(userDetails,"aaaa")
+  const userDetails = users?.find((el) => el.username === data.username);
+  console.log(userDetails, "aaaa");
   return (
     <div className="singlePost-MainContainer">
       <div className="singlepost-innerContainer">
         <div className="flex--singlepost-justify">
           <div className="flex--singlepost">
-          <div className="flex-uploadimgg">
-          <img
-              src={userDetails?.profilePic}
-              alt="profile1"
-              className="single-profile-photo"
-              onClick={() => handleClick(data?.userHandler)}
-            />
-          </div>
-          
+            <div className="flex-uploadimgg">
+              <img
+                src={userDetails?.profilePic}
+                alt="profile1"
+                className="single-profile-photo"
+                onClick={() => handleClick(userDetails?.userHandler)}
+              />
+            </div>
+
             <div className="flex-edit-delete">
               <p className="single-profile-userName">
-                {userDetails?.firstName}{" "}{userDetails?.lastName}
+                {userDetails?.firstName} {userDetails?.lastName}
                 {/* <span className="single-profile-userId">{username}</span> */}
               </p>
               <p className="single-profile-date-time">20/06/2023 16:30</p>
@@ -137,11 +156,17 @@ console.log(userDetails,"aaaa")
           </div>
           <div>
             <div className="setting">
-              {menuBtn ?(
-                <RxCross2 onClick={()=>setMenuBtn(!menuBtn)} className="setting-icon" />
-              ): (
-                <CiMenuKebab onClick={handleMenuClick} className="setting-icon"  />
-              ) }
+              {menuBtn ? (
+                <RxCross2
+                  onClick={() => setMenuBtn(!menuBtn)}
+                  className="setting-icon"
+                />
+              ) : (
+                <CiMenuKebab
+                  onClick={handleMenuClick}
+                  className="setting-icon"
+                />
+              )}
             </div>
             {menuBtn && (
               <div className="btn-postEdit">
@@ -166,86 +191,112 @@ console.log(userDetails,"aaaa")
           onClick={() => handleProductDetailClick(data?._id)}
         >
           {data?.content}
-        </p> 
-        <div className="flex-uploadimgg"     onClick={() => handleProductDetailClick(data?._id)}>
-        {data?.file && (
-          <img src={data?.file} alt="Uploaded" className="main-img" />
-        )}
+        </p>
+        <div
+          className="flex-uploadimgg"
+          onClick={() => handleProductDetailClick(data?._id)}
+        >
+          {data?.file && (
+            <img src={data?.file} alt="Uploaded" className="main-img" />
+          )}
         </div>
         {/* */}
 
         <div className="btn-single-profile">
           {btnLike ? (
-            <span className="btn-like-single-profile liked icon">
-              <AiFillHeart onClick={handledisLike} />
+            <span
+              className="btn-like-single-profile liked icon"
+              onClick={handledisLike}
+            >
+              <AiFillHeart />
               {data?.likes.likeCount}
             </span>
           ) : (
-            <span className="btn-like-single-profile icon">
-              <AiOutlineHeart onClick={handleLike} />
+            <span className="btn-like-single-profile icon" onClick={handleLike}>
+              <AiOutlineHeart />
               {data?.likes?.likeCount}
             </span>
           )}
           {/* <BsBookmarkFill onClick={handleRemoveBookmark} /> */}
           <>
             {isBookmark ? (
-              <span className="btn-like-single-profile liked">
-                <BsBookmarkFill onClick={handleRemoveBookmark} />
+              <span
+                className="btn-like-single-profile liked"
+                onClick={handleRemoveBookmark}
+              >
+                <BsBookmarkFill />
               </span>
             ) : (
-              <span className="btn-like-single-profile">
-                <BsBookmark onClick={handleBookmark} />
+              <span
+                className="btn-like-single-profile"
+                onClick={handleBookmark}
+              >
+                <BsBookmark />
               </span>
             )}{" "}
           </>
 
-          <p className="btn-like-single-profile">
-            <FaRegComment />{data?.comments?.length}
+          <p className="btn-like-single-profile" onClick={handleCommentEnable}>
+            <FaRegComment />
+            {data?.comments?.length}
           </p>
-          <p className="btn-like-single-profile">
-            <BiShareAlt onClick={handleShare} />
+          <p className="btn-like-single-profile" onClick={handleShare}>
+            <BiShareAlt />
           </p>
         </div>
-        <div className="comment-box">
+        {/* {commentToggle &&   <div className="comment-box positionComment">
           <img
             src={profile1}
             alt="img1"
             className="single-profile-photo-comment"
           />
-          <div className="inner-comment-box">
+       <div className="inner-comment-box">
             <input
               placeholder="write your comment"
               className="single-profile-input-ccomment"
               onChange={(e) => setCommentText(e.target.value)}
+              value={commentText}
             />
             <button className="post-btn-comment" onClick={handleAddComment}>
               POST
             </button>
           </div>
-        </div>
+        </div>} */}
 
-        <div>
-          {data?.comments?.map((comment) =>{
-            
-            const currentUser=users?.find((user)=>user?.username===comment?.username)
-   
-            console.log({currentUser})
-            return  (
-            <div className="comments-added">
-              <img
-                src={profile1}
-                alt="img1"
-                className="single-profile-photo-comment"
-              />
-              <div className="comments-add-by-user">
-                <div className="deleteFlex">
-                  <p>{currentUser.firstName} {" "} {currentUser.lastName }</p>
+        {showComment && (
+          <div>
+            {data?.comments?.map((comment) => {
+              const currentUser = users?.find(
+                (user) => user?.username === comment?.username
+              );
+
+              console.log({ currentUser });
+              return (
+                <div className="comments-added">
+                  <img
+                    src={data.profilePic}
+                    alt="img1"
+                    className="single-profile-photo-comment"
+                  />
+                  <div className="comments-add-by-user">
+                    <div className="deleteFlex">
+                      <p className="user-name">
+                        {currentUser.firstName} {currentUser.lastName}
+                      </p>
+                      <FaTrash
+                        className="delete-icon"
+                        onClick={() =>
+                          handleDeleteComment(comment._id, comment.text)
+                        }
+                      />
+                    </div>
+                    <p className="comment-text">{comment?.text}</p>
+                  </div>
                 </div>
-                <p>{comment?.text}</p>
-              </div>
-            </div>
-          )})}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

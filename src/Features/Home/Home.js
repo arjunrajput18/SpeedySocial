@@ -22,8 +22,8 @@ export const Home = () => {
     comments: [],
   };
   const [postsType, setPostsType] = useState("latest");
-  const [newPost, setNewPost] = useState(defaultPost);
-  const socialToken = localStorage.getItem("socialToken");
+  // const [newPost, setNewPost] = useState(defaultPost);
+  // const socialToken = localStorage.getItem("socialToken");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const homePosts = posts?.filter(post => socialUser?.following?.some(el => el.username === post.username));
   console.log(homePosts,"home")
@@ -35,7 +35,7 @@ console.log(likedPosts,"likedPosts")
 
 const sortPostsByLikes = likedPosts?.sort((a, b) => a?.likes?.likedBy.length - b?.likes?.likedBy.length)
 
-const postsByType = postsType === "latest" ? [...loggedInUserPosts, ...homePosts] :sortPostsByLikes;
+const postsByType = postsType === "latest" ? [ ...homePosts,...loggedInUserPosts] :sortPostsByLikes;
 console.log("aaaaaa",postsByType)
 const HandleAddPost=()=>{
   setBtnAddPost(true)

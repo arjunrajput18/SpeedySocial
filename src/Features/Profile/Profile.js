@@ -72,8 +72,8 @@ const handleEdit=()=>{
           profileUserPosts?.map(post => <SinglePost key={post.username} data={post} />)
         }
       </div>
-
-
+      <div className="margin-bottom-profile"></div>
     </div>
+
   );
 };

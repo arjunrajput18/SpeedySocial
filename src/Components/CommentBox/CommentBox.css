@@ -1,0 +1,22 @@
+.mainCommentBox{
+    border: solid;
+    width: 70%;
+    max-width: 500px;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    height: 30vh;
+}
+.inner-comment-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+ 
+  
+}
+.cmntBtn{
+    align-self: center;
+}
+.cmntBtn:hover{
+    background-color: blueviolet;
+}
