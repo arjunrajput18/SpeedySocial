@@ -12,10 +12,10 @@ const {userHandler}=useParams()
 const {dataState:{users,posts},dataDispatch}=useData()
 
 const socialUser = JSON.parse(localStorage.getItem("socialUser"));
-
+const loggedInUser = users?.find(el => el.username === socialUser.username)
 
 const foundUser = users?.find(el => el.userHandler === userHandler);
-  const {profilePic,firstName, lastName, username, followers, following } = foundUser;
+
 
 
   const handleFollow = (followUserId, socialToken, dataDispatch) => {
@@ -26,7 +26,7 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
     getUnfollowHandler(followUserId, socialToken, dataDispatch)
   }
   const socialToken = localStorage.getItem("socialToken")
-  const foundUsersPosts = posts?.filter(post => post.username === username)
+  const foundUsersPosts = posts?.filter(post => post.username === foundUser?.username)
 
 
 
@@ -34,21 +34,23 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
     <div className="profile-outerContainer">
     <div className="profile-mainContainer">
       <div className="profile-innerContainer">
-        <img src={profilePic} alt="img1" className="profile-user-logo" />
+        <img src={foundUser?.profilePic} alt="img1" className="profile-user-logo" />
         <div>
           <div className="profile-heading">
             <div>
-              <h4>{firstName} {lastName}</h4>
-              <p>{username}</p>
+              <h4>{foundUser?.firstName} {foundUser?.lastName}</h4>
+              <p>{foundUser?.username}</p>
             </div>
             <div>
               {/* <button className="profile-edit-btn">Edit</button> */}
+           
+
               {
-              socialUser?.following?.some(el => el.username === foundUser.username)
+                loggedInUser?.following?.some(el => el.username === foundUser?.username)
                 ?
-                <button onClick={() => handleUnfollow(foundUser._id, socialToken, dataDispatch)} className='profile-edit-btn'>Unfollow</button>
+                <button onClick={() => handleUnfollow(foundUser?._id, socialToken, dataDispatch)} className='profile-edit-btn'>Unfollow</button>
                 :
-                <button onClick={() => handleFollow(foundUser._id, socialToken, dataDispatch)} className='profile-edit-btn'>Follow</button>
+                <button onClick={() => handleFollow(foundUser?._id, socialToken, dataDispatch)} className='profile-edit-btn'>Follow</button>
             }
             </div>
           </div>
@@ -57,8 +59,8 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
           </div>
           <div className="flex space-between margin-top-1">
             <span>3 Posts</span>{" "}
-            <span>{followers.length} Followers</span>{" "}
-            <span>{following.length} Following</span>
+            <span>{foundUser?.followers.length} Followers</span>{" "}
+            <span>{foundUser?.following.length} Following</span>
           </div>
           <div className="profile-link">
             <a href="https://arjunsinghportfolio.netlify.app" target="_blank" rel="noreferrer">https://arjunsinghportfolio.netlify.app/</a>

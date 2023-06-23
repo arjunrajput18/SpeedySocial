@@ -23,11 +23,14 @@ const handleFollow=(_id,socialToken,dataDispatch)=>{
 }
 const user = users?.find(el => el.username === socialUser.username)
 
-const notFollowedUsers = users?.filter(el => el.username !== socialUser.username && user.following.every(item => item.username !== el.username))
-// const {userSearch, dataState: { users } } =useData()
-// const searchValue = userSearch
-// ? users?.filter(item => item.username.toLowerCase().includes(userSearch.toLowerCase()))
-// : users;
+// const notFollowedUsers = users?.filter(el => el.username !== socialUser.username && user.following.every(item => item.username !== el.username))
+
+// const nnn=user.followers.map((el)=>el.username)
+
+// console.log(socialUser.following,"a")
+const followingArray=user?.following.map((el)=>el.username)
+const notFollowedUsers= users?.filter(el => el.username !== socialUser.username && !followingArray.includes(el.username))
+
   return (
     <div className="main-followbar">
     <div className="inner-followbar">

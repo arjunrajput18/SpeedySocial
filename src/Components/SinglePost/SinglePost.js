@@ -132,6 +132,9 @@ export const SinglePost = ({ data, showComment }) => {
 
   const userDetails = users?.find((el) => el.username === data.username);
   console.log(userDetails, "aaaa");
+
+
+
   return (
     <div className="singlePost-MainContainer">
       <div className="singlepost-innerContainer">
@@ -269,12 +272,13 @@ export const SinglePost = ({ data, showComment }) => {
               const currentUser = users?.find(
                 (user) => user?.username === comment?.username
               );
+              const deleteOnlyYoursCmnt=socialUser?.username===comment?.username
 
               console.log({ currentUser });
               return (
                 <div className="comments-added">
                   <img
-                    src={data.profilePic}
+                    src={currentUser.profilePic}
                     alt="img1"
                     className="single-profile-photo-comment"
                   />
@@ -283,12 +287,12 @@ export const SinglePost = ({ data, showComment }) => {
                       <p className="user-name">
                         {currentUser.firstName} {currentUser.lastName}
                       </p>
-                      <FaTrash
+                  {deleteOnlyYoursCmnt &&    <FaTrash
                         className="delete-icon"
                         onClick={() =>
                           handleDeleteComment(comment._id, comment.text)
                         }
-                      />
+                      />}
                     </div>
                     <p className="comment-text">{comment?.text}</p>
                   </div>

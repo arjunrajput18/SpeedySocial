@@ -16,6 +16,7 @@ const {dataDispatch}=useData()
     lastName: "",
     username: "",
     password: "",
+    profilePic: "https://www.pngmart.com/files/22/Charizard-Pokemon-Download-PNG-Image.png",
     followers:[],
     following:[],
     bookmarks:[],
@@ -59,7 +60,7 @@ const {setIsLoggedIn}=useAuth()
         />
         <input type="text"
           placeholder="Surname"
-          name="lastname"
+          name="lastName"
           onChange={handleChange}
           className="login-input"
           required

@@ -184,12 +184,13 @@ export const getFollowHandler = async (
       }
     );
     if (status === 200 || status === 201) {
-      dataDispatch({ type: "ADD_FOLLOWING", payload: { user: user } });
+      // dataDispatch({ type: "ADD_FOLLOWING", payload: { user: user } });
+      dataDispatch({ type: "FOLLOWING_OPERATIONS", payload: { user: user } });
       dataDispatch({
         type: "ADD_FOLLOWER",
         payload: { followUser: followUser },
       });
-      localStorage.setItem("socialUser", JSON.stringify(user));
+      // localStorage.setItem("socialUser", JSON.stringify(user));
     }
     // console.log(followUser);
   } catch (error) {
@@ -217,11 +218,13 @@ export const getUnfollowHandler = async (
     );
     if (status === 200 || status === 201) {
       // dataDispatch({ type: "REMOVE_FOLLOWER", payload: { user: user } });
+ 
+      dataDispatch({ type: "FOLLOWING_OPERATIONS", payload: { user:user} });
       dataDispatch({
         type: "REMOVE_FOLLOWER",
         payload: { unfollowedUser: followUser },
       });
-      localStorage.setItem("socialUser", JSON.stringify(user));
+      // localStorage.setItem("socialUser", JSON.stringify(user));
     }
   } catch (error) {
     console.log(error);

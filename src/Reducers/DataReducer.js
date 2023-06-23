@@ -63,7 +63,9 @@ export const DataReducer = (state, action) => {
       case "USER_OPERATIONS": return {
         ...state, users: state.users.map(user => action.payload.username === user.username ? action.payload : user)
       }
-
+      case "FOLLOWING_OPERATIONS": return {
+        ...state, users: state?.users?.map(el => el.username === action.payload.user?.username ? { ...el, following:  action.payload?.user?.following } : el)
+      }
 
       case "EDIT_POST":return{
         ...state,postId:action.payload
