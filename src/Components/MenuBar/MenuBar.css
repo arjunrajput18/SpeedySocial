@@ -54,6 +54,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     white-space: nowrap;
+    /* position: fixed; */
   }
   .item-name {
     display: inline-block;

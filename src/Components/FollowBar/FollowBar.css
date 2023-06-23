@@ -111,12 +111,14 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #eeeeee;
+  /* position: fixed; */
   }
 
   .followBar-list {
  
     flex-direction: column;
     gap: 1rem;
+    /* position: fixed; */
   }
 
   .followbar-heading {

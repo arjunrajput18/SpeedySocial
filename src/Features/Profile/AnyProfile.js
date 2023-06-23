@@ -5,33 +5,17 @@ import {useData} from "../../Context/DataContext"
 import { SinglePost } from "../../Components/SinglePost/SinglePost";
 import { getFollowHandler, getUnfollowHandler } from "../../Services/DataServices";
 import { useParams } from "react-router-dom";
-// import { NavLink } from "react-router-dom";
 
 export const AnyProfile = () => {
 
 const {userHandler}=useParams()
 const {dataState:{users,posts},dataDispatch}=useData()
-// console.log(users,"usersssss")
-// const user=users
+
 const socialUser = JSON.parse(localStorage.getItem("socialUser"));
 
-// const socialToken = localStorage.getItem("socialToken")
-// const loggedInUser = users?.find(user => user.username === socialUser.username);
 
 const foundUser = users?.find(el => el.userHandler === userHandler);
   const {profilePic,firstName, lastName, username, followers, following } = foundUser;
-
-
-
-// const user=users?.find(data=>data.userHandler===userHandler)
-
-    // const token=JSON.parse(localStorage.getItem("socialUser"))
-    
-
-
-
-//   const profileUserPosts = posts?.filter(post => post.username === socialUser.username)
-
 
 
   const handleFollow = (followUserId, socialToken, dataDispatch) => {

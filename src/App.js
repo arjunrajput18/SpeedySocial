@@ -63,7 +63,7 @@ function App() {
           path="/post/:_id"
           element={
             <MainContainer>
-              <PostDetails/>
+              <PostDetails />
             </MainContainer>
           }
         />

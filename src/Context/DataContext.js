@@ -13,12 +13,14 @@ export const DataContextProvider = ({ children }) => {
     const [dataState,dataDispatch]=useReducer(DataReducer,initialState)
     const [userSearch, setUserSearch] = useState("")
     const [btnAddPost,setBtnAddPost]=useState(false)
-
-   useEffect(()=>{
+    const [commentToggle,setCommentToggle]=useState(false)
+    const [commentText, setCommentText] = useState();
+   const  [commentId,setCommentId]=useState()
+    useEffect(()=>{
     getPostData(dataDispatch)
     getUserData(dataDispatch)
    },[])
-  return <DataContext.Provider value={{dataState,dataDispatch,userSearch,setUserSearch,btnAddPost,setBtnAddPost,}}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{commentText, setCommentText,dataState,dataDispatch,userSearch,setUserSearch,btnAddPost,setBtnAddPost,setCommentToggle,commentToggle,commentId,setCommentId}}>{children}</DataContext.Provider>;
 };
 
 export const useData = () => useContext(DataContext);
