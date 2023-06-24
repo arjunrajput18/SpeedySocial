@@ -152,8 +152,9 @@ export const SinglePost = ({ data, showComment }) => {
             <div className="flex-edit-delete">
               <p className="single-profile-userName">
                 {userDetails?.firstName} {userDetails?.lastName}
-                {/* <span className="single-profile-userId">{username}</span> */}
+                
               </p>
+              <p className="single-profile-userId">@{userDetails?.userHandler}</p>
               <p className="single-profile-date-time">20/06/2023 16:30</p>
             </div>
           </div>
