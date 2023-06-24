@@ -12,6 +12,7 @@
   padding-top: 6rem;
   padding:1.2rem;
   /* margin-top: 5rem; */
+  
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -97,7 +98,7 @@
   color: lightcoral;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 1020px) {
   .FollowBar {
     height: 50vh;
     display: flex;
@@ -111,6 +112,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #eeeeee;
+
   /* position: fixed; */
   }
 
@@ -156,6 +158,7 @@
     width: 100%;
     transition: all 0.3s ease;
     flex-direction: row;
+    
   }
 
   .profile-follow:hover {

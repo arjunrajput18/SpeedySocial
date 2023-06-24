@@ -11,10 +11,10 @@ import { EditProfile } from "./EditProfile";
 export const Profile = () => {
   // const {userHandler}=useParams()
   const {
-    dataState: { users, posts },
+    dataState: { users, posts },editBtn, setEditBtn
   } = useData();
 
-  const [editBtn, setEditBtn] = useState(false);
+
   // console.log(users,"usersssss")
   // const user=users
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -26,7 +26,6 @@ export const Profile = () => {
 
   // const user=users?.find(data=>data.userHandler===userHandler)
 
-  const token=JSON.parse(localStorage.getItem("socialUser"))
 
   const profileUserPosts = posts?.filter(
     (post) => post.username === socialUser.username
@@ -71,11 +70,7 @@ export const Profile = () => {
         </div>
       </div>
 
-      {editBtn && (
-        <div>
-          <EditProfile setEditBtn={setEditBtn} editBtn={editBtn} />
-        </div>
-      )}
+   
 
       <div className="posts">
         {profileUserPosts?.map((post) => (

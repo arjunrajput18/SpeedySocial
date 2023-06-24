@@ -33,7 +33,7 @@
   text-decoration: none;
   color: white;
 }
-@media (min-width: 720px) {
+@media (min-width: 1020px) {
   .Menubar {
     background-color: #edf2f6;
     position: relative;
@@ -41,8 +41,8 @@
     color: #0b2239;
     /* height: 100vh; */
     position: sticky;
-    top: 15%;
-    /* z-index: 10; */
+    top: 17%;
+    z-index: 1;
     /* margin-top: 3rem; */
     padding-top: 2rem;
   }

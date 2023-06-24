@@ -6,9 +6,10 @@ import { Navbar } from "../NavBar/Navbar";
 import { RequireAuth } from "../../Auth/RequireAuth";
 import { CommentBox } from "../CommentBox/CommentBox";
 import { useData } from "../../Context/DataContext";
+import { EditProfile } from "../../Features/Profile/EditProfile";
 
 export const MainContainer = ({ children }) => {
-  const {commentToggle}=useData()
+  const {commentToggle,setEditBtn,editBtn}=useData()
   return (
     <>
       <RequireAuth>
@@ -20,7 +21,12 @@ export const MainContainer = ({ children }) => {
           <div> {children}</div>
           
          {commentToggle && <div className="overComment"><CommentBox/></div>}
-         
+         {editBtn && <div className="editBox-bottom"></div>}
+         {editBtn && (
+        <div className="editBox-Main">
+          <EditProfile setEditBtn={setEditBtn} editBtn={editBtn} />
+        </div>
+      )}
           <div className="dektop-followbar">
             <FollowBar />
           </div>
