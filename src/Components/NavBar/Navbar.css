@@ -30,6 +30,7 @@
   font-weight: bold;
   font-size: 24px;
   font-family: cursive;
+  cursor: pointer;
 }
 
 .search-navbar {

@@ -60,12 +60,23 @@
     display: inline-block;
     padding-left: 0.5rem;
   }
+  .item-name:hover {
+    color: #8e44ad
+  }
   .Menubar-list-item {
     display: flex;
     font-size: large;
   }
+  .Menubar-list-item:hover {
+    cursor: pointer;
+  /* color: gray; */
+  }
   .navlink-MenuBar{
     text-decoration: none;
     color: #0b2239;
+  }
+  .navlink-MenuBar:hover{
+    text-decoration: none;
+    color: #8e44ad
   }
 }
