@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profile1 from "../../Assets/profile1.png";
 import "./Profile.css";
 import {useData} from "../../Context/DataContext"
@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 export const AnyProfile = () => {
 
 const {userHandler}=useParams()
-const {dataState:{users,posts},dataDispatch}=useData()
+const {dataState:{users,posts},dataDispatch,setIsLoading}=useData()
 
 const socialUser = JSON.parse(localStorage.getItem("socialUser"));
 const loggedInUser = users?.find(el => el.username === socialUser.username)
@@ -28,7 +28,13 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
   const socialToken = localStorage.getItem("socialToken")
   const foundUsersPosts = posts?.filter(post => post.username === foundUser?.username)
 
-
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 300)
+  },[])
 
   return (
     <div className="profile-outerContainer">

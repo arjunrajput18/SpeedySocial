@@ -10,7 +10,7 @@ const {commentToggle,setCommentToggle,commentText, setCommentText,dataDispatch,c
 
 const socialToken = localStorage.getItem("socialToken");
 // const socialUser = JSON.parse(localStorage.getItem("socialUser"));
-console.log("commentbox",commentId,commentText)
+// console.log("commentbox",commentId,commentText)
 const handleAddComment = () => {
     if (commentText) {
       // console.log(_id, commentText, socialToken, dataDispatch);

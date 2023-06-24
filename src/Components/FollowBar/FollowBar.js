@@ -22,12 +22,6 @@ const handleFollow=(_id,socialToken,dataDispatch)=>{
   getFollowHandler(_id,socialToken,dataDispatch)
 }
 const user = users?.find(el => el.username === socialUser.username)
-
-// const notFollowedUsers = users?.filter(el => el.username !== socialUser.username && user.following.every(item => item.username !== el.username))
-
-// const nnn=user.followers.map((el)=>el.username)
-
-// console.log(socialUser.following,"a")
 const followingArray=user?.following.map((el)=>el.username)
 const notFollowedUsers= users?.filter(el => el.username !== socialUser.username && !followingArray.includes(el.username))
 

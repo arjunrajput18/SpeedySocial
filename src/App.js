@@ -18,14 +18,19 @@ import {PageNotFound} from "./Features/PageNotFound/PageNotFound"
 // import { Toaster } from "react-hot-toast";
 import { PostDetails } from "./Features/PostDetails/PostDetails";
 import { ToastContainer } from "react-toastify";
+import { Loader } from "./Components/Loader/Loader";
+import { useData } from "./Context/DataContext";
 // import './ToastContainer.css';
 function App() {
+  const {isLoading}=useData()
+  console.log(isLoading,"isLoading")
   return (
     <div className="App">
       <ToastContainer
   position="top-center" autoClose={1200}
   reverseOrder={false}
 />
+{isLoading && <Loader />}
       <Routes>
         <Route
           path="/"

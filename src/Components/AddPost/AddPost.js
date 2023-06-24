@@ -32,8 +32,8 @@ export const AddPost = () => {
   const addNoteHandler = () => {
     if (postId) {
       if (postDetails.content.length > 0 || postDetails.file) {
-        console.log(typeof postId);
-        console.log(postId, "postId", postDetails);
+        // console.log(typeof postId);
+        // console.log(postId, "postId", postDetails);
         editPostHandler(postId, postDetails, dataDispatch, socialToken);
         dataDispatch({ type: "EDIT_POST", payload: null });
         setBtnAddPost(!btnAddPost);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { BsFire } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
@@ -14,32 +14,14 @@ import {  BsClock } from "react-icons/bs";
 
 export const Home = () => {
   const {
-    dataState: { posts,users },setBtnAddPost,btnAddPost
+    dataState: { posts,users },setBtnAddPost,btnAddPost,setIsLoading
   } = useData();
   const defaultPost = {
     _id: uuid(),
     content: "",
     comments: [],
-  };
+  }
   const [postsType, setPostsType] = useState("latest");
-  // const [newPost, setNewPost] = useState(defaultPost);
-  // const socialToken = localStorage.getItem("socialToken");
-//   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
-//   const homePosts = posts?.filter(post => socialUser?.following?.some(el => el.username === post.username));
-//   console.log(homePosts,"home")
-
-// const loggedInUserPosts = posts?.filter(post => post?.username === socialUser?.username);
-
-// const likedPosts = posts?.filter(post => post?.likes?.likedBy?.length > 0);
-// console.log(likedPosts,"likedPosts")
-
-// const sortPostsByLikes = likedPosts?.sort((a, b) => a?.likes?.likedBy.length - b?.likes?.likedBy.length)
-
-// const postsByType = postsType === "latest" ? [ ...homePosts,...loggedInUserPosts] :sortPostsByLikes;
-// console.log("aaaaaa",postsByType)
-
-
-
 
 const socialUser = JSON.parse(localStorage.getItem("socialUser"));
 const loggedInUser = users?.find(el => el.username === socialUser.username)
@@ -58,20 +40,18 @@ const sortPostsByLikes = [...likedPosts]?.sort((a, b) => a.likes.likedBy.length 
 
 const postsByType = postsType === "latest" ? [...loggedInUserPosts.reverse(), ...homePosts].reverse() : sortPostsByLikes;
 
-
-
-
-
-
-
-
-
-
-
 const HandleAddPost=()=>{
   setBtnAddPost(true)
 }
 
+
+useEffect(()=>{
+  window.scrollTo(0, 0)
+  setIsLoading(true)
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 300)
+},[])
 
   return (
     <div className="home">
