@@ -52,14 +52,14 @@ export const Profile = () => {
           <img src={loggedInUser?.profilePic} alt="img1" className="profile-user-logo" />
           <div>
             <div className="profile-heading">
-              <div>
+              <div className="profile-innerHeading">
                 <h4>
                   {loggedInUser?.firstName} {loggedInUser?.lastName}
                 </h4>
                 <p>{loggedInUser?.username}</p>
               </div>
               <div>
-                <button className="updateBtn" onClick={handleEdit}>
+                <button className="EditBtn" onClick={handleEdit}>
                   Edit
                 </button>
               </div>
@@ -83,7 +83,7 @@ export const Profile = () => {
    
 
       <div className="posts">
-        {profileUserPosts?.map((post) => (
+        {profileUserPosts?.reverse().map((post) => (
           <SinglePost key={post.username} data={post} />
         ))}
       </div>

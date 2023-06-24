@@ -54,9 +54,9 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
               {
                 loggedInUser?.following?.some(el => el.username === foundUser?.username)
                 ?
-                <button onClick={() => handleUnfollow(foundUser?._id, socialToken, dataDispatch)} className='profile-edit-btn'>Unfollow</button>
+                <button onClick={() => handleUnfollow(foundUser?._id, socialToken, dataDispatch)} className='EditBtn'>Unfollow</button>
                 :
-                <button onClick={() => handleFollow(foundUser?._id, socialToken, dataDispatch)} className='profile-edit-btn'>Follow</button>
+                <button onClick={() => handleFollow(foundUser?._id, socialToken, dataDispatch)} className='EditBtn'>Follow</button>
             }
             </div>
           </div>
@@ -64,7 +64,7 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
             <p>An aspiring web developer</p>
           </div>
           <div className="flex space-between margin-top-1">
-            <span>3 Posts</span>{" "}
+            <span>{foundUsersPosts.length} Posts</span>{" "}
             <span>{foundUser?.followers.length} Followers</span>{" "}
             <span>{foundUser?.following.length} Following</span>
           </div>
@@ -79,6 +79,11 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
         {
             foundUsersPosts?.map(post => <SinglePost key={post.username} data={post} />)
         }
+        {
+            foundUsersPosts?.length===0 &&
+            <div className="anyProfileInner"><div className="bookmarke-heading margin-top-1">{foundUser?.firstName} {foundUser?.lastName} haven't post anything</div>
+</div>        }
+
       </div>
     </div>
   );

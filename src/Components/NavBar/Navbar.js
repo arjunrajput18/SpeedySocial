@@ -25,7 +25,7 @@ export const Navbar = () => {
       <div className="nav-logo">
         <img src={logo} alt="logo" height={50} width={50} />
       </div>
-      <div className="nav-heading">Speedy Social</div>
+      <div className="nav-heading" onClick={()=>navigate("/")}>Speedy Social</div>
     </div>
     <div className="search-navbar">
       <Search />

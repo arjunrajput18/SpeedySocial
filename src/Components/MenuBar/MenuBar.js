@@ -20,6 +20,16 @@ export const MenuBar = () => {
       toast.success('Logout successful!');
     }, 200);
   }
+ 
+  const getActiveStyle = ({ isActive }) => {
+    if (isActive ) {
+      return {
+        color: isActive && " #8e44ad ",
+        borderRadius: isActive && "0.5rem",
+      }
+    }
+  
+  }
 
 
 // const socialUser=JSON.parse(localStorage.getItem("socialUser"))
@@ -28,26 +38,26 @@ export const MenuBar = () => {
     <div className="Menubar">
       <ul className="Menubar-list">
         <li className="Menubar-list-item size-1">
-          <NavLink to={"/"} className={"navlink-MenuBar"}>
+          <NavLink to={"/"} className={"navlink-MenuBar"}  style={getActiveStyle}>
             <ImHome />
             <span className="item-name">Home</span>
           </NavLink>
         </li>
         <li className="Menubar-list-item size-1">
-          <NavLink to={"/explore"} className={"navlink-MenuBar"}>
+          <NavLink to={"/explore"} className={"navlink-MenuBar"}  style={getActiveStyle}>
             <MdOutlineExplore />
             <span className="item-name">Explore</span>
           </NavLink>
         </li>
         <li className="Menubar-list-item size-1">
-        <NavLink to={"/bookmark"} className={"navlink-MenuBar"} >
+        <NavLink to={"/bookmark"} className={"navlink-MenuBar"}  style={getActiveStyle}>
         <BsFillBookmarkHeartFill />
           <span className="item-name">Bookmark</span>
         </NavLink>
    
         </li>
         <li className="Menubar-list-item size-1">
-          <NavLink to={"/profile"} className={"navlink-MenuBar"}>
+          <NavLink to={"/profile"} className={"navlink-MenuBar"}  style={getActiveStyle}>
             <CgProfile />
             <span className="item-name">Profile</span>
           </NavLink>

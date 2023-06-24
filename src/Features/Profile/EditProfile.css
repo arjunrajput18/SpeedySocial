@@ -229,3 +229,8 @@ margin-bottom: 0.5rem;
   .updateBtn:hover{
     background-color: var(--primary);
   }
+
+
+  .anyProfileInner{
+    margin-top: 3rem;
+  }
