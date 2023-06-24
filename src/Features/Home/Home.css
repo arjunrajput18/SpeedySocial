@@ -119,7 +119,7 @@
 .follow-bar {
   display: block; 
 }
-@media (min-width: 720px) {
+@media (min-width: 1020px) {
   .followbar-mobile{
     display: none;
   }
