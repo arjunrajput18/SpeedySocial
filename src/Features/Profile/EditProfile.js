@@ -46,7 +46,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   ];
 
   const handleImageUpload = (e) => {
-    console.log(e.target.value, "image")
+    // console.log(e.target.value, "image")
     const selectedImg = e.target.files[0];
     setUpdatedProfile((prev) => ({ ...prev, profilePic: URL.createObjectURL(selectedImg) }))
   }
@@ -65,7 +65,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   const updateDetails = (e) => {
     const { name, value } = e.target;
     setUpdatedProfile((prev) => ({ ...prev, [name]: value }));
-    console.log(updatedProfile);
+    // console.log(updatedProfile);
   };
 
   const {firstName,lastName, link, bio } = updatedProfile;
@@ -118,6 +118,9 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
               <input id="file-upload" type="file" onChange={handleImageUpload} />
             </div>
           </div>
+          <div className="infoEditContainer">
+
+         
           <label  className="labelUpdateProfile">First Name:
           <input
               type="text"
@@ -137,7 +140,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
             />
           </label>
           <label className="labelUpdateProfile">
-            Link
+            Link :
             <input
               type="text"
               name="link"
@@ -147,7 +150,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
             />
           </label>
           <div className="labelUpdateProfile">
-            <label className="labelUpdateProfile">Bio </label>
+            <label className="labelUpdateProfile">Bio :</label>
             <textarea
               placeholder="bio"
               className="editPost-input"
@@ -156,8 +159,8 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
               value={bio}
             />
           </div>
-
-          <div>
+          </div>
+          <div className="btn-edit-profile-div">
             <button className="updateBtn" onClick={handleUpdate}>
               Update
             </button>

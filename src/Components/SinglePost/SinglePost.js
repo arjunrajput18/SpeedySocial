@@ -131,7 +131,7 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const userDetails = users?.find((el) => el.username === data.username);
-  console.log(userDetails, "aaaa");
+  // console.log(userDetails, "aaaa");
 
 
 
@@ -274,7 +274,7 @@ export const SinglePost = ({ data, showComment }) => {
               );
               const deleteOnlyYoursCmnt=socialUser?.username===comment?.username
 
-              console.log({ currentUser });
+              {/* console.log({ currentUser }); */}
               return (
                 <div className="comments-added">
                   <img

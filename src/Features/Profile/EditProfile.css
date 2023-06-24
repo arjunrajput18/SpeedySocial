@@ -5,6 +5,16 @@
   justify-content: center; 
   background-color: #33333336;
 }
+
+.infoEditContainer{
+  display: flex;
+  flex-direction: column;
+justify-content: space-evenly;
+}
+.infoEdit{
+  display: flex;
+}
+
 .editInnerConatainer {
   display: flex;
   flex-direction: column;
@@ -18,7 +28,7 @@
   top: 12%;
   position: fixed;
   border-radius: 8px;
-  padding-top:20rem ;
+  padding-top:16rem ;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /*max-height: fit-content;
   */
@@ -48,7 +58,7 @@
 
 .updateBtn {
   padding: 0.4rem 1rem;
-  background-color: var(--primary);
+  background-color: #312d7a;
   color: white;
   margin: 1rem;
   border: none;
@@ -56,7 +66,7 @@
   cursor: pointer;
 }
 .editPost-input {
-  width: 100%;
+  width: 70%;
   height: 100px;
   padding: 10px;
   font-size: 14px;
@@ -121,21 +131,27 @@
 .imgAvatarSelected {
   border-color: gold;
 }
-  .inputp {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #333;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-  
-  .inputp:focus {
-    border-color: #66afe9;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(102, 175, 233, 0.6);
-  }
+.inputp {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  width: 70%;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+  /* margin-left: 2rem; */
+}
+
+.inputp:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.inputp::placeholder {
+  color: #999;
+}
+
   .avatarinfo {
     font-weight: bold;
     font-size: 20px;
@@ -204,3 +220,12 @@ margin-bottom: 0.5rem;
     display: none;
   }
   
+
+
+  .btn-edit-profile-div{
+    display: flex;
+  justify-content: space-evenly;
+  }
+  .updateBtn:hover{
+    background-color: var(--primary);
+  }

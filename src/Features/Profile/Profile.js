@@ -5,13 +5,14 @@ import { useData } from "../../Context/DataContext";
 import { SinglePost } from "../../Components/SinglePost/SinglePost";
 import { useState } from "react";
 import { EditProfile } from "./EditProfile";
+import { useEffect } from "react";
 // import { useParams } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 
 export const Profile = () => {
   // const {userHandler}=useParams()
   const {
-    dataState: { users, posts },editBtn, setEditBtn
+    dataState: { users, posts },editBtn, setEditBtn,setIsLoading
   } = useData();
 
 
@@ -35,6 +36,15 @@ export const Profile = () => {
     setEditBtn(!editBtn);
   };
 
+
+  console.log(loggedInUser,"loggineed")
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 300)
+  },[])
   return (
     <div className="profile-outerContainer">
       <div className="profile-mainContainer">
@@ -49,7 +59,7 @@ export const Profile = () => {
                 <p>{loggedInUser?.username}</p>
               </div>
               <div>
-                <button className="profile-edit-btn" onClick={handleEdit}>
+                <button className="updateBtn" onClick={handleEdit}>
                   Edit
                 </button>
               </div>
@@ -58,7 +68,7 @@ export const Profile = () => {
               <p>{loggedInUser?.bio}</p>
             </div>
             <div className="flex space-between margin-top-1">
-              <span>3 Posts</span> <span>{loggedInUser?.followers.length} Followers</span>{" "}
+              <span>{profileUserPosts.length} Posts</span> <span>{loggedInUser?.followers.length} Followers</span>{" "}
               <span>{loggedInUser?.following.length} Following</span>
             </div>
             <div className="profile-link">

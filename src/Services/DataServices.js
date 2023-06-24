@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getPostData = async (dataDispatch) => {
+export const getPostData = async (dataDispatch,setIsLoading) => {
   try {
     const {
       status,
@@ -11,10 +11,12 @@ export const getPostData = async (dataDispatch) => {
     }
   } catch (error) {
     console.log(error);
+  }finally{
+    setIsLoading(false)
   }
 };
 
-export const getUserData = async (dataDispatch) => {
+export const getUserData = async (dataDispatch,setIsLoading) => {
   try {
     const {
       status,
@@ -25,6 +27,8 @@ export const getUserData = async (dataDispatch) => {
     }
   } catch (error) {
     console.log(error);
+  }finally{
+    setIsLoading(false)
   }
 };
 export const editUserHandler = async (userData, socialToken, dataDispatch) => {
@@ -250,7 +254,7 @@ export const createPostHandler = async (
       }
     );
     if (status === 200 || status === 201) {
-      console.log({posts});
+      // console.log({posts});
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {
@@ -259,7 +263,7 @@ export const createPostHandler = async (
 };
 
 export const getPostDetails = async (postId, dataDispatch) => {
-  console.log(postId, "fff");
+  // console.log(postId, "fff");
 
   try {
     const {
@@ -267,7 +271,7 @@ export const getPostDetails = async (postId, dataDispatch) => {
       data: { post },
     } = await axios.get(`/api/posts/${postId}`);
     if (status === 200 || status === 201) {
-      console.log(post);
+      // console.log(post);
       dataDispatch({ type: "POST_DETAILS", payload: post });
     }
   } catch (error) {
@@ -282,10 +286,7 @@ export const addCommentHandle = async (
   dataDispatch
 ) => {
 
-  console.log({  postId,
-    commentData,
-    socialToken,
-    dataDispatch})
+
   try {
     const {
       status,
@@ -303,7 +304,7 @@ export const addCommentHandle = async (
     );
 
     if (status === 200 || status === 201) {
-      console.log(posts);
+      // console.log(posts);
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {
@@ -318,10 +319,7 @@ export const deleteCommentHandle = async (
   dataDispatch
 ) => {
 
-  console.log({  postId,commentId,
-    commentData,
-    socialToken,
-    dataDispatch})
+
   try {
     const {
       status,
@@ -336,7 +334,7 @@ export const deleteCommentHandle = async (
       }
     );
 
-    console.log(posts);
+    // console.log(posts);
     if (status === 200 || status === 201) {
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
@@ -356,7 +354,7 @@ export const deletePostHandle = async (_id, dataDispatch, socialToken) => {
       },
     });
     if (status === 200 || status === 201) {
-      console.log(posts);
+      // console.log(posts);
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {
@@ -370,7 +368,7 @@ export const editPostHandler= async (
   dataDispatch,
   socialToken
 ) => {
-  console.log(postDetails,postId);
+  // console.log(postDetails,postId);
   try {
     const {
       status,
@@ -385,7 +383,7 @@ export const editPostHandler= async (
       }
     );
     if (status === 200 || status === 201) {
-      console.log(posts, "posssssssssssss");
+      // console.log(posts, "posssssssssssss");
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
     // console.log(resp)
