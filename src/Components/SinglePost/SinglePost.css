@@ -145,8 +145,10 @@
 .flex-edit-delete {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   gap: 0.5rem;
+  align-self: flex-start;
+  padding-left: 0.6rem;
 }
 
 .post-btn-comment.delete {
