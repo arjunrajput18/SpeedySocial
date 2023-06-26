@@ -24,3 +24,7 @@
 .padding-5{
 padding: 0.5rem;
 }
+.underline-hover:hover {
+    text-decoration: underline;
+  }
+  

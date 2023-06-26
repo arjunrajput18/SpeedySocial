@@ -5,7 +5,7 @@ import { MdOutlineExplore } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useData } from "../../Context/DataContext";
@@ -36,6 +36,11 @@ export const MenuBar = () => {
       };
     }
   };
+
+const navigate=useNavigate()
+  const handleNavigate=()=>{
+    navigate("/profile")
+  }
 
   // const socialUser=JSON.parse(localStorage.getItem("socialUser"))
   // const userHandler=socialUser.userHandler
@@ -94,7 +99,7 @@ export const MenuBar = () => {
             width={45}
             className=" flex align-center justify-center margin-top-1"
           />
-          <div>
+          <div onClick={handleNavigate} className="pointer">
 
           <p className="padding-5">
             {loggedInuser?.firstName} {loggedInuser?.lastName}

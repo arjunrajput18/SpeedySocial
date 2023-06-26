@@ -6,6 +6,7 @@ import {
   getFollowHandler,
   getUnfollowHandler,
 } from "../../Services/DataServices";
+import { useNavigate } from "react-router-dom";
 export const ShowFollower = ({ setShowFollowing,foundUser }) => {
   const {
     dataState: { users, posts },
@@ -16,20 +17,18 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
     (user) => user.username === socialUser.username
   );
 
-  const socialToken = localStorage.getItem("socialToken");
+const  navigate=useNavigate()
 
-  const handleFollow = (_id, socialToken, dataDispatch) => {
-    console.log({_id, socialToken, dataDispatch})
-    getFollowHandler(_id, socialToken, dataDispatch);
-  };
-//   console.log(loggedInUser.following, "llll");
-  const handleUnfollow = (followUserId, socialToken, dataDispatch) => {
-    console.log({ followUserId, socialToken });
-    getUnfollowHandler(followUserId, socialToken, dataDispatch);
-  };
+const handleNavigate=(data)=>{
+console.log(data)
+if(data!==socialUser.userHandler){
+  navigate(`/profile/${data}`)
+}else{
+  navigate("/profile")
+}
+}
 
 
-  console.log(loggedInUser?.followers)
 
   return (
     <div className="ShowFollowing-mainContainer">
@@ -49,39 +48,14 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
           </div>
         )}
         <div>
-          {foundUser?.followers.map((data) => (
-            <div className="followingUser">
+          {foundUser?.followers?.map((data) => (
+            <div className="followingUser" onClick={()=>handleNavigate(data.userHandler)}>
               <div className="padding-5">
                 <img src={data?.profilePic} alt="img" height={30} width={30} />
               </div>
               <p className="padding-5">
                 {data?.firstName} {data?.lastName}
               </p>
-              <div className="padding-5">
-                {/* <button className="profile-edit-btn">Edit</button> */}
-
-                {foundUser?.following?.some(
-                  (el) => el.username === data?.username
-                ) ? (
-                  <button
-                    onClick={() =>
-                      handleUnfollow(data?._id, socialToken, dataDispatch)
-                    }
-                    className="EditBtn"
-                  >
-                    Unfollow
-                  </button>
-                ) : (
-                  <button
-                    onClick={() =>
-                      handleFollow(data?._id, socialToken, dataDispatch)
-                    }
-                    className="EditBtn"
-                  >
-                    Follow
-                  </button>
-                )}
-              </div>
             </div>
           ))}
         </div>
