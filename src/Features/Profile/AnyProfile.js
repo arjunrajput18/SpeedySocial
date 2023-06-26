@@ -106,10 +106,10 @@ export const AnyProfile = () => {
 
             <div className="flex space-between margin-top-1 ">
               <span>{foundUsersPosts.length} Posts</span>{" "}
-              <span onClick={followerHandle} className="pointer">
+              <span onClick={followerHandle} className="pointer  underline-hover">
                 {foundUser?.followers.length} Followers
               </span>{" "}
-              <span onClick={followingHandle} className="pointer">
+              <span onClick={followingHandle} className="pointer  underline-hover">
                 {foundUser?.following.length} Following
               </span>
             </div>

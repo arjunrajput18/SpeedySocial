@@ -30,7 +30,7 @@ align-items: center;
   background-color: rgba(0, 0, 0, 0.457);
   /* border: 5px solid red; */
 height: 100%;
-top: -2%;
+top: -4%;
 z-index: 10;
 }
 .editBox-bottom{
@@ -39,7 +39,7 @@ z-index: 10;
   background-color: rgba(0, 0, 0, 0.457);
   /* border: 5px solid red; */
 height: 14vh;
-top: 98%;
+top: 96%;
 /* bottom: 2%; */
 z-index: 10;
 }

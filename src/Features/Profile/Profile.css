@@ -3,7 +3,7 @@
   background-color: var(--secondary);
   
   /* border: solid; */
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   min-height: 100vh;
   max-height: fit-content;
   /* position: fixed; */
