@@ -24,7 +24,9 @@ useEffect(()=>{
     {newBookmark?.length > 0 ? (
       newBookmark.map((data) => <SinglePost data={data} key={data._id} />)
     ) : (
+      
       <p className='bookmarke-heading'>No bookmarks available.</p>
+      
     )}
   </div>
   )

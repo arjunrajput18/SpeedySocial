@@ -79,4 +79,14 @@
     text-decoration: none;
     color: #8e44ad
   }
+  .MenuBarProfile{
+    display: flex;
+    color: #8e44ad;
+    /* align-items: flex-end; */
+    position: fixed;
+    bottom: 5%;
+  }
+  .smaller{
+    font-size: 0.8rem;
+  }
 }

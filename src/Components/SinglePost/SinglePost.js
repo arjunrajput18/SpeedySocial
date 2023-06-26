@@ -131,9 +131,8 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const userDetails = users?.find((el) => el.username === data.username);
-  // console.log(userDetails, "aaaa");
-
-
+  const formattedCreatedAt = new Date(data?.createdAt).toLocaleDateString();
+  const createTime= new Date(data?.createdAt).toLocaleTimeString();
 
   return (
     <div className="singlePost-MainContainer">
@@ -155,7 +154,9 @@ export const SinglePost = ({ data, showComment }) => {
                 
               </p>
               <p className="single-profile-userId">@{userDetails?.userHandler}</p>
-              <p className="single-profile-date-time">20/06/2023 16:30</p>
+              <p className="single-profile-date-time">{formattedCreatedAt} {createTime}</p>
+              {/* <p>Created At: {formattedCreatedAt} {createTime}</p> */}
+      {/* <p>Updated At: {formattedUpdatedAt} {updateTime}</p> */}
             </div>
           </div>
           <div>

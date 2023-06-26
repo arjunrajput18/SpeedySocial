@@ -92,7 +92,7 @@ export const getDislikeData = async (_id, dataDispatch, sociaToken) => {
       }
     );
     if (status === 200 || status === 201) {
-      console.log(posts, "postttt");
+      // console.log(posts, "postttt");
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
@@ -101,10 +101,7 @@ export const getDislikeData = async (_id, dataDispatch, sociaToken) => {
 };
 
 export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
-  console.log({  dataDispatch,
-    sociaToken,
-    _id,
-    username})
+
   try {
     const {
       status,
@@ -133,10 +130,7 @@ export const getRemoveBookmarkData = async (
   _id,
   username
 ) => {
-  console.log({  dataDispatch,
-    sociaToken,
-    _id,
-    username})
+ 
   try {
     const {
       status,
@@ -174,6 +168,7 @@ export const getFollowHandler = async (
   socialToken,
   dataDispatch
 ) => {
+
   try {
     const {
       status,
