@@ -36,9 +36,9 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
 
   const avatars = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR--L4LzR5aY8SMjeSy4NreBVChBQ71_KnRKw&usqp=CAU",
-    "https://i0.wp.com/yumetwinsblog.wpcomstaging.com/wp-content/uploads/2021/12/be02b003-df4b-4fda-b6d7-0f6ad6c111f4_900px-363Spheal.png?fit=640%2C640&ssl=1",
+    "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
     "https://seeklogo.com/images/P/pokeball-logo-DC23868CA1-seeklogo.com.png",
-    "https://w0.peakpx.com/wallpaper/344/986/HD-wallpaper-ash-greninja-pokemon.jpg",
+    "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png",
     "https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     "https://w0.peakpx.com/wallpaper/204/837/HD-wallpaper-gengar-ghost-pokemon.jpg",
     "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/47148/article_aligned%402x.jpg",
