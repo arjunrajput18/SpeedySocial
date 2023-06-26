@@ -19,9 +19,11 @@ export const DataContextProvider = ({ children }) => {
    const [isLoading, setIsLoading] = useState(true);
    const [editBtn, setEditBtn] = useState(false);
     useEffect(()=>{
-    getPostData(dataDispatch,setIsLoading)
+    getPostData(dataDispatch,setIsLoading,)
     getUserData(dataDispatch,setIsLoading)
    },[])
+
+   
   return <DataContext.Provider value={{commentText,editBtn, setEditBtn, setCommentText,dataState,dataDispatch,userSearch,setUserSearch,btnAddPost,setBtnAddPost,setCommentToggle,commentToggle,commentId,setCommentId,isLoading, setIsLoading}}>{children}</DataContext.Provider>;
 };
 

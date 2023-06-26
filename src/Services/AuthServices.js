@@ -20,7 +20,7 @@ export const loginUser = async (creds, navigate,setIsLoggedIn) => {
 };
 
 export const signupUser = async (data, navigate,setIsLoggedIn,dataDispatch) => {
-  console.log(data)
+  // console.log(data)
   try {
     const {
       status,

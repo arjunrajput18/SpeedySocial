@@ -131,18 +131,9 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const userDetails = users?.find((el) => el.username === data.username);
-  // console.log(userDetails, "aaaa");
-  // const dateObj = new Date(createdAt);
-
-// const formattedDate = dateObj.toLocaleDateString();
-// const formattedTime = dateObj.toLocaleTimeString();
-console.log("a")
   const formattedCreatedAt = new Date(data?.createdAt).toLocaleDateString();
   const createTime= new Date(data?.createdAt).toLocaleTimeString();
-  console.log(createTime)
-  // const updateTime= new Date(data?.createdAt).toLocaleTimeString();
-  // const formattedUpdatedAt = new Date(data?.updatedAt).toLocaleDateString();
-console.log("hi")
+
   return (
     <div className="singlePost-MainContainer">
       <div className="singlepost-innerContainer">

@@ -23,7 +23,7 @@ import { useData } from "./Context/DataContext";
 // import './ToastContainer.css';
 function App() {
   const {isLoading}=useData()
-  console.log(isLoading,"isLoading")
+  // console.log(isLoading,"isLoading")
   return (
     <div className="App">
       <ToastContainer

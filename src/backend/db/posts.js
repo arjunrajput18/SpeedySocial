@@ -46,30 +46,30 @@ export const posts = [
     username: "ArjunsinghRajput@gmail.com",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     userHandler:"arjunajput20",
+    createdAt: new Date(2021, 5, 25, 12, 0, 0),
+    updatedAt: formatDate(),
+  },
+  {
+    _id:uuid(),
+    content:
+      "continue ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    file:"https://media.tenor.com/PLqmB_SmXQMAAAAM/clouds-sky.gif",
+    comments:[  {
+      _id: uuid(),
+      username: "donaldduck@gmail.com",
+      text: "Great post!"
+    }],
+    username: "ArjunsinghRajput@gmail.com",
+    profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
+    userHandler:"arjunajput20",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
-  // {
-  //   _id:uuid(),
-  //   content:
-  //     "continue ",
-  //   likes: {
-  //     likeCount: 0,
-  //     likedBy: [],
-  //     dislikedBy: [],
-  //   },
-  //   file:"https://media.tenor.com/PLqmB_SmXQMAAAAM/clouds-sky.gif",
-  //   comments:[  {
-  //     _id: uuid(),
-  //     username: "donaldduck@gmail.com",
-  //     text: "Great post!"
-  //   }],
-  //   username: "ArjunsinghRajput@gmail.com",
-  //   profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
-  //   userHandler:"arjunajput20",
-  //   createdAt: formatDate(),
-  //   updatedAt: formatDate(),
-  // },
   // {
   //   _id:uuid(),
   //   content:
@@ -214,7 +214,7 @@ export const posts = [
   //   file:"https://images.pexels.com/photos/1805053/pexels-photo-1805053.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   //   profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
   //   userHandler:"spongeBob123",
-  //   createdAt: formatDate(),
+  //   createdAt: new Date(2020, 5, 25, 12, 0, 1),
   //   updatedAt: formatDate(),
   // },
   // {

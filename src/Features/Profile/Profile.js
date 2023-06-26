@@ -6,15 +6,21 @@ import { SinglePost } from "../../Components/SinglePost/SinglePost";
 import { useState } from "react";
 import { EditProfile } from "./EditProfile";
 import { useEffect } from "react";
+import { ShowFollowing } from "./ShowFollowing";
+import { ShowFollower } from "./ShowFollower";
 // import { useParams } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 
 export const Profile = () => {
   // const {userHandler}=useParams()
   const {
-    dataState: { users, posts },editBtn, setEditBtn,setIsLoading
+    dataState: { users, posts },
+    editBtn,
+    setEditBtn,
+    setIsLoading,
   } = useData();
 
+  const [showFollowing, setShowFollowing] = useState("");
 
   // console.log(users,"usersssss")
   // const user=users
@@ -27,7 +33,7 @@ export const Profile = () => {
 
   // const user=users?.find(data=>data.userHandler===userHandler)
 
-
+  // console.log(loggedInUser?.following);
   const profileUserPosts = posts?.filter(
     (post) => post.username === socialUser.username
   );
@@ -36,20 +42,35 @@ export const Profile = () => {
     setEditBtn(!editBtn);
   };
 
-
-  console.log(loggedInUser,"loggineed")
-  useEffect(()=>{
-    window.scrollTo(0, 0)
-    setIsLoading(true)
+  // console.log(loggedInUser, "loggineed");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false)
-    }, 300)
-  },[])
+      setIsLoading(false);
+    }, 300);
+  }, []);
+
+  const followingHandle = () => {
+    if (loggedInUser?.following.length > 0) {
+      setShowFollowing("following");
+    }
+  };
+  const followerHandle = () => {
+    if (loggedInUser?.followers.length > 0) {
+      setShowFollowing("followers");
+    }
+  };
+
   return (
     <div className="profile-outerContainer">
       <div className="profile-mainContainer">
         <div className="profile-innerContainer">
-          <img src={loggedInUser?.profilePic} alt="img1" className="profile-user-logo" />
+          <img
+            src={loggedInUser?.profilePic}
+            alt="img1"
+            className="profile-user-logo"
+          />
           <div>
             <div className="profile-heading">
               <div className="profile-innerHeading">
@@ -67,10 +88,36 @@ export const Profile = () => {
             <div className="margin-top-1">
               <p>{loggedInUser?.bio}</p>
             </div>
-            <div className="flex space-between margin-top-1">
-              <span>{profileUserPosts.length} Posts</span> <span>{loggedInUser?.followers.length} Followers</span>{" "}
-              <span>{loggedInUser?.following.length} Following</span>
+            <div className="flex space-between margin-top-1 ">
+              <span>{profileUserPosts.length} Posts</span>{" "}
+              <span onClick={followerHandle} className="pointer">
+                {loggedInUser?.followers.length} Followers
+              </span>{" "}
+              <span onClick={followingHandle} className="pointer">
+                {loggedInUser?.following.length} Following
+              </span>
             </div>
+            {showFollowing === "following" && (
+              <div className="modalFollowing">
+                <div className="modalContent">
+                  <ShowFollowing
+                    setShowFollowing={setShowFollowing}
+                    foundUser={loggedInUser}
+                  />
+                </div>
+              </div>
+            )}
+            {showFollowing === "followers" && (
+              <div className="modalFollowing">
+                <div className="modalContent">
+              <ShowFollower
+                setShowFollowing={setShowFollowing}
+                foundUser={loggedInUser}
+              />
+                   </div>
+              </div>
+            )}
+
             <div className="profile-link">
               <a href={loggedInUser?.link} target="_blank" rel="noreferrer">
                 {loggedInUser?.link}
@@ -79,8 +126,6 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-
-   
 
       <div className="posts">
         {profileUserPosts?.reverse().map((post) => (
