@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { useData } from "../../Context/DataContext";
 import { toast } from "react-hot-toast";
+import { useEffect } from "react";
 export const Signup = () => {
 
 const {dataDispatch}=useData()
@@ -15,12 +16,13 @@ const {dataDispatch}=useData()
     firstName: "",
     lastName: "",
     username: "",
+    // userHandler: `${this?.username}`,
     password: "",
     profilePic: "https://www.pngmart.com/files/22/Charizard-Pokemon-Download-PNG-Image.png",
     followers:[],
     following:[],
     bookmarks:[],
-    // userHandler:this.firstName
+    userHandler:""
   });
   const navigate = useNavigate();
 const {setIsLoggedIn}=useAuth()
@@ -39,6 +41,12 @@ const {setIsLoggedIn}=useAuth()
     }
   };
 
+  useEffect(() => {
+    setSignUpDetails(prevState => ({
+      ...prevState,
+      userHandler: prevState.username
+    }));
+  }, [signUpDetails.username]);
 
   return (
     <div className="mainSignup-container">

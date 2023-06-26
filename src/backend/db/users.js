@@ -78,7 +78,20 @@ export const users = [
     userHandler: "spongeBob123",
     profilePic: "https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     bookmarks: [],
-    followers: [],
+    followers: [  {
+      _id: 9,
+      firstName: "Tom",
+      lastName: "Cat",
+      username: "tomcat@gmail.com",
+      password: "tomCat123",
+      userHandler: "tomCat123",
+      bookmarks: [],
+      followers: [],
+      profilePic: "https://www.pngmart.com/files/22/Charizard-Pokemon-Download-PNG-Image.png",
+      following: [],
+      createdAt: formatDate(),
+      updatedAt: formatDate()
+    }],
     following: [],
     createdAt: formatDate(),
     updatedAt: formatDate()
@@ -126,7 +139,7 @@ export const users = [
     updatedAt: formatDate()
   },
   {
-    _id: uuid(),
+    _id: 9,
     firstName: "Tom",
     lastName: "Cat",
     username: "tomcat@gmail.com",
