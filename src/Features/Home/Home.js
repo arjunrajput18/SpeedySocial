@@ -123,7 +123,7 @@ const HandleSortBy=(e)=>{
       <div className="follow-bar">
         <FollowBar />
       </div>
-      {btnAddPost && <AddPost />}
+ 
 
       {postsByType.length > 0 ? (
         <div className="posts">

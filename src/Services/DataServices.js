@@ -5,7 +5,7 @@ export const getPostData = async (dataDispatch,setIsLoading) => {
     const {
       status,
       data: { posts },
-    } = await axios.get("/api/posts");
+    } = await axios.get(`/api/posts`);
     if (status === 200 || status === 201) {
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }

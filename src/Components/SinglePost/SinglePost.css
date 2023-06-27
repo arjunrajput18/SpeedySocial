@@ -11,6 +11,7 @@
   align-items: flex-start;
   margin-top: 1rem;
   width: 100%;
+  position: relative;
 }
 
 .singlePost-MainContainer:hover {

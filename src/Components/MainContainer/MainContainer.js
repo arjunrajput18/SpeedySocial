@@ -7,9 +7,10 @@ import { RequireAuth } from "../../Auth/RequireAuth";
 import { CommentBox } from "../CommentBox/CommentBox";
 import { useData } from "../../Context/DataContext";
 import { EditProfile } from "../../Features/Profile/EditProfile";
+import { AddPost } from "../AddPost/AddPost";
 
 export const MainContainer = ({ children }) => {
-  const {commentToggle,setEditBtn,editBtn}=useData()
+  const {commentToggle,setEditBtn,editBtn,btnAddPost}=useData()
   return (
     <>
       <RequireAuth>
@@ -19,9 +20,10 @@ export const MainContainer = ({ children }) => {
             <MenuBar />
           </div>
           <div> {children}</div>
-          
+          {btnAddPost && <AddPost />}
          {commentToggle && <div className="overComment"><CommentBox/></div>}
          {editBtn && <div className="editBox-bottom"></div>}
+
          {editBtn && (
         <div className="editBox-Main">
           <EditProfile setEditBtn={setEditBtn} editBtn={editBtn} />

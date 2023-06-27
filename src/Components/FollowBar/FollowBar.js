@@ -29,7 +29,7 @@ const notFollowedUsers= users?.filter(el => el.username !== socialUser.username 
     <div className="main-followbar">
     <div className="inner-followbar">
       <p className="followbar-heading">Suggested Users</p>
-      <div className="FollowBar">
+      <div className={`${notFollowedUsers.length===0 ?"FollowBar-lowHeight":"FollowBar"}`}>
         <ul className="followBar-list">
           {notFollowedUsers?.map((data) => (
             <li className="followBar-list-item" key={data._id}>
@@ -62,6 +62,8 @@ const notFollowedUsers= users?.filter(el => el.username !== socialUser.username 
               {/* <hr /> */}
             </li>
           ))}
+          {notFollowedUsers.length===0 && <div className="followbar-heading">Nothing to Suggest</div>}
+
         </ul>
       </div>
     </div>

@@ -1,7 +1,12 @@
 import React from "react";
 import "./MenuBar.css";
 import { ImHome } from "react-icons/im";
-import { MdOutlineExplore } from "react-icons/md";
+import {
+  MdDarkMode,
+  MdLightMode,
+  MdOutlineDarkMode,
+  MdOutlineExplore,
+} from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
@@ -9,11 +14,14 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useData } from "../../Context/DataContext";
+import { CiDark } from "react-icons/ci";
 // import {useData} from "../../Context/DataContext"
 export const MenuBar = () => {
   const { setIsLoggedIn } = useAuth();
   const {
     dataState: { users },
+    darkMode,
+    setDarkMode,
   } = useData();
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInuser = users?.find(
@@ -37,10 +45,10 @@ export const MenuBar = () => {
     }
   };
 
-const navigate=useNavigate()
-  const handleNavigate=()=>{
-    navigate("/profile")
-  }
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/profile");
+  };
 
   // const socialUser=JSON.parse(localStorage.getItem("socialUser"))
   // const userHandler=socialUser.userHandler
@@ -77,6 +85,23 @@ const navigate=useNavigate()
             <span className="item-name">Bookmark</span>
           </NavLink>
         </li>
+        {darkMode ? (
+          <li
+            className="Menubar-list-item size-1"
+            onClick={() => setDarkMode(false)}
+          >
+            <MdLightMode />
+            <span className="item-name">Light Mood</span>
+          </li>
+        ) : (
+          <li
+            className="Menubar-list-item size-1"
+            onClick={() => setDarkMode(true)}
+          >
+            <MdDarkMode />
+            <span className="item-name">Dark Mood</span>
+          </li>
+        )}
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/profile"}
@@ -91,22 +116,21 @@ const navigate=useNavigate()
           <IoMdLogOut />
           <span className="item-name">Logout</span>
         </li>
-        <div className="MenuBarProfile">
+        <div className="MenuBarProfile hideBox">
           <img
             src={loggedInuser?.profilePic}
             alt="img"
             height={45}
             width={45}
-            className=" flex align-center justify-center margin-top-1"
+            className=" flex align-center justify-center margin-top-1 "
           />
           <div onClick={handleNavigate} className="pointer">
-
-          <p className="padding-5">
-            {loggedInuser?.firstName} {loggedInuser?.lastName}
-          </p>
-          <p className="single-profile-userId smaller">
-            {loggedInuser?.userHandler} 
-          </p>
+            <p className="padding-5">
+              {loggedInuser?.firstName} {loggedInuser?.lastName}
+            </p>
+            <p className="single-profile-userId smaller">
+              {loggedInuser?.userHandler}
+            </p>
           </div>
         </div>
       </ul>
