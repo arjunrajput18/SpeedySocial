@@ -19,6 +19,7 @@ export const AddPost = () => {
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
+    setIsLoading
   } = useData();
 
   const [images, setImages] = useState();
@@ -35,6 +36,7 @@ export const AddPost = () => {
         // console.log(typeof postId);
         // console.log(postId, "postId", postDetails);
         editPostHandler(postId, postDetails, dataDispatch, socialToken);
+        
         dataDispatch({ type: "EDIT_POST", payload: null });
         setBtnAddPost(!btnAddPost);
         toast.success("Post Updated!");
@@ -55,6 +57,7 @@ export const AddPost = () => {
   const fileUploadHandle = (e) => {
     const file = e.target.files[0];
     setImages(URL.createObjectURL(file));
+    setIsLoading(false)
     setPostDetails({ ...postDetails, file: URL.createObjectURL(file) });
     toast.success("Post Selected!");
   };
@@ -62,6 +65,7 @@ export const AddPost = () => {
   useEffect(() => {
     const postData = posts?.find(({ _id }) => postId === _id);
     if (postId) {
+      // console.log(postData,"postDAtatatatagoing")
       setPostDetails(postData);
     } else {
       setPostDetails({
@@ -78,6 +82,11 @@ export const AddPost = () => {
     setPostDetails({ ...postDetails, file: "" });
     toast.success("Post Removed!");
   };
+
+  const  handleBack=()=>{
+    dataDispatch({ type: "EDIT_POST", payload: null });
+    setBtnAddPost(!btnAddPost)
+  }
   return (
     <div className="AddPost-mainDiv">
       <div className="AddPost-MainContainer">
@@ -85,7 +94,7 @@ export const AddPost = () => {
           <div>
             <IoMdArrowRoundBack
               className="logo-back-addPost"
-              onClick={() => setBtnAddPost(!btnAddPost)}
+              onClick={handleBack}
             />
           </div>
           <div>
@@ -106,18 +115,19 @@ export const AddPost = () => {
                 id="upload"
                 class="input-file"
                 onChange={fileUploadHandle}
+                
               />
               <label for="upload" class="file-label">
                 {/* <BsFillImageFill /> */}
                 <BiImageAdd />
               </label>
             </div>
-            {images && (
+            {postDetails.file && (
               <div className="image-preview-container">
                 <div className="image-preview">
                   <img
-                    src={images}
-                    alt="img1"
+                    src={postDetails.file}
+                    alt="img2221"
                   
                   />
                   <button

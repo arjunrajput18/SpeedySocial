@@ -195,4 +195,18 @@
   .main-followbar{
     padding-top: 3rem;
   }
+  .FollowBar-lowHeight{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 0.6rem;
+    margin-top: 1rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #eeeeee;
+  }
 }
