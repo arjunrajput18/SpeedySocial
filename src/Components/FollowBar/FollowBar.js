@@ -8,7 +8,7 @@ import { getFollowHandler } from "../../Services/DataServices";
 
 export const FollowBar = () => {
   const {userSearch,
-    dataState: { users },dataDispatch
+    dataState: { users },dataDispatch,darkMode
   } = useData();
   const socialToken = localStorage.getItem("socialToken");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -26,14 +26,14 @@ const followingArray=user?.following.map((el)=>el.username)
 const notFollowedUsers= users?.filter(el => el.username !== socialUser.username && !followingArray.includes(el.username))
 
   return (
-    <div className="main-followbar">
+    <div className={`main-followbar  ${darkMode && "bgDarkmode"}`}>
     <div className="inner-followbar">
-      <p className="followbar-heading">Suggested Users</p>
-      <div className={`${notFollowedUsers.length===0 ?"FollowBar-lowHeight":"FollowBar"}`}>
-        <ul className="followBar-list">
+      <p className={`followbar-heading ${darkMode && "bgDarkmode"}`}>Suggested Users</p>
+      <div className={`${notFollowedUsers.length===0 ?"FollowBar-lowHeight":"FollowBar"} ${darkMode && "bgDarkmode"} `}>
+        <ul className={`followBar-list ${darkMode && "bgDarkmode"}`}>
           {notFollowedUsers?.map((data) => (
             <li className="followBar-list-item" key={data._id}>
-              <div className="profile-follow">
+              <div className={`profile-follow ${darkMode && "bgDarkmode"}`}>
                 <img
                   src={data.profilePic}
                   alt="profile1"

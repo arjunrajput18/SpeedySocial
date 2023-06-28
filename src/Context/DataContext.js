@@ -30,6 +30,6 @@ export const DataContextProvider = ({ children }) => {
   //  }, [page]);
  
   return <DataContext.Provider value={{commentText,editBtn, setEditBtn, setCommentText,dataState,dataDispatch,userSearch,setUserSearch,btnAddPost,setBtnAddPost,setCommentToggle,commentToggle,commentId,setCommentId,isLoading, setIsLoading,darkMode,setDarkMode}}>{children}</DataContext.Provider>;
-};
+}; 
 
 export const useData = () => useContext(DataContext);

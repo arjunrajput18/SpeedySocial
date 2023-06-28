@@ -17,7 +17,7 @@ export const Home = () => {
     dataState: { posts, users },
     setBtnAddPost,
     btnAddPost,
-    setIsLoading,
+    setIsLoading, darkMode
   } = useData();
   const defaultPost = {
     _id: uuid(),
@@ -25,8 +25,6 @@ export const Home = () => {
     comments: [],
   };
   const [postsType, setPostsType] = useState("latest");
-
-
 
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInUser = users?.find((el) => el.username === socialUser.username);
@@ -52,20 +50,34 @@ export const Home = () => {
 
   // sortPostsByLikes
 
-  const postsByType = postsType === "latest" ? combinedData.sort(
-    (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-  ) :  postsType === "oldest"?combinedData.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)):sortPostsByLikes;
+  const postsByType =
+    postsType === "latest"
+      ? combinedData.sort(
+          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+        )
+      : postsType === "oldest"
+      ? combinedData.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        )
+      : sortPostsByLikes;
 
   const HandleAddPost = () => {
     setBtnAddPost(true);
   };
 
-
-const HandleSortBy=(e)=>{
-  const sortVal=e.target.value  // setSortBy()
-  // console.log(sortVal)
-  setPostsType(e.target.value)
-}
+  const getActiveStyle = ({ isActive }) => {
+    if (isActive) {
+      return {
+        color: isActive && " #8e44ad ",
+        borderRadius: isActive && "0.5rem",
+      };
+    }
+  };
+  const HandleSortBy = (e) => {
+    const sortVal = e.target.value; // setSortBy()
+    // console.log(sortVal)
+    setPostsType(e.target.value);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -76,36 +88,45 @@ const HandleSortBy=(e)=>{
   }, []);
 
   return (
-    <div className="home">
-      <div className="home-input-box">
-        <button className="cgProfile-input-post">
-          <CgProfile className="profile-logo-input" />
+    <div className={`home ${darkMode && "bgDarkmode"}`}>
+      <div className={`home-input-box ${darkMode && "bgSecondaryDarkMode"}`}>
+        <button className={`cgProfile-input-post ${darkMode && "bgSecondaryDarkMode"}`}>
+          <CgProfile className={`profile-logo-input ${darkMode && "bgSecondaryDarkMode"}`} />
         </button>
         <input
           type="btn"
           placeholder="what's on your mind?"
-          className="addPost"
+          className={`addPost ${darkMode && "bgSecondaryDarkMode"}`}
           onClick={HandleAddPost}
           disabled={btnAddPost}
         />
-        <button className="plus-logo-input">
+        <button className={`plus-logo-input ${darkMode && "bgSecondaryDarkMode"}`}>
           <AiFillPlusCircle onClick={HandleAddPost} />
         </button>
       </div>
       <div className="trend-latest">
-        <select className="btn-TL latest-btn"    onClick={HandleSortBy}   onChange={HandleSortBy}>
+        <select
+          className={`btn-TL latest-btn ${darkMode && "bgSecondaryDarkMode"}`}
+          onClick={HandleSortBy}
+          onChange={HandleSortBy}
+        >
           <option
-   
-            className="btn-TL btn-L trending-btn "
+            className={`btn-TL btn-L trending-btn ${
+              postsType === "latest" ? "bgColor" : ""
+            }  ${darkMode && "bgSecondaryDarkMode"}`}
             value="latest"
           >
             <BsClock />
+            <p className={` ${darkMode && "bgSecondaryDarkMode"}`}>
+              
             Latest Post
+            </p>
           </option>
 
           <option
-        
-            className="btn-TL btn-L trending-btn"
+            className={`btn-TL btn-L trending-btn  ${
+              postsType === "oldest" ? "bgColor" : ""
+            }`}
             value={"oldest"}
           >
             <BsClock />
@@ -114,16 +135,33 @@ const HandleSortBy=(e)=>{
         </select>
         <button
           onClick={() => setPostsType("trending")}
-          className="btn-TL latest-btn"
+          className={`btn-TL latest-btn ${
+            postsType === "trending" ? "bgColor" : ""
+          }  ${darkMode && "bgSecondaryDarkMode"}`}
         >
           <BsFire />
           Trending
         </button>
       </div>
-      <div className="follow-bar">
+      <div className={`follow-bar  ${darkMode && "bgSecondaryDarkMode"} `}>
         <FollowBar />
       </div>
- 
+      {postsType === "trending" && (
+        <p className={`flex justify-center trendingPhotosHeading ${darkMode && "bgDarkmode"}`}>
+          <BsFire /> Trending posts
+        </p>
+      )}
+      {postsType === "latest" && (
+        <p className={`flex justify-center trendingPhotosHeading ${darkMode && "bgDarkmode"}`}>
+          Latest posts
+        </p>
+      )}
+
+      {postsType === "oldest" && (
+        <p className={`flex justify-center trendingPhotosHeading ${darkMode && "bgDarkmode"}`}>
+          Oldest posts
+        </p>
+      )}
 
       {postsByType.length > 0 ? (
         <div className="posts">

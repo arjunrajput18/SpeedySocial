@@ -10,12 +10,12 @@ import { EditProfile } from "../../Features/Profile/EditProfile";
 import { AddPost } from "../AddPost/AddPost";
 
 export const MainContainer = ({ children }) => {
-  const {commentToggle,setEditBtn,editBtn,btnAddPost}=useData()
+  const {commentToggle,setEditBtn,editBtn,btnAddPost,darkMode}=useData()
   return (
     <>
       <RequireAuth>
         <Navbar />
-        <div className="mainContainer">
+        <div className={`mainContainer ${darkMode && "bgDarkmode"}`}>
           <div>
             <MenuBar />
           </div>

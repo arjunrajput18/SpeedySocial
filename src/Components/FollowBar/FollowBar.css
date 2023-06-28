@@ -22,7 +22,7 @@
   /* overflow: hidden; */
   /* margin-right:5% ; */
   /* margin-left: 5%; */
-  overflow-x: scroll;
+  overflow-x: auto;
  
 }
 .FollowBar::-webkit-scrollbar {
@@ -113,7 +113,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #eeeeee;
-
+    overflow-x:hidden;;
   /* position: fixed; */
   }
 

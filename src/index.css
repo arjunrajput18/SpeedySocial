@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto+Slab:wght@300&family=Roboto:wght@100;300&family=Rubik:wght@300&display=swap%22");
+  @import url("https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@300&family=Open+Sans:wght@300&family=Quicksand:wght@300&family=Roboto+Slab:wght@300&family=Roboto:wght@100;300&family=Rubik:wght@300&display=swap%22");
 
-:root {
+
+  :root {
   --primary: #0b2239;;
   --secondary: #edf2f6;
+  --primary-dark:#1f1a24;
 }
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Quicksand", 'Montserrat',sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

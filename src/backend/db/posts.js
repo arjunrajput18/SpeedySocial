@@ -73,7 +73,95 @@ export const posts = [
     file:"https://e1.pxfuel.com/desktop-wallpaper/196/963/desktop-wallpaper-chittorgarh-fort-chittorgarh.jpg",
     createdAt:new Date(2022, 11, 9, 11, 10, 18),
     updatedAt: formatDate(),
-  }, {
+  },
+  {
+    _id:uuid(),
+    content:
+      "A Building With A Rooftop Balcony. location :Leicester, England, United Kingdom      ",
+    likes: {
+      likeCount: 4,
+      likedBy: [
+      {
+        _id: 2,
+        firstName: "Mic",
+        lastName: "Mouse",
+        username: "mickeymouse@gmail.com",
+        password: "mickeyMouse123",
+        userHandler: "mickeyMouse123",
+        profilePic: "https://img.favpng.com/13/15/19/jerry-mouse-tom-cat-nibbles-tom-and-jerry-cartoon-png-favpng-fKs3cdqFhSJqTx45uP9eX8RBE.jpg",
+        link: "",
+        bio: "",
+        bookmarks: [],
+        followers: [],
+        following: [],
+        createdAt: formatDate(),
+        updatedAt: formatDate()
+      },{
+        _id: 9,
+        firstName: "Tom",
+        lastName: "Cat",
+        username: "tomcat@gmail.com",
+        password: "tomCat123",
+        userHandler: "tomCat123",
+        bookmarks: [],
+        followers: [],
+        profilePic: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png",
+        following: [],
+        createdAt: formatDate(),
+        updatedAt: formatDate()
+      },
+      {
+        _id: uuid(),
+        firstName: "Donald",
+        lastName: "Duck",
+        username: "donaldduck@gmail.com",
+        password: "donaldDuck123",
+        userHandler: "donaldDuck123",
+        profilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR--L4LzR5aY8SMjeSy4NreBVChBQ71_KnRKw&usqp=CAU",
+        link: "",
+        bio: "",
+        bookmarks: [],
+        followers: [],
+        following: [],
+        createdAt: formatDate(),
+        updatedAt: formatDate()
+      },
+      {
+        _id: uuid(),
+        firstName: "Sponge",
+        lastName: "Bob",
+        username: "spongebob@gmail.com",
+        password: "spongeBob123",
+        userHandler: "spongeBob123",
+        profilePic: "https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
+        bookmarks: [],
+        followers: [],
+        following: [],
+        createdAt: formatDate(),
+        updatedAt: formatDate()
+      }],
+      dislikedBy: [],
+    },
+    comments:[  {
+      _id: uuid(),
+      username: "mickeymouse@gmail.com",
+      text: "Great post!"
+    },{
+      _id: uuid(),
+      username: "spongebob@gmail.com",
+      text: "Wow!"
+    }
+    
+  
+  ],
+    username: "ArjunsinghRajput@gmail.com",
+    profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
+    userHandler:"arjunajput20",
+    file:"https://images.pexels.com/photos/3030041/pexels-photo-3030041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    createdAt:new Date(2023, 1, 9, 11, 10, 18),
+    updatedAt: formatDate(),
+  }
+  ,{
     _id:uuid(),
     content:
       "Fort💖 ",
