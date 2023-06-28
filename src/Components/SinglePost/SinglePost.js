@@ -25,6 +25,7 @@ import { useData } from "../../Context/DataContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const SinglePost = ({ data, showComment }) => {
   const [menuBtn, setMenuBtn] = useState(false);
@@ -38,7 +39,7 @@ export const SinglePost = ({ data, showComment }) => {
     setCommentText,
     commentToggle,
     setCommentToggle,
-    setCommentId,
+    setCommentId,darkMode
   } = useData();
 
   const socialToken = localStorage.getItem("socialToken");
@@ -129,16 +130,29 @@ export const SinglePost = ({ data, showComment }) => {
     setCommentId(data._id);
     setCommentToggle(!commentToggle);
   };
+  const  handleBack=()=>{
+    setBtnAddPost(false)
+    navigate("/")
+  }
 
+  const loggedInUser = users?.find(
+    (user) => user.username === socialUser.username
+  );
   const userDetails = users?.find((el) => el.username === data.username);
   const formattedCreatedAt = new Date(data?.createdAt).toLocaleDateString();
   const createTime= new Date(data?.createdAt).toLocaleTimeString();
 
   return (
-    <div className="singlePost-MainContainer">
+    <div className={`singlePost-MainContainer ${darkMode && "bgSecondaryDarkMode"}`}>
       <div className="singlepost-innerContainer">
         <div className="flex--singlepost-justify">
           <div className="flex--singlepost">
+          {showComment && <div>
+            <IoMdArrowRoundBack
+              className="logo-back-addPost"
+              onClick={handleBack}
+            />
+          </div>}
             <div className="flex-uploadimgg">
               <img
                 src={userDetails?.profilePic}
@@ -149,40 +163,40 @@ export const SinglePost = ({ data, showComment }) => {
             </div>
 
             <div className="flex-edit-delete">
-              <p className="single-profile-userName">
+              <span className={`single-profile-userName pointer ${darkMode && "bgSecondaryDarkMode"}`}  onClick={() => handleClick(userDetails?.userHandler)}>
                 {userDetails?.firstName} {userDetails?.lastName}
                 
-              </p>
-              <p className="single-profile-userId">@{userDetails?.userHandler}</p>
-              <p className="single-profile-date-time">{formattedCreatedAt} {createTime}</p>
+              </span>
+              <p className={`single-profile-userId pointer ${darkMode && "bgSecondaryDarkMode"}`} onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
+              <p className={`single-profile-date-time ${darkMode && "bgSecondaryDarkMode"}`}>{formattedCreatedAt} {createTime}</p>
               {/* <p>Created At: {formattedCreatedAt} {createTime}</p> */}
       {/* <p>Updated At: {formattedUpdatedAt} {updateTime}</p> */}
             </div>
           </div>
           <div>
-            <div className="setting">
+            {socialUser.username===userDetails?.username && <div className={`setting  ${darkMode && "bgSecondaryDarkMode"}`}>
               {menuBtn ? (
                 <RxCross2
                   onClick={() => setMenuBtn(!menuBtn)}
-                  className="setting-icon"
+                  className={`setting-icon  ${darkMode && "bgSecondaryDarkMode"}`}
                 />
               ) : (
                 <CiMenuKebab
                   onClick={handleMenuClick}
-                  className="setting-icon"
+                  className={`setting-icon  ${darkMode && "bgSecondaryDarkMode"}`}
                 />
               )}
-            </div>
+            </div>}
             {menuBtn && (
-              <div className="btn-postEdit">
+              <div className={`btn-postEdit  ${darkMode && "bgSecondaryDarkMode"}`}>
                 <button
-                  className="post-delete"
+                  className={`post-delete  ${darkMode && "bgSecondaryDarkMode"}`}
                   onClick={() => handleDeletePost(data?._id)}
                 >
                   <AiOutlineDelete />
                 </button>
                 <button
-                  className="post-edit"
+                  className={`post-edit  ${darkMode && "bgSecondaryDarkMode"}`}
                   onClick={() => handleEditPost(data?._id)}
                 >
                   <FaEdit />
@@ -192,17 +206,17 @@ export const SinglePost = ({ data, showComment }) => {
           </div>
         </div>
         <p
-          className="text-comment-box"
+          className={`text-comment-box ${darkMode && "bgSecondaryDarkMode"}`}
           onClick={() => handleProductDetailClick(data?._id)}
         >
           {data?.content}
         </p>
         <div
-          className="flex-uploadimgg"
+          className={`flex-uploadimgg" ${darkMode && "bgSecondaryDarkMode"}`}
           onClick={() => handleProductDetailClick(data?._id)}
         >
           {data?.file && (
-            <img src={data?.file} alt="Uploaded" className="main-img" />
+            <img src={data?.file} alt="Uploaded" className={`main-img ${darkMode && "bgSecondaryDarkMode"}`} />
           )}
         </div>
         {/* */}
@@ -210,14 +224,14 @@ export const SinglePost = ({ data, showComment }) => {
         <div className="btn-single-profile">
           {btnLike ? (
             <span
-              className="btn-like-single-profile liked icon"
+              className={`btn-like-single-profile liked icon ${darkMode && "bgSecondaryDarkMode"}`}
               onClick={handledisLike}
             >
               <AiFillHeart />
               {data?.likes.likeCount}
             </span>
           ) : (
-            <span className="btn-like-single-profile icon" onClick={handleLike}>
+            <span className={`btn-like-single-profile icon ${darkMode && "bgSecondaryDarkMode"}`} onClick={handleLike}>
               <AiOutlineHeart />
               {data?.likes?.likeCount}
             </span>
@@ -226,14 +240,14 @@ export const SinglePost = ({ data, showComment }) => {
           <>
             {isBookmark ? (
               <span
-                className="btn-like-single-profile liked"
+                className={`btn-like-single-profile liked ${darkMode && "bgSecondaryDarkMode"}`}
                 onClick={handleRemoveBookmark}
               >
                 <BsBookmarkFill />
               </span>
             ) : (
               <span
-                className="btn-like-single-profile"
+                className={`btn-like-single-profile ${darkMode && "bgSecondaryDarkMode"}`}
                 onClick={handleBookmark}
               >
                 <BsBookmark />
@@ -241,11 +255,11 @@ export const SinglePost = ({ data, showComment }) => {
             )}{" "}
           </>
 
-          <p className="btn-like-single-profile" onClick={handleCommentEnable}>
+          <p className={`btn-like-single-profile ${darkMode && "bgSecondaryDarkMode"}`} onClick={handleCommentEnable}>
             <FaRegComment />
             {data?.comments?.length}
           </p>
-          <p className="btn-like-single-profile" onClick={handleShare}>
+          <p className={`btn-like-single-profile ${darkMode && "bgSecondaryDarkMode"}`} onClick={handleShare}>
             <BiShareAlt />
           </p>
         </div>
@@ -267,6 +281,7 @@ export const SinglePost = ({ data, showComment }) => {
             </button>
           </div>
         </div>} */}
+        {!showComment && <p className={`allComments flex  pointer ${darkMode && "bgSecondaryDarkMode"}`} onClick={() => handleProductDetailClick(data?._id)} >view {data?.comments?.length} comments</p>}
 
         {showComment && (
           <div>
@@ -275,28 +290,26 @@ export const SinglePost = ({ data, showComment }) => {
                 (user) => user?.username === comment?.username
               );
               const deleteOnlyYoursCmnt=socialUser?.username===comment?.username
-
-              {/* console.log({ currentUser }); */}
               return (
-                <div className="comments-added">
+                <div className={`comments-added ${darkMode && "bgSecondaryDarkMode"}`}>
                   <img
                     src={currentUser.profilePic}
                     alt="img1"
-                    className="single-profile-photo-comment"
+                    className={`single-profile-photo-comment ${darkMode && "bgSecondaryDarkMode"}`}
                   />
-                  <div className="comments-add-by-user">
-                    <div className="deleteFlex">
-                      <p className="user-name">
+                  <div className={`comments-add-by-user ${darkMode && "bgSecondaryDarkMode"}`}>
+                    <div className={`deleteFlex ${darkMode && "bgSecondaryDarkMode"}`}>
+                      <p className={`user-name ${darkMode && "bgSecondaryDarkMode"}`}>
                         {currentUser.firstName} {currentUser.lastName}
                       </p>
                   {deleteOnlyYoursCmnt &&    <FaTrash
-                        className="delete-icon"
+                        className={`delete-icon ${darkMode && "bgSecondaryDarkMode"}`}
                         onClick={() =>
                           handleDeleteComment(comment._id, comment.text)
                         }
                       />}
                     </div>
-                    <p className="comment-text">{comment?.text}</p>
+                    <p className={`comment-text ${darkMode && "bgSecondaryDarkMode"}`}>{comment?.text}</p>
                   </div>
                 </div>
               );

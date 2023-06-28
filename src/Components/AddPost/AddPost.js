@@ -15,14 +15,13 @@ import { toast } from "react-toastify";
 import { AiFillMinusCircle } from "react-icons/ai";
 export const AddPost = () => {
   const {
-    dataState: { postId, posts },
+    dataState: { postId, posts },darkMode,
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
     setIsLoading
   } = useData();
 
-  const [images, setImages] = useState();
   const [postDetails, setPostDetails] = useState({
     _id: uuid(),
     content: "",
@@ -56,7 +55,7 @@ export const AddPost = () => {
 
   const fileUploadHandle = (e) => {
     const file = e.target.files[0];
-    setImages(URL.createObjectURL(file));
+  
     setIsLoading(false)
     setPostDetails({ ...postDetails, file: URL.createObjectURL(file) });
     toast.success("Post Selected!");
@@ -78,7 +77,6 @@ export const AddPost = () => {
   }, []);
 
   const handleImageRemove = () => {
-    setImages(null);
     setPostDetails({ ...postDetails, file: "" });
     toast.success("Post Removed!");
   };
@@ -88,19 +86,19 @@ export const AddPost = () => {
     setBtnAddPost(!btnAddPost)
   }
   return (
-    <div className="AddPost-mainDiv">
-      <div className="AddPost-MainContainer">
-        <div className="AddPost-innerContainer">
+    <div className={`AddPost-mainDiv`}>
+      <div className={`AddPost-MainContainer`}>
+        <div className={`AddPost-innerContainer ${darkMode && "bgDarkmode"}`}>
           <div>
             <IoMdArrowRoundBack
-              className="logo-back-addPost"
+              className={`logo-back-addPost ${darkMode && "bgDarkmode"}`}
               onClick={handleBack}
             />
           </div>
           <div>
             <textarea
               type="text"
-              className="addPost-input"
+              className={`addPost-input ${darkMode && "bgSecondaryDarkMode"}`}
               placeholder="What's on your mind?"
               onChange={(e) =>
                 setPostDetails({ ...postDetails, content: e.target.value })
@@ -139,7 +137,7 @@ export const AddPost = () => {
                 </div>
               </div>
             )}
-            <button className="btn-add-post" onClick={addNoteHandler}>
+            <button className={`btn-add-post ${darkMode && "btnDark"}`}  onClick={addNoteHandler}>
               Post
             </button>
           </div>

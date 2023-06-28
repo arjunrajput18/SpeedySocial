@@ -27,4 +27,24 @@ padding: 0.5rem;
 .underline-hover:hover {
     text-decoration: underline;
   }
+.bgDarkmode{
+    /* background-color: #1e293b !important; */
+
+    /* background-color:var(--primary-dark) !important; */
+
+    background-color: #0b2239 !important;
+    color: white !important;
   
+  
+}
+
+.bgSecondaryDarkMode{
+    /* background-color:var(--primary-dark) !important; */
+    background-color: #1e293b  !important;
+    color: white !important;
+}
+
+.btnDark{
+    background-color: #312d7a  !important;
+    color: white !important;
+}

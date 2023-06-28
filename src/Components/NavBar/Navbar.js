@@ -6,7 +6,7 @@ import { useData } from "../../Context/DataContext";
 
 import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
-  const {userSearch,setUserSearch, dataState: { users } } =useData()
+  const {userSearch,setUserSearch, dataState: { users } ,darkMode} =useData()
   const socialUser = JSON.parse(localStorage.getItem("socialUser"))
   const navigate = useNavigate();
   const searchValue = userSearch
@@ -20,7 +20,7 @@ export const Navbar = () => {
 
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${darkMode && "bgDarkmode"}`}>
     <div className="nav-main flex">
       <div className="nav-logo">
         <img src={logo} alt="logo" height={50} width={50} />

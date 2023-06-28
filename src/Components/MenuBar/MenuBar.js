@@ -53,12 +53,12 @@ export const MenuBar = () => {
   // const socialUser=JSON.parse(localStorage.getItem("socialUser"))
   // const userHandler=socialUser.userHandler
   return (
-    <div className="Menubar">
-      <ul className="Menubar-list">
-        <li className="Menubar-list-item size-1">
+    <div className={`Menubar ${darkMode && "bgDarkmode"}`}>
+      <ul className={`Menubar-list ${darkMode && "bgDarkmode"}`}>
+        <li className={`Menubar-list-item size-1 ${darkMode && "bgDarkmode"}`}>
           <NavLink
             to={"/"}
-            className={"navlink-MenuBar"}
+            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
             style={getActiveStyle}
           >
             <ImHome />
@@ -68,7 +68,7 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/explore"}
-            className={"navlink-MenuBar"}
+            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
             style={getActiveStyle}
           >
             <MdOutlineExplore />
@@ -78,7 +78,7 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/bookmark"}
-            className={"navlink-MenuBar"}
+            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
             style={getActiveStyle}
           >
             <BsFillBookmarkHeartFill />
@@ -91,7 +91,7 @@ export const MenuBar = () => {
             onClick={() => setDarkMode(false)}
           >
             <MdLightMode />
-            <span className="item-name">Light Mood</span>
+            <span className="item-name">Light Mode</span>
           </li>
         ) : (
           <li
@@ -99,13 +99,13 @@ export const MenuBar = () => {
             onClick={() => setDarkMode(true)}
           >
             <MdDarkMode />
-            <span className="item-name">Dark Mood</span>
+            <span className="item-name">Dark Mode</span>
           </li>
         )}
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/profile"}
-            className={"navlink-MenuBar"}
+            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
             style={getActiveStyle}
           >
             <CgProfile />
