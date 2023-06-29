@@ -31,6 +31,7 @@
  flex-direction: column;
  padding: 1rem;
  justify-content: center;
+ border: 1px solid #22476d;
  align-items: center;
  background-color: white;
  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -60,7 +61,12 @@ color: white;
 margin-bottom: 1rem;
 border: none;
 cursor: pointer;
+transition: background-color 0.3s ease;
+
 }
+.login-btn:hover {
+    background-color: #22476d;
+  }
 .loginAsGuest-btn{
     padding: 0.5rem; 
     font-size: 1rem;
@@ -72,6 +78,9 @@ cursor: pointer;
    border: none;
    cursor: pointer;
 }
+.loginAsGuest-btn:hover {
+    background-color: #2E7D1D;
+  }
 .newAccount-btn{
     background-color: inherit;
     border: none;
@@ -84,6 +93,9 @@ cursor: pointer;
     align-items: center;
     text-decoration: none;
     
+}
+.newAccount-btn:hover{
+    color:#42B72A ;
 }
 .no-underline {
     text-decoration: none;
