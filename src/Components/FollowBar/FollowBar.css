@@ -76,7 +76,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 0.4rem;
-  /* margin-bottom: 0.5rem; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 0.8rem;
   padding: 1rem;
@@ -114,14 +113,13 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #eeeeee;
     overflow-x:hidden;;
-  /* position: fixed; */
+ 
   }
 
   .followBar-list {
  
     flex-direction: column;
     gap: 1rem;
-    /* position: fixed; */
   }
 
   .followbar-heading {
@@ -209,7 +207,9 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #eeeeee;
   }
+  
   .followBar-list-item:hover .profileImg{
     border: 2px solid #aaa7a7;
+  
   }
 }
