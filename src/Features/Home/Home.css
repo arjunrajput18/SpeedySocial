@@ -2,8 +2,10 @@
 
 .home {
   background-color: #edf2f6;
-  height: fit-content;
+ 
   padding-top: 1rem;
+  min-height: 100vh;
+  max-height: fit-content;
 }
 
 .home-input-box {

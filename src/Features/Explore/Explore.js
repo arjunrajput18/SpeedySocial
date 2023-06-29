@@ -4,7 +4,7 @@ import { SinglePost } from '../../Components/SinglePost/SinglePost';
 import { useState } from 'react';
 
 export const Explore = () => {
-  const { dataState: { posts } ,setIsLoading} = useData();
+  const { dataState: { posts } ,setIsLoading,darkMode} = useData();
 
   useEffect(()=>{
     window.scrollTo(0, 0)
@@ -23,7 +23,7 @@ export const Explore = () => {
 
 
   return (
-    <div>
+    <div className={` home ${darkMode && "bgDarkmode"}`}>
       {
         [...posts]?.reverse()?.map(post => <SinglePost key={post._id} data={post} />)
       }

@@ -30,25 +30,25 @@ export const Navbar = () => {
     <div className="search-navbar">
       <Search />
       <div className="searchOutput">
-        <ul className="searchResults">
+        <ul className={`searchResults  ${darkMode && "bgDarkmode"}`}>
           {searchValue?.map((data) => (
-            <li className="searchResult-item" key={data._id}>
-              <div className="profile-container">
+            <li className={`searchResult-item  ${darkMode && "bgDarkmode"}`} key={data._id}>
+              <div className={`profile-container  ${darkMode && "bgSecondaryDarkMode"}`}>
                 <img
                   src={data.profilePic}
                   alt="profile1"
                   className="profileImg"
                   onClick={() => handleClick(data.userHandler)}
                 />
-                <div className="profile-info">
+                <div className={`profile-info  ${darkMode && "bgSecondaryDarkMode"}`}>
                   <p
-                    className="user-follow-name"
+                    className={`user-follow-name  ${darkMode && "bgSecondaryDarkMode"}`}
                     onClick={() => handleClick(data.userHandler)}
                   >
                     {data.firstName} {data.lastName}
                   </p>
                   <span
-                    className="userId"
+                    className={`userId  ${darkMode && "btnDarkUsernname"}`}
                     onClick={() => handleClick(data.userHandler)}
                   >
                     {data.userHandler}

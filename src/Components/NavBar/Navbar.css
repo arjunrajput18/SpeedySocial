@@ -65,7 +65,13 @@
 .profile-container {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  padding: 0.1rem;
+  border-radius: 0.8rem;
+  -webkit-border-radius: 0.8rem;
+  -moz-border-radius: 0.8rem;
+  -ms-border-radius: 0.8rem;
+  -o-border-radius: 0.8rem;
 }
 
 .searchOutput::-webkit-scrollbar {
@@ -107,4 +113,19 @@
   cursor: pointer;
 }
 
-/* Add any additional styles or modifications as needed */
+
+.searchResult-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+.searchResult-item:hover .profileImg {
+
+  border: 2px solid #ccc;
+}
+
+.searchResult-item:hover .user-follow-name,
+.searchResult-item:hover .userId {
+
+  color:  lightcoral
+}

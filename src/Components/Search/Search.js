@@ -4,11 +4,11 @@ import { BsSearch } from "react-icons/bs";
 import { useData } from "../../Context/DataContext";
 
 export const Search = () => {
-  const {userSearch, setUserSearch} =useData()
+  const {userSearch, setUserSearch,darkMode} =useData()
   return (
-    <div className="searchBox">
-      <input type="search" className="searchInput" placeholder="Search here " onChange={(e) => setUserSearch(e.target.value)} value={userSearch}  />
-      <span className="searchButton">
+    <div className={`searchBox  ${darkMode && "bgSecondaryDarkMode"}`}>
+      <input type="search" className={`searchInput  ${darkMode && "bgSecondaryDarkMode"}`} placeholder="Search here " onChange={(e) => setUserSearch(e.target.value)} value={userSearch}  />
+      <span className={`searchButton  ${darkMode && "bgSecondaryDarkMode"}`}>
         <BsSearch />
       </span>
     </div>

@@ -37,11 +37,15 @@ export const MenuBar = () => {
   };
 
   const getActiveStyle = ({ isActive }) => {
-    if (isActive) {
+    if (isActive && !darkMode) {
       return {
         color: isActive && " #8e44ad ",
-        borderRadius: isActive && "0.5rem",
+
       };
+    }else{
+      return {
+        color: isActive && "lightcoral",
+      }
     }
   };
 
@@ -54,21 +58,21 @@ export const MenuBar = () => {
   // const userHandler=socialUser.userHandler
   return (
     <div className={`Menubar ${darkMode && "bgDarkmode"}`}>
-      <ul className={`Menubar-list ${darkMode && "bgDarkmode"}`}>
-        <li className={`Menubar-list-item size-1 ${darkMode && "bgDarkmode"}`}>
+      <ul className={`Menubar-list ${darkMode && "bgDarkmodeActive"}`}>
+        <li className={`Menubar-list-item size-1 ${darkMode && "bgDarkmodeActive"}`}>
           <NavLink
             to={"/"}
-            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
+            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
             style={getActiveStyle}
           >
             <ImHome />
-            <span className="item-name">Home</span>
+            <span className={`item-name `}>Home</span>
           </NavLink>
         </li>
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/explore"}
-            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
+            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
             style={getActiveStyle}
           >
             <MdOutlineExplore />
@@ -78,7 +82,7 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/bookmark"}
-            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
+            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
             style={getActiveStyle}
           >
             <BsFillBookmarkHeartFill />
@@ -105,7 +109,7 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/profile"}
-            className={`navlink-MenuBar ${darkMode && "bgDarkmode"}`}
+            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
             style={getActiveStyle}
           >
             <CgProfile />

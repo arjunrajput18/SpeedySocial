@@ -10,7 +10,7 @@ import {
 export const ShowFollowing = ({ setShowFollowing,foundUser }) => {
   const {
     dataState: { users,  },
-    dataDispatch,
+    dataDispatch,darkMode
   } = useData();
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInUser = users?.find(
@@ -37,12 +37,12 @@ export const ShowFollowing = ({ setShowFollowing,foundUser }) => {
     }
     } 
   return (
-    <div className="ShowFollowing-mainContainer">
+    <div className={`ShowFollowing-mainContainer  ${darkMode && "bgSecondaryDarkMode"}`}>
       <div className="ShowFollowing-innerContainer">
         <div className="divheadingBox">
           <div className="headingFollowing">Following</div>
           <button
-            className="closeButton"
+            className={`closeButton ${darkMode && "bgSecondaryDarkMode"}`}
             onClick={() => setShowFollowing(false)}
           >
             <RxCross2 />

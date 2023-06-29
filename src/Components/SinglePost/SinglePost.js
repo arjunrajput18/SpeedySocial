@@ -144,8 +144,8 @@ export const SinglePost = ({ data, showComment }) => {
 
   return (
     <div className={`singlePost-MainContainer ${darkMode && "bgSecondaryDarkMode"}`}>
-      <div className="singlepost-innerContainer">
-        <div className="flex--singlepost-justify">
+      <div className={`singlepost-innerContainer ${darkMode && "bgSecondaryDarkMode"}`}>
+        <div className={`flex--singlepost-justify ${darkMode && "bgSecondaryDarkMode"}`}>
           <div className="flex--singlepost">
           {showComment && <div>
             <IoMdArrowRoundBack

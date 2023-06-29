@@ -20,7 +20,7 @@ useEffect(()=>{
   }, 300)
 },[])
   return (
-    <div>
+    <div  className={` home ${darkMode && "bgDarkmode"}`}>
     {newBookmark?.length > 0 ? (
       newBookmark.map((data) => <SinglePost data={data} key={data._id} />)
     ) : (
