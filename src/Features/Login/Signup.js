@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 import { useEffect } from "react";
 export const Signup = () => {
 
-const {dataDispatch}=useData()
+const {dataDispatch,darkMode}=useData()
 
   const [signUpDetails, setSignUpDetails] = useState({
     firstName: "",
@@ -50,8 +50,8 @@ const {setIsLoggedIn}=useAuth()
   }, [signUpDetails.username]);
 
   return (
-    <div className="mainSignup-container">
-      <div className="innerSignUp-container">
+    <div className={`mainSignup-container ${darkMode && "bgDarkmode"}`}>
+      <div className={`innerSignUp-container `}>
         <div className="innerHeading-signup">
           <div className="nav-logo">
             <img src={logo} alt="logo" height={50} width={50} />

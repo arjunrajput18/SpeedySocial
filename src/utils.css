@@ -32,6 +32,11 @@ padding: 0.5rem;
     color: white !important;
 }
 
+.bgDarkmode-s{
+    background-color: #22476d !important;
+    color: white !important;
+}
+
 .wrap{
     flex-wrap: wrap;
 }

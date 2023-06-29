@@ -6,11 +6,13 @@ import { NavLink,  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
+import { useData } from "../../Context/DataContext";
 export const Login = () => {
   const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
   });
+  const {darkMode} =useData()
   const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { username, password } = loginDetails;
@@ -34,11 +36,11 @@ export const Login = () => {
   };
 
   return (
-    <div className="login-mainConatiner">
-      <form className="form-new-address" onSubmit={(e) => e.preventDefault()}>
-        <div className="login-page-info">
-          <h2 className="headingName">
-            <div className="nav-logo">
+    <div className={`login-mainConatiner  ${darkMode && "bgDarkmode"}`}>
+      <form className={`form-new-address ${darkMode && "bgDarkmode"}`} onSubmit={(e) => e.preventDefault()}>
+        <div className={`login-page-info ${darkMode && "bgDarkmode"}`}>
+          <h2 className={`headingName ${darkMode && "bgDarkmode"}`}>
+            <div className={`nav-logo ${darkMode && "bgDarkmode"}`}>
               <img src={logo} alt="logo" height={50} width={50} />
             </div>
             SpeedySocial{" "}
