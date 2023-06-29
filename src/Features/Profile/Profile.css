@@ -71,11 +71,11 @@ background-color: var(--primary);
 }
 .profile-link {
   color: blueviolet;
+  margin:0.5rem 0rem ;
+  text-decoration: none;
 }
 
-.profile-link{
-    margin:0.5rem 0rem ;
-}
+
 
 .modalFollowing {
   position: fixed;
@@ -96,4 +96,17 @@ background-color: var(--primary);
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.profile-follow-hr{
+  border-top: 1.4px solid #ccc;
+    display: flex;
+    /* align-self: flex-end; */
+
+  }
+.inner-profile-follow-count{
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
 }

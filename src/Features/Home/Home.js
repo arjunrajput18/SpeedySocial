@@ -170,8 +170,8 @@ export const Home = () => {
           ))}
         </div>
       ) : (
-        <h2 className="likes-posts-heading text-center">
-          Liked Some Posts To See
+        <h2 className={`likes-posts-heading text-center followbar-heading margin-top-1 ${darkMode && "bgDarkmode"}`}>
+        Please follow some users to see their feeds.
         </h2>
       )}
     </div>

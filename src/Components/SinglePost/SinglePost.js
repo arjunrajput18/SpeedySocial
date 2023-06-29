@@ -167,7 +167,7 @@ export const SinglePost = ({ data, showComment }) => {
                 {userDetails?.firstName} {userDetails?.lastName}
                 
               </span>
-              <p className={`single-profile-userId pointer ${darkMode && "btnDarkUsernname"}`} onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
+              <p className={`single-profile-userId pointer  ${darkMode && "btnDarkUsernname"}`} onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
               <p className={`single-profile-date-time ${darkMode && "bgSecondaryDarkMode"}`}>{formattedCreatedAt} {createTime}</p>
               {/* <p>Created At: {formattedCreatedAt} {createTime}</p> */}
       {/* <p>Updated At: {formattedUpdatedAt} {updateTime}</p> */}

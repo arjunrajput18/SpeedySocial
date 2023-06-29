@@ -32,6 +32,9 @@ padding: 0.5rem;
     color: white !important;
 }
 
+.wrap{
+    flex-wrap: wrap;
+}
 .bgSecondaryDarkMode{
     /* background-color:var(--primary-dark) !important; */
     background-color: #1e293b  !important;

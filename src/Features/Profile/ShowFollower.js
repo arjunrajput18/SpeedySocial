@@ -63,12 +63,14 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
           
         return  (
             <div className="followingUser">
-              <div className="padding-5"  onClick={()=>handleNavigate(data.userHandler)}>
+            <div className="flex">
+            <div className="padding-5"  onClick={()=>handleNavigate(data.userHandler)}>
                 <img src={data?.profilePic} alt="img" height={30} width={30} />
               </div>
               <p className="padding-5"  onClick={()=>handleNavigate(data.userHandler)}>
                 {data?.firstName} {data?.lastName}
               </p>
+            </div>
               <div className="padding-5">
                 {/* <button className="profile-edit-btn">Edit</button> */}
 

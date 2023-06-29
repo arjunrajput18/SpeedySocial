@@ -72,7 +72,7 @@ export const AnyProfile = () => {
                 <h4>
                   {foundUser?.firstName} {foundUser?.lastName}
                 </h4>
-                <p>{foundUser?.username}</p>
+                <p  className={`single-profile-userId  ${darkMode && "btnDarkUsernname"}`}>{foundUser?.userHandler}</p>
               </div>
               <div>
                 {/* <button className="profile-edit-btn">Edit</button> */}
@@ -100,7 +100,7 @@ export const AnyProfile = () => {
                 )}
               </div>
             </div>
-            <div className="margin-top-1">
+            <div className="margin-top-1 wrap">
               <p>An aspiring web developer</p>
             </div>
 
@@ -135,11 +135,11 @@ export const AnyProfile = () => {
             )}
             <div className="profile-link">
               <a
-                href="https://arjunsinghportfolio.netlify.app"
+                href={foundUser.url}
                 target="_blank"
                 rel="noreferrer"
               >
-                https://arjunsinghportfolio.netlify.app/
+                https://{foundUser.userHandler}.netlify.app/
               </a>
             </div>
           </div>
