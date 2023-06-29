@@ -17,7 +17,7 @@ export const Profile = () => {
     dataState: { users, posts },
     editBtn,
     setEditBtn,
-    setIsLoading,
+    setIsLoading,darkMode
   } = useData();
 
   const [showFollowing, setShowFollowing] = useState("");
@@ -63,9 +63,9 @@ export const Profile = () => {
   };
 
   return (
-    <div className="profile-outerContainer">
-      <div className="profile-mainContainer">
-        <div className="profile-innerContainer">
+    <div className={`profile-outerContainer  ${darkMode && "bgDarkmode"}`}>
+      <div className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`} >
+        <div className={`profile-innerContainer  ${darkMode && "bgSecondaryDarkMode"}`}>
           <img
             src={loggedInUser?.profilePic}
             alt="img1"

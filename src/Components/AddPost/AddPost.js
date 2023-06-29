@@ -104,6 +104,7 @@ export const AddPost = () => {
                 setPostDetails({ ...postDetails, content: e.target.value })
               }
               value={postDetails.content}
+              autoFocus
             />
           </div>
           <div className="addPost-upload-file-post">

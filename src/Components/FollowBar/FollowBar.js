@@ -62,7 +62,7 @@ const notFollowedUsers= users?.filter(el => el.username !== socialUser.username 
               {/* <hr /> */}
             </li>
           ))}
-          {notFollowedUsers.length===0 && <div className="followbar-heading">Nothing to Suggest</div>}
+          {notFollowedUsers.length===0 && <div className={`followbar-heading ${darkMode && "bgDarkmode"}`}>Nothing to Suggest</div>}
 
         </ul>
       </div>

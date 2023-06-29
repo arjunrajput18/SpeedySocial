@@ -125,7 +125,7 @@ export const MenuBar = () => {
             className=" flex align-center justify-center margin-top-1 "
           />
           <div onClick={handleNavigate} className="pointer">
-            <p className="padding-5">
+            <p className={`padding-5 ${darkMode && "bgDarkmode"}`}>
               {loggedInuser?.firstName} {loggedInuser?.lastName}
             </p>
             <p className="single-profile-userId smaller">

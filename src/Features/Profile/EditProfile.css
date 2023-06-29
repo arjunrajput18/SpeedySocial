@@ -23,7 +23,7 @@ justify-content: space-evenly;
   position: absolute;
   background-color: var(--secondary);
   z-index: 222;
-  border: solid;
+  /* border: solid; */
   max-width: 28rem;
   top: 12%;
   position: fixed;
@@ -41,10 +41,12 @@ justify-content: space-evenly;
 }
 .editInnerConatainer::-webkit-scrollbar {
   width: 6px;
+  background-color: white;
+
 }
 
 .editInnerConatainer::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
+  background-color:  #1e293b;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -53,7 +55,7 @@ justify-content: space-evenly;
 }
 
 .editInnerConatainer::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primary);
+  background-color:  #1e293b;
 }
 
 .updateBtn {
@@ -78,7 +80,13 @@ justify-content: space-evenly;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
+.cross-icon{
+  position: absolute;
+  right: 0%;
+  top: 1%;
+  font-size: 1.5rem;
 
+}
 .editPost-input:focus {
   outline: none;
   border-color: #4d90fe;
