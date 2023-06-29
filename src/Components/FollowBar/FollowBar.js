@@ -21,9 +21,9 @@ export const FollowBar = () => {
 const handleFollow=(_id,socialToken,dataDispatch)=>{
   getFollowHandler(_id,socialToken,dataDispatch)
 }
-const user = users?.find(el => el.username === socialUser.username)
-const followingArray=user?.following.map((el)=>el.username)
-const notFollowedUsers= users?.filter(el => el.username !== socialUser.username && !followingArray.includes(el.username))
+const user = users?.find(el => el.username === socialUser?.username)
+const followingArray=user?.following.map((el)=>el?.username)
+const notFollowedUsers= users?.filter(el => el?.username !== socialUser?.username && !followingArray?.includes(el?.username))
 
   return (
     <div className={`main-followbar  ${darkMode && "bgDarkmode"}`}>

@@ -19,10 +19,11 @@ const {dataDispatch}=useData()
     // userHandler: `${this?.username}`,
     password: "",
     profilePic: "https://www.pngmart.com/files/22/Charizard-Pokemon-Download-PNG-Image.png",
+    bio:"Hey I am New to here,Happy to Connect with you",
     followers:[],
     following:[],
     bookmarks:[],
-    userHandler:""
+    userHandler:"",
   });
   const navigate = useNavigate();
 const {setIsLoggedIn}=useAuth()
@@ -44,7 +45,7 @@ const {setIsLoggedIn}=useAuth()
   useEffect(() => {
     setSignUpDetails(prevState => ({
       ...prevState,
-      userHandler: prevState.username
+      userHandler: prevState.username,
     }));
   }, [signUpDetails.username]);
 

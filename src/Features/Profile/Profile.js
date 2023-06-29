@@ -17,7 +17,8 @@ export const Profile = () => {
     dataState: { users, posts },
     editBtn,
     setEditBtn,
-    setIsLoading,darkMode
+    setIsLoading,
+    darkMode,
   } = useData();
 
   const [showFollowing, setShowFollowing] = useState("");
@@ -64,8 +65,14 @@ export const Profile = () => {
 
   return (
     <div className={`profile-outerContainer  ${darkMode && "bgDarkmode"}`}>
-      <div className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`} >
-        <div className={`profile-innerContainer  ${darkMode && "bgSecondaryDarkMode"}`}>
+      <div
+        className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`}
+      >
+        <div
+          className={`profile-innerContainer  ${
+            darkMode && "bgSecondaryDarkMode"
+          }`}
+        >
           <img
             src={loggedInUser?.profilePic}
             alt="img1"
@@ -77,7 +84,7 @@ export const Profile = () => {
                 <h4>
                   {loggedInUser?.firstName} {loggedInUser?.lastName}
                 </h4>
-                <p>{loggedInUser?.username}</p>
+                <p className={`single-profile-userId  ${darkMode && "btnDarkUsernname"}`}>@{loggedInUser?.userHandler}</p>
               </div>
               <div>
                 <button className="EditBtn" onClick={handleEdit}>
@@ -85,19 +92,40 @@ export const Profile = () => {
                 </button>
               </div>
             </div>
-            <div className="margin-top-1">
+
+            <div className="margin-top-1 wrap">
               <p>{loggedInUser?.bio}</p>
             </div>
-            <div className="flex space-between margin-top-1 ">
-              <span>{profileUserPosts.length} Posts</span>{" "}
-              <span onClick={followerHandle} className="pointer underline-hover">
-                {loggedInUser?.followers.length} Followers
-              </span>{" "}
-              <span onClick={followingHandle} className="pointer underline-hover">
-                {loggedInUser?.following.length} Following
-              </span>
+            <div className="profile-link">
+              <a href={loggedInUser?.link} target="_blank" rel="noreferrer" className="profile-link">
+                {loggedInUser?.link}
+              </a>
             </div>
-            {showFollowing === "following" && (
+            <div className={`profile-follow-hr   ${darkMode && "bgSecondaryDarkMode"}`}>
+              <div className={`inner-profile-follow-count  ${darkMode && "bgSecondaryDarkMode"}`}>
+
+                <div>{profileUserPosts.length} Posts </div>
+                <div
+                  onClick={followerHandle}
+                  className="pointer underline-hover"
+                >
+                  {" "}
+                  {loggedInUser?.followers.length} Followers 
+                </div>{" "}
+                <div
+                  onClick={followingHandle}
+                  className="pointer underline-hover"
+                >
+                   {" "}
+                  {loggedInUser?.following.length} Following
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+      {showFollowing === "following" && (
               <div className="modalFollowing">
                 <div className="modalContent">
                   <ShowFollowing
@@ -110,23 +138,13 @@ export const Profile = () => {
             {showFollowing === "followers" && (
               <div className="modalFollowing">
                 <div className="modalContent">
-              <ShowFollower
-                setShowFollowing={setShowFollowing}
-                foundUser={loggedInUser}
-              />
-                   </div>
+                  <ShowFollower
+                    setShowFollowing={setShowFollowing}
+                    foundUser={loggedInUser}
+                  />
+                </div>
               </div>
             )}
-
-            <div className="profile-link">
-              <a href={loggedInUser?.link} target="_blank" rel="noreferrer">
-                {loggedInUser?.link}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="posts">
         {profileUserPosts?.reverse().map((post) => (
           <SinglePost key={post.username} data={post} />
