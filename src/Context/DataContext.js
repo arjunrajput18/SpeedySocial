@@ -18,7 +18,7 @@ export const DataContextProvider = ({ children }) => {
    const  [commentId,setCommentId]=useState()
    const [isLoading, setIsLoading] = useState(true);
    const [editBtn, setEditBtn] = useState(false);
-   const [darkMode,setDarkMode]=useState(false)
+   const [darkMode,setDarkMode]=useState(true)
     useEffect(()=>{
     getPostData(dataDispatch,setIsLoading)
     getUserData(dataDispatch,setIsLoading)
