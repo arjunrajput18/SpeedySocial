@@ -1,6 +1,6 @@
 .ShowFollowing-mainContainer {
     position: fixed;
-    border: solid;
+    border: none;
     display: flex;
     background-color: white;
     justify-content: center;
