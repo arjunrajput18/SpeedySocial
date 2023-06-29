@@ -209,4 +209,7 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary) #eeeeee;
   }
+  .followBar-list-item:hover .profileImg{
+    border: 2px solid #aaa7a7;
+  }
 }
