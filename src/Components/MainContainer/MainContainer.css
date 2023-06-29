@@ -14,11 +14,11 @@ position: fixed;
 z-index: 1000;
 top: 0%;
 right: 0%;
-border: solid;
+/* border: solid; */
 min-height: 100vh;
 max-height: 100%;
 width: 100%;
-background-color: rgba(14, 96, 96, 0.696);
+background-color: rgba(2, 28, 28, 0.628);
 display: flex;
 justify-content: center;
 align-items: center;

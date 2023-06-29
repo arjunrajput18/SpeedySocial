@@ -17,7 +17,7 @@ export const AnyProfile = () => {
   const {
     dataState: { users, posts },
     dataDispatch,
-    setIsLoading,
+    setIsLoading,darkMode
   } = useData();
   const [showFollowing, setShowFollowing] = useState("");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -58,10 +58,10 @@ export const AnyProfile = () => {
 
   // console.log(foundUser, "foundUser");
   return (
-    <div className="profile-outerContainer">
-      <div className="profile-mainContainer">
-        <div className="profile-innerContainer">
-          <img
+    <div className={`profile-outerContainer  ${darkMode && "bgDarkmode"}`}>
+    <div className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`} >
+      <div className={`profile-innerContainer  ${darkMode && "bgSecondaryDarkMode"}`}>
+         <img
             src={foundUser?.profilePic}
             alt="img1"
             className="profile-user-logo"

@@ -6,7 +6,7 @@ import { BiArrowBack } from 'react-icons/bi'
 
 export const CommentBox = () => {
 
-const {commentToggle,setCommentToggle,commentText, setCommentText,dataDispatch,commentId}=useData()
+const {commentToggle,setCommentToggle,commentText, setCommentText,dataDispatch,commentId,darkMode}=useData()
 
 const socialToken = localStorage.getItem("socialToken");
 // const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -25,7 +25,7 @@ const handleAddComment = () => {
     setCommentToggle(!commentToggle)
   }
   return (
-    <div className='mainCommentBox'> <div className="comment-box positionComment">
+    <div className={`mainCommentBox ${darkMode && "bgSecondaryDarkMode"}`}> <div className={`comment-box positionComment ${darkMode && "bgSecondaryDarkMode"}`}>
  <div className="inner-comment-box">
  <div><BiArrowBack  className="logo-back-addPost" onClick={handleBack}/></div>
       <input
@@ -33,6 +33,7 @@ const handleAddComment = () => {
         className="single-profile-input-ccomment"
         onChange={(e) => setCommentText(e.target.value)}
         value={commentText}
+        autoFocus
       />
       <button className="post-btn-comment cmntBtn" onClick={handleAddComment}>
         COMMENT

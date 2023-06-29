@@ -28,14 +28,8 @@ padding: 0.5rem;
     text-decoration: underline;
   }
 .bgDarkmode{
-    /* background-color: #1e293b !important; */
-
-    /* background-color:var(--primary-dark) !important; */
-
     background-color: #0b2239 !important;
     color: white !important;
-  
-  
 }
 
 .bgSecondaryDarkMode{
@@ -47,4 +41,8 @@ padding: 0.5rem;
 .btnDark{
     background-color: #312d7a  !important;
     color: white !important;
+}
+.btnDarkUsernname{
+    background-color: #1e293b   !important;
+    color: lightcoral !important;
 }

@@ -5,7 +5,7 @@ import "./Bookmark.css"
 import { useEffect } from 'react'
 export const Bookmark = () => {
 
-const {dataState:{users,posts},setIsLoading}=useData()
+const {dataState:{users,posts},setIsLoading,darkMode}=useData()
 const socialUser=JSON.parse(localStorage.getItem("socialUser"))
 
 const loggedInUser=users?.find(({username})=>username===socialUser.username) 
@@ -25,7 +25,7 @@ useEffect(()=>{
       newBookmark.map((data) => <SinglePost data={data} key={data._id} />)
     ) : (
       
-      <p className='bookmarke-heading'>No bookmarks available.</p>
+      <p className={`bookmarke-heading ${darkMode && "bgDarkmode"}`}>No bookmarks available.</p>
       
     )}
   </div>

@@ -167,7 +167,7 @@ export const SinglePost = ({ data, showComment }) => {
                 {userDetails?.firstName} {userDetails?.lastName}
                 
               </span>
-              <p className={`single-profile-userId pointer ${darkMode && "bgSecondaryDarkMode"}`} onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
+              <p className={`single-profile-userId pointer ${darkMode && "btnDarkUsernname"}`} onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
               <p className={`single-profile-date-time ${darkMode && "bgSecondaryDarkMode"}`}>{formattedCreatedAt} {createTime}</p>
               {/* <p>Created At: {formattedCreatedAt} {createTime}</p> */}
       {/* <p>Updated At: {formattedUpdatedAt} {updateTime}</p> */}
@@ -291,25 +291,25 @@ export const SinglePost = ({ data, showComment }) => {
               );
               const deleteOnlyYoursCmnt=socialUser?.username===comment?.username
               return (
-                <div className={`comments-added ${darkMode && "bgSecondaryDarkMode"}`}>
+                <div className={`comments-added ${darkMode && "bgDarkmode"}`}>
                   <img
                     src={currentUser.profilePic}
                     alt="img1"
-                    className={`single-profile-photo-comment ${darkMode && "bgSecondaryDarkMode"}`}
+                    className={`single-profile-photo-comment ${darkMode && "bgDarkmode"}`}
                   />
-                  <div className={`comments-add-by-user ${darkMode && "bgSecondaryDarkMode"}`}>
-                    <div className={`deleteFlex ${darkMode && "bgSecondaryDarkMode"}`}>
-                      <p className={`user-name ${darkMode && "bgSecondaryDarkMode"}`}>
+                  <div className={`comments-add-by-user ${darkMode && "bgDarkmode"}`}>
+                    <div className={`deleteFlex ${darkMode && "bgDarkmode"}`}>
+                      <p className={`user-name ${darkMode && "bgDarkmode"}`}>
                         {currentUser.firstName} {currentUser.lastName}
                       </p>
                   {deleteOnlyYoursCmnt &&    <FaTrash
-                        className={`delete-icon ${darkMode && "bgSecondaryDarkMode"}`}
+                        className={`delete-icon ${darkMode && "bgDarkmode"}`}
                         onClick={() =>
                           handleDeleteComment(comment._id, comment.text)
                         }
                       />}
                     </div>
-                    <p className={`comment-text ${darkMode && "bgSecondaryDarkMode"}`}>{comment?.text}</p>
+                    <p className={`comment-text ${darkMode && "bgDarkmode"}`}>{comment?.text}</p>
                   </div>
                 </div>
               );

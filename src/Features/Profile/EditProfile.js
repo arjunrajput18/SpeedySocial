@@ -10,10 +10,13 @@ import {
 } from "../../Services/DataServices";
 import { toast } from "react-toastify";
 import { AiFillCamera } from "react-icons/ai";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
 
 export const EditProfile = ({ setEditBtn, editBtn }) => {
   const {
     dataState: { users },
+    darkMode,
     dataDispatch,
   } = useData();
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -23,7 +26,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   const [updatedProfile, setUpdatedProfile] = useState({
     profilePic: loggedInUser.profilePic,
     firstName: loggedInUser.firstName,
-    lastName:loggedInUser.lastName,
+    lastName: loggedInUser.lastName,
     link: loggedInUser.link,
     bio: loggedInUser.bio,
   });
@@ -48,11 +51,13 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   const handleImageUpload = (e) => {
     // console.log(e.target.value, "image")
     const selectedImg = e.target.files[0];
-    setUpdatedProfile((prev) => ({ ...prev, profilePic: URL.createObjectURL(selectedImg) }))
-  }
+    setUpdatedProfile((prev) => ({
+      ...prev,
+      profilePic: URL.createObjectURL(selectedImg),
+    }));
+  };
 
   const handleAvatar = (data) => {
-  
     setUpdatedProfile((prev) => ({ ...prev, profilePic: data }));
   };
 
@@ -68,23 +73,30 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
     // console.log(updatedProfile);
   };
 
-  const {firstName,lastName, link, bio } = updatedProfile;
+  const { firstName, lastName, link, bio } = updatedProfile;
   return (
-    <div className="editMainContainer">
-      <div className="editInnerConatainer">
-        <div className="updateConatiner">
+    <div className={`editMainContainer ${darkMode && "bgDarkmode"}`}>
+      <div className={`editInnerConatainer  ${darkMode && "bgDarkmode"}`}>
+        <div className={`updateConatiner  ${darkMode && "bgDarkmode"}`}>
+        <RxCross2
+                  onClick={handleClose}
+                  className={`cross-icon  ${darkMode && "bgDarkmode"} pointer`}
+                />
           <div>
-            <p className="avatarinfo">Select Your Avatar</p>
+            <p className={`avatarinfo  ${darkMode && "bgSecondaryDarkMode"}`}>
+              Select Your Avatar
+            </p>
             {/* <input type="file" /> */}
           </div>
-          <div className="updateAvatarMain">
-            <div className="updateAvatar">
+
+          <div className={`updateAvatarMain  ${darkMode && "bgDarkmode"}`}>
+            <div className={`updateAvatar  ${darkMode && "bgDarkmode"}`}>
               {avatars.map((data) => (
                 <div
                   onClick={() => handleAvatar(data)}
                   className={`imgAvatar ${
                     updatedProfile.profilePic === data && "imgAvatarSelected"
-                  }`}
+                  }  ${darkMode && "bgDarkmode"}`}
                 >
                   <img
                     src={data}
@@ -98,67 +110,79 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
                 </div>
               ))}
             </div>
-            <div className="input-file-container flex align-center">
-              <span className="profile-text">Profile</span>
+            <div
+              className={`input-file-container flex align-center  ${
+                darkMode && "bgDarkmode"
+              }`}
+            >
+              <span className={`profile-text  ${darkMode && "bgDarkmode"}`}>
+                Profile
+              </span>
 
               <label
                 for="file-upload"
-                className="btn-upload"
+                className={`btn-upload  ${darkMode && "bgDarkmode"}`}
               >
                 <img
                   src={updatedProfile.profilePic}
                   alt=""
                   width="200"
-                  className="edit-profile-icon"
+                  className={`edit-profile-icon  ${darkMode && "bgDarkmode"}`}
                 />
-                <span className="edit-profile-camera-icon">
+                <span
+                  className={`edit-profile-camera-icon  `}
+                >
                   <AiFillCamera />
                 </span>
               </label>
-              <input id="file-upload" type="file" onChange={handleImageUpload} />
+              <input
+                id="file-upload"
+                type="file"
+                onChange={handleImageUpload}
+              />
             </div>
           </div>
-          <div className="infoEditContainer">
-
-         
-          <label  className="labelUpdateProfile">First Name:
-          <input
-              type="text"
-              name="firstName"
-              onChange={updateDetails}
-              value={firstName}
-              className="inputp"
-            />
-          </label>
-          <label  className="labelUpdateProfile">last Name:
-          <input
-              type="text"
-              name="lastName"
-              onChange={updateDetails}
-              value={lastName}
-              className="inputp"
-            />
-          </label>
-          <label className="labelUpdateProfile">
-            Link :
-            <input
-              type="text"
-              name="link"
-              onChange={updateDetails}
-              value={link}
-              className="inputp"
-            />
-          </label>
-          <div className="labelUpdateProfile">
-            <label className="labelUpdateProfile">Bio :</label>
-            <textarea
-              placeholder="bio"
-              className="editPost-input"
-              onChange={updateDetails}
-              name="bio"
-              value={bio}
-            />
-          </div>
+          <div className={`infoEditContainer  ${darkMode && "bgDarkmode"}`}>
+            <label className="labelUpdateProfile">
+              First Name:
+              <input
+                type="text"
+                name="firstName"
+                onChange={updateDetails}
+                value={firstName}
+                className="inputp"
+              />
+            </label>
+            <label className="labelUpdateProfile">
+              last Name:
+              <input
+                type="text"
+                name="lastName"
+                onChange={updateDetails}
+                value={lastName}
+                className="inputp"
+              />
+            </label>
+            <label className="labelUpdateProfile">
+              Link :
+              <input
+                type="text"
+                name="link"
+                onChange={updateDetails}
+                value={link}
+                className="inputp"
+              />
+            </label>
+            <div className="labelUpdateProfile">
+              <label className="labelUpdateProfile">Bio :</label>
+              <textarea
+                placeholder="bio"
+                className="editPost-input"
+                onChange={updateDetails}
+                name="bio"
+                value={bio}
+              />
+            </div>
           </div>
           <div className="btn-edit-profile-div">
             <button className="updateBtn" onClick={handleUpdate}>
