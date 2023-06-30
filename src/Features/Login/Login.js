@@ -7,20 +7,25 @@ import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useData } from "../../Context/DataContext";
+
+import {VscEyeClosed,VscEye} from "react-icons/vsc"
 export const Login = () => {
   const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
   });
+  const [showPassword,setShowPassword]=useState(false)
   const {darkMode} =useData()
+
   const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
   const { username, password } = loginDetails;
   const handleLogin = () => {
     if (username && password) {
-      loginUser({ username, password }, navigate, setIsLoggedIn);
+      loginUser({ username, password }, navigate, setIsLoggedIn,toast);
+    }else{
       setTimeout(() => {
-        toast.success('Login successful!');
+        toast.warn("Please fills all details!");
       }, 200);
     }
   };
@@ -29,10 +34,6 @@ export const Login = () => {
     const creds = { username: "ArjunsinghRajput@gmail.com", password: "123" };
     setLoginDetails(creds);
     loginUser(creds, navigate, setIsLoggedIn);
-    setTimeout(() => {
-      toast.success('Login successful!');
-    }, 200);
-    
   };
 
   return (
@@ -60,8 +61,9 @@ export const Login = () => {
               setLoginDetails({ ...loginDetails, username: e.target.value })
             }
           />
+          <div className="passwordIcon">
           <input
-            type="password"
+            type={`${showPassword ?"text":"password"}`}
             className="login-input"
             placeholder="Password"
             name="password"
@@ -71,6 +73,9 @@ export const Login = () => {
             }
             value={password}
           />
+          { loginDetails.password && (showPassword ?<VscEye onClick={()=>setShowPassword(false)} className="eyeIcon"/>:<VscEyeClosed onClick={()=>setShowPassword(true)} className="eyeIcon"/>)}
+
+          </div>
           <button className="login-btn" onClick={handleLogin}>
             Log in
           </button>
