@@ -1,8 +1,23 @@
 .login-mainConatiner{
     position: relative;
+    width: 100%;
 
 }
+.passwordIcon{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
+.eyeIcon{
+    position: absolute;
+    color: black;
+    right: 3%;
+    top: 20%;
+    font-size: larger;
+}
 
 .form-new-address {
   background-color: var(--secondary);
@@ -49,7 +64,6 @@
     margin-bottom: 0.8rem;
     width: 100%;
     max-width: 300px;
- 
 }
 .login-btn{
  padding: 0.5rem; 
