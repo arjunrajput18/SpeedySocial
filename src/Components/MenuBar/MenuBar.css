@@ -1,14 +1,12 @@
-
-  .Menubar {
-    position: fixed;
-    bottom: 0;
-    top: auto;
-    background-color: #0b2239;
-    color: white;
-    width: 100%;
-    z-index: 2;
-
-  }
+.Menubar {
+  position: fixed;
+  bottom: 0;
+  top: auto;
+  background-color: #0b2239;
+  color: white;
+  width: 100%;
+  z-index: 2;
+}
 
 .Menubar-list {
   display: flex;
@@ -30,24 +28,21 @@
 .item-name {
   display: none;
 }
-.navlink-MenuBar{
+.navlink-MenuBar {
   text-decoration: none;
   color: white;
 }
-.hideBox{
+.hideBox {
   display: none;
 }
 @media (min-width: 1020px) {
   .Menubar {
     background-color: #edf2f6;
     position: relative;
-    /* width: 50%; */
     color: #0b2239;
-    /* height: 100vh; */
     position: sticky;
     top: 17%;
     z-index: 1;
-    /* margin-top: 3rem; */
     padding-top: 2rem;
   }
   .Menubar-list {
@@ -58,14 +53,13 @@
     align-items: flex-start;
     flex-wrap: wrap;
     white-space: nowrap;
-    /* position: fixed; */
   }
   .item-name {
     display: inline-block;
     padding-left: 0.5rem;
   }
   .item-name:hover {
-    color: #8e44ad
+    color: #8e44ad;
   }
   .Menubar-list-item {
     display: flex;
@@ -73,24 +67,22 @@
   }
   .Menubar-list-item:hover {
     cursor: pointer;
-  /* color: gray; */
   }
-  .navlink-MenuBar{
+  .navlink-MenuBar {
     text-decoration: none;
     color: #0b2239;
   }
-  .navlink-MenuBar:hover{
+  .navlink-MenuBar:hover {
     text-decoration: none;
-    color: #8e44ad
+    color: #8e44ad;
   }
-  .MenuBarProfile{
+  .MenuBarProfile {
     display: flex;
     color: #8e44ad;
-    /* align-items: flex-end; */
     position: fixed;
     bottom: 5%;
   }
-  .smaller{
+  .smaller {
     font-size: 0.8rem;
   }
 }

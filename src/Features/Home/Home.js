@@ -17,13 +17,9 @@ export const Home = () => {
     dataState: { posts, users },
     setBtnAddPost,
     btnAddPost,
-    setIsLoading, darkMode
+    setIsLoading,
+    darkMode,
   } = useData();
-  const defaultPost = {
-    _id: uuid(),
-    content: "",
-    comments: [],
-  };
   const [postsType, setPostsType] = useState("latest");
 
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -40,15 +36,11 @@ export const Home = () => {
   const likedPosts = [...loggedInUserPosts, ...homePosts]?.filter(
     (post) => post?.likes?.likedBy?.length > 0
   );
-  // console.log(likedPosts, "likedPost");
-  // const followLiked=
+
   const sortPostsByLikes = [...likedPosts]?.sort(
     (a, b) => a.likes.likedBy.length - b.likes.likedBy.length
   );
-  // [...loggedInUserPosts.reverse(), ...homePosts].reverse()
   const combinedData = [...loggedInUserPosts.reverse(), ...homePosts].reverse();
-
-  // sortPostsByLikes
 
   const postsByType =
     postsType === "latest"
@@ -65,17 +57,7 @@ export const Home = () => {
     setBtnAddPost(true);
   };
 
-  const getActiveStyle = ({ isActive }) => {
-    if (isActive) {
-      return {
-        color: isActive && " #8e44ad ",
-        borderRadius: isActive && "0.5rem",
-      };
-    }
-  };
   const HandleSortBy = (e) => {
-    const sortVal = e.target.value; // setSortBy()
-    // console.log(sortVal)
     setPostsType(e.target.value);
   };
 
@@ -90,8 +72,16 @@ export const Home = () => {
   return (
     <div className={`home ${darkMode && "bgDarkmode"}`}>
       <div className={`home-input-box ${darkMode && "bgSecondaryDarkMode"}`}>
-        <button className={`cgProfile-input-post ${darkMode && "bgSecondaryDarkMode"}`}>
-          <CgProfile className={`profile-logo-input ${darkMode && "bgSecondaryDarkMode"}`} />
+        <button
+          className={`cgProfile-input-post ${
+            darkMode && "bgSecondaryDarkMode"
+          }`}
+        >
+          <CgProfile
+            className={`profile-logo-input ${
+              darkMode && "bgSecondaryDarkMode"
+            }`}
+          />
         </button>
         <input
           type="btn"
@@ -100,7 +90,9 @@ export const Home = () => {
           onClick={HandleAddPost}
           disabled={btnAddPost}
         />
-        <button className={`plus-logo-input ${darkMode && "bgSecondaryDarkMode"}`}>
+        <button
+          className={`plus-logo-input ${darkMode && "bgSecondaryDarkMode"}`}
+        >
           <AiFillPlusCircle onClick={HandleAddPost} />
         </button>
       </div>
@@ -118,8 +110,7 @@ export const Home = () => {
           >
             <BsClock />
             <p className={` ${darkMode && "bgSecondaryDarkMode"}`}>
-              
-            Latest Post
+              Latest Post
             </p>
           </option>
 
@@ -147,18 +138,30 @@ export const Home = () => {
         <FollowBar />
       </div>
       {postsType === "trending" && (
-        <p className={`flex justify-center trendingPhotosHeading ${darkMode && "bgDarkmode"}`}>
+        <p
+          className={`flex justify-center trendingPhotosHeading ${
+            darkMode && "bgDarkmode"
+          }`}
+        >
           <BsFire /> Trending posts
         </p>
       )}
       {postsType === "latest" && (
-        <p className={`flex justify-center trendingPhotosHeading ${darkMode && "bgDarkmode"}`}>
+        <p
+          className={`flex justify-center trendingPhotosHeading ${
+            darkMode && "bgDarkmode"
+          }`}
+        >
           Latest posts
         </p>
       )}
 
       {postsType === "oldest" && (
-        <p className={`flex justify-center trendingPhotosHeading ${darkMode && "bgDarkmode"}`}>
+        <p
+          className={`flex justify-center trendingPhotosHeading ${
+            darkMode && "bgDarkmode"
+          }`}
+        >
           Oldest posts
         </p>
       )}
@@ -170,8 +173,12 @@ export const Home = () => {
           ))}
         </div>
       ) : (
-        <h2 className={`likes-posts-heading text-center followbar-heading margin-top-1 ${darkMode && "bgDarkmode"}`}>
-        Please follow some users to see their feeds.
+        <h2
+          className={`likes-posts-heading text-center followbar-heading margin-top-1 ${
+            darkMode && "bgDarkmode"
+          }`}
+        >
+          Please follow some users to see their feeds.
         </h2>
       )}
     </div>

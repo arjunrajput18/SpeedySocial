@@ -1,28 +1,34 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const loginUser = async (creds, navigate,setIsLoggedIn) => {
+export const loginUser = async (creds, navigate, setIsLoggedIn) => {
   try {
     const {
       status,
       data: { encodedToken, foundUser },
     } = await axios.post("/api/auth/login", {
-    ...creds
+      ...creds,
     });
     if (status === 200 || status === 201) {
       localStorage.setItem("socialToken", encodedToken);
       localStorage.setItem("socialUser", JSON.stringify(foundUser));
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
       navigate("/");
-      toast.success('Login successful!');
+      toast.success("Login successful!");
     }
   } catch (error) {
-    toast.warn("Sorry, your password was incorrect. Please double-check your password.");
+    toast.warn(
+      "Sorry, your password was incorrect. Please double-check your password."
+    );
   }
 };
 
-export const signupUser = async (data, navigate,setIsLoggedIn,dataDispatch) => {
-  // console.log(data)
+export const signupUser = async (
+  data,
+  navigate,
+  setIsLoggedIn,
+  dataDispatch
+) => {
   try {
     const {
       status,
@@ -31,12 +37,12 @@ export const signupUser = async (data, navigate,setIsLoggedIn,dataDispatch) => {
     if (status === 200 || status === 201) {
       localStorage.setItem("socialToken", encodedToken);
       localStorage.setItem("socialUser", JSON.stringify(createdUser));
-      setIsLoggedIn(true)
-      dataDispatch({type:"Add_NEW_USER",payload:createdUser})
+      setIsLoggedIn(true);
+      dataDispatch({ type: "Add_NEW_USER", payload: createdUser });
       navigate("/");
       toast.success("Signup successful!");
     }
   } catch (error) {
-    console.log(error);
+    toast.warn("Please used Another user Name or Email");
   }
 };

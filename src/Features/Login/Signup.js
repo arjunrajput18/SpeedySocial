@@ -18,7 +18,6 @@ export const Signup = () => {
     firstName: "",
     lastName: "",
     username: "",
-    // userHandler: `${this?.username}`,
     password: "",
     profilePic:
       "https://www.pngmart.com/files/22/Charizard-Pokemon-Download-PNG-Image.png",
@@ -41,7 +40,7 @@ export const Signup = () => {
       if (password === confirmPass) {
         signupUser(signUpDetails, navigate, setIsLoggedIn, dataDispatch);
       } else {
-          toast.warn("Password does not match!");
+        toast.warn("Password does not match!");
       }
     } else {
       setTimeout(() => {

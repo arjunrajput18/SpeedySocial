@@ -1,11 +1,10 @@
 .loader-box {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    background: rgba(255, 255, 255, 0.639);
-    z-index: 9999;
-  }
-  
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.639);
+  z-index: 9999;
+}

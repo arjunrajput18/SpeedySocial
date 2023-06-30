@@ -1,34 +1,29 @@
-.mainSignup-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* width: 100%; */
-    /* max-width: 300px; */
-    background-color: var(--secondary);
-
-
+.mainSignup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--secondary);
 }
 
-.innerSignUp-container{
-    /* border: solid; */
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    width: 100%;
-    max-width: 300px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius:0.5rem ;
-    background-color: white;
+.innerSignUp-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  background-color: white;
 }
-.innerHeading-signup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: inherit;
-    border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    color: rgb(54, 109, 109);
-    text-decoration: none;
+.innerHeading-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(54, 109, 109);
+  text-decoration: none;
 }

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useData } from '../../Context/DataContext';
 import { SinglePost } from '../../Components/SinglePost/SinglePost';
-import { useState } from 'react';
 
 export const Explore = () => {
   const { dataState: { posts } ,setIsLoading,darkMode} = useData();
@@ -13,13 +12,6 @@ export const Explore = () => {
       setIsLoading(false)
     }, 300)
   },[])
-
-  // const [isLoading, setIsLoading] = useState(false);
-
-
-
-
-
 
 
   return (

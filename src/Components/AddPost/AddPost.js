@@ -2,7 +2,6 @@ import React from "react";
 import "./AddPost.css";
 import { v4 as uuid } from "uuid";
 import { IoMdArrowRoundBack } from "react-icons/io";
-// import { BsFillImageFill } from "react-icons/bs";
 import { BiImageAdd } from "react-icons/bi";
 import { useState } from "react";
 import {
@@ -15,11 +14,12 @@ import { toast } from "react-toastify";
 import { AiFillMinusCircle } from "react-icons/ai";
 export const AddPost = () => {
   const {
-    dataState: { postId, posts },darkMode,
+    dataState: { postId, posts },
+    darkMode,
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
-    setIsLoading
+    setIsLoading,
   } = useData();
 
   const [postDetails, setPostDetails] = useState({
@@ -32,10 +32,8 @@ export const AddPost = () => {
   const addNoteHandler = () => {
     if (postId) {
       if (postDetails.content.length > 0 || postDetails.file) {
-        // console.log(typeof postId);
-        // console.log(postId, "postId", postDetails);
         editPostHandler(postId, postDetails, dataDispatch, socialToken);
-        
+
         dataDispatch({ type: "EDIT_POST", payload: null });
         setBtnAddPost(!btnAddPost);
         toast.success("Post Updated!");
@@ -55,8 +53,8 @@ export const AddPost = () => {
 
   const fileUploadHandle = (e) => {
     const file = e.target.files[0];
-  
-    setIsLoading(false)
+
+    setIsLoading(false);
     setPostDetails({ ...postDetails, file: URL.createObjectURL(file) });
     toast.success("Post Selected!");
   };
@@ -64,7 +62,6 @@ export const AddPost = () => {
   useEffect(() => {
     const postData = posts?.find(({ _id }) => postId === _id);
     if (postId) {
-      // console.log(postData,"postDAtatatatagoing")
       setPostDetails(postData);
     } else {
       setPostDetails({
@@ -81,10 +78,10 @@ export const AddPost = () => {
     toast.success("Post Removed!");
   };
 
-  const  handleBack=()=>{
+  const handleBack = () => {
     dataDispatch({ type: "EDIT_POST", payload: null });
-    setBtnAddPost(!btnAddPost)
-  }
+    setBtnAddPost(!btnAddPost);
+  };
   return (
     <div className={`AddPost-mainDiv`}>
       <div className={`AddPost-MainContainer`}>
@@ -114,21 +111,15 @@ export const AddPost = () => {
                 id="upload"
                 class="input-file"
                 onChange={fileUploadHandle}
-                
               />
               <label for="upload" class="file-label">
-                {/* <BsFillImageFill /> */}
                 <BiImageAdd />
               </label>
             </div>
             {postDetails.file && (
               <div className="image-preview-container">
                 <div className="image-preview">
-                  <img
-                    src={postDetails.file}
-                    alt="img2221"
-                  
-                  />
+                  <img src={postDetails.file} alt="img2221" />
                   <button
                     className="image-preview-button"
                     onClick={handleImageRemove}
@@ -138,7 +129,10 @@ export const AddPost = () => {
                 </div>
               </div>
             )}
-            <button className={`btn-add-post ${darkMode && "btnDark"}`}  onClick={addNoteHandler}>
+            <button
+              className={`btn-add-post ${darkMode && "btnDark"}`}
+              onClick={addNoteHandler}
+            >
               Post
             </button>
           </div>

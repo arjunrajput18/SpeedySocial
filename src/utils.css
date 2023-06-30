@@ -1,65 +1,62 @@
-.size-2{
-    font-size:x-large;
+.size-2 {
+  font-size: x-large;
 }
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
-.justify-center{
-    justify-content: center;
+.justify-center {
+  justify-content: center;
 }
-.align-center{
-    align-items: center;
-}
-
-.space-between{
-    justify-content: space-between;
-}
-.margin-top-1{
-    margin-top: 0.5rem;
-}
-.pointer{
-    cursor: pointer;
+.align-center {
+  align-items: center;
 }
 
-.padding-5{
-padding: 0.5rem;
+.space-between {
+  justify-content: space-between;
+}
+.margin-top-1 {
+  margin-top: 0.5rem;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.padding-5 {
+  padding: 0.5rem;
 }
 .underline-hover:hover {
-    text-decoration: underline;
-  }
-.bgDarkmode{
-    background-color: #0b2239 !important;
-    color: white !important;
+  text-decoration: underline;
 }
-.gap-5{
-    gap: 10px;
+.bgDarkmode {
+  background-color: #0b2239 !important;
+  color: white !important;
 }
-
-.bgDarkmode-s{
-    background-color: #22476d !important;
-    color: white !important;
+.gap-5 {
+  gap: 10px;
 }
 
-.wrap{
-    flex-wrap: wrap;
-}
-.bgSecondaryDarkMode{
-    /* background-color:var(--primary-dark) !important; */
-    background-color: #1e293b  !important;
-    color: white !important;
+.bgDarkmode-s {
+  background-color: #22476d !important;
+  color: white !important;
 }
 
-.btnDark{
-    background-color: #312d7a  !important;
-    color: white !important;
+.wrap {
+  flex-wrap: wrap;
 }
-.btnDarkUsernname{
-    background-color: #1e293b   !important;
-    color: lightcoral !important;
-}
-.bgDarkmodeActive{
-    background-color:#0b2239 !important;
-    color: white
- ;
+.bgSecondaryDarkMode {
+  background-color: #1e293b !important;
+  color: white !important;
 }
 
+.btnDark {
+  background-color: #312d7a !important;
+  color: white !important;
+}
+.btnDarkUsernname {
+  background-color: #1e293b !important;
+  color: lightcoral !important;
+}
+.bgDarkmodeActive {
+  background-color: #0b2239 !important;
+  color: white;
+}

@@ -1,17 +1,16 @@
-
 .editMainContainer {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   background-color: #33333336;
 }
 
-.infoEditContainer{
+.infoEditContainer {
   display: flex;
   flex-direction: column;
-justify-content: space-evenly;
+  justify-content: space-evenly;
 }
-.infoEdit{
+.infoEdit {
   display: flex;
 }
 
@@ -28,7 +27,7 @@ justify-content: space-evenly;
   top: 12%;
   position: fixed;
   border-radius: 8px;
-  padding-top:16rem ;
+  padding-top: 16rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /*max-height: fit-content;
   */
@@ -42,11 +41,10 @@ justify-content: space-evenly;
 .editInnerConatainer::-webkit-scrollbar {
   width: 6px;
   background-color: white;
-
 }
 
 .editInnerConatainer::-webkit-scrollbar-thumb {
-  background-color:  #1e293b;
+  background-color: #1e293b;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -55,7 +53,7 @@ justify-content: space-evenly;
 }
 
 .editInnerConatainer::-webkit-scrollbar-thumb:hover {
-  background-color:  #1e293b;
+  background-color: #1e293b;
 }
 
 .updateBtn {
@@ -80,29 +78,27 @@ justify-content: space-evenly;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
-.cross-icon{
+.cross-icon {
   position: absolute;
   right: 0%;
   top: 1%;
   font-size: 1.5rem;
-
 }
 .editPost-input:focus {
   outline: none;
   border-color: #4d90fe;
   box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.2);
 }
-  
-  .editPost-input::placeholder {
-    color: #999;
-  }
-  
-  .editPost-input:focus {
-    border-color: #66afe9;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(102, 175, 233, 0.6);
-  }
 
+.editPost-input::placeholder {
+  color: #999;
+}
+
+.editPost-input:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(102, 175, 233, 0.6);
+}
 
 .labelUpdateProfile {
   margin-bottom: 1rem;
@@ -160,85 +156,78 @@ justify-content: space-evenly;
   color: #999;
 }
 
-  .avatarinfo {
-    font-weight: bold;
-    font-size: 20px;
-    color: #333;
-    text-align: center;
-    padding: 10px;
-    background-color: #f2f2f2;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-margin-bottom: 0.5rem;
-  }
-  textarea{
-    margin-top: 0px;
-  }
+.avatarinfo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+textarea {
+  margin-top: 0px;
+}
 
-  
+.input-file-container {
+  display: flex;
+  align-items: center;
+}
 
-  .input-file-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-text {
-    font-size: 18px;
-    /* font-weight: bold; */
-    margin-right: 10px;
-  }
-  
-  .btn-upload {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
-  .edit-profile-icon {
-    display: block;
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .edit-profile-camera-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 50%;
-  }
-  
-  .edit-profile-camera-icon svg {
-    color: #333;
-    font-size: 20px;
-  }
-  
+.profile-text {
+  font-size: 18px;
+  margin-right: 10px;
+}
 
-  #file-upload {
-    display: none;
-  }
-  
+.btn-upload {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
 
+.edit-profile-icon {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
-  .btn-edit-profile-div{
-    display: flex;
+.edit-profile-camera-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.edit-profile-camera-icon svg {
+  color: #333;
+  font-size: 20px;
+}
+
+#file-upload {
+  display: none;
+}
+
+.btn-edit-profile-div {
+  display: flex;
   justify-content: space-evenly;
-  }
-  .updateBtn:hover{
-    background-color: var(--primary);
-  }
+}
+.updateBtn:hover {
+  background-color: var(--primary);
+}
 
-
-  .anyProfileInner{
-    margin-top: 3rem;
-  }
+.anyProfileInner {
+  margin-top: 3rem;
+}

@@ -27,7 +27,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 6, 18, 26, 30),
         updatedAt: formatDate()
       },
       {
@@ -43,7 +43,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt:formatDate(2022, 9, 12, 26, 30),
         updatedAt: formatDate()
       },
       {
@@ -57,7 +57,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 8, 22, 26, 30),
         updatedAt: formatDate()
       }],
       dislikedBy: [],
@@ -94,7 +94,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2001, 5, 15, 26, 30),
         updatedAt: formatDate()
       },{
         _id: 9,
@@ -107,7 +107,7 @@ export const posts = [
         followers: [],
         profilePic: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png",
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 5, 12, 26, 30),
         updatedAt: formatDate()
       },
       {
@@ -123,7 +123,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 5, 12, 26, 30),
         updatedAt: formatDate()
       },
       {
@@ -137,7 +137,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 5, 25, 26, 30),
         updatedAt: formatDate()
       }],
       dislikedBy: [],
@@ -181,7 +181,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt:formatDate(2020, 5, 19, 26, 30),
         updatedAt: formatDate()
       },
       {
@@ -197,7 +197,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt:formatDate(2021, 5, 5, 26, 30),
         updatedAt: formatDate()
       },
      ],
@@ -270,7 +270,7 @@ export const posts = [
     username: "bugsbunny@gmail.com",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     userHandler:"arjunajput20",
-    createdAt: formatDate(),
+    createdAt:formatDate(2020, 5, 16, 26, 30),
     updatedAt: formatDate(),
   },
   {
@@ -291,7 +291,7 @@ export const posts = [
     username: "donaldduck@gmail.com",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     userHandler:"donaldDuck123",
-    createdAt: formatDate(),
+    createdAt: formatDate(2020, 5, 18, 26, 30),
     updatedAt: formatDate(),
   },
   {
@@ -311,7 +311,7 @@ export const posts = [
         followers: [],
         profilePic: "https://cdn.pixabay.com/photo/2020/05/11/15/38/tom-5158824_1280.png",
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 5, 18, 26, 30),
         updatedAt: formatDate()
       }],
       dislikedBy: [],
@@ -325,7 +325,7 @@ export const posts = [
     file:"https://images.pexels.com/photos/2754200/pexels-photo-2754200.jpeg?auto=compress&cs=tinysrgb&w=600",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     userHandler:"minnieMouse123",
-    createdAt: formatDate(),
+    createdAt: formatDate(2020, 5, 12, 26, 30),
     updatedAt: formatDate(),
   },
   {
@@ -421,7 +421,7 @@ export const posts = [
     file:"https://media3.giphy.com/media/LpkhKVwp6dpCg/giphy.webp?cid=ecf05e476hf4n0pnew9mrrqm0m2n628kwvgnpiv5mnc4vy3t&ep=v1_gifs_related&rid=giphy.webp&ct=g",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     userHandler:"spongeBob123",
-    createdAt: formatDate(),
+    createdAt:formatDate(2020, 7, 16, 26, 30),
     updatedAt: formatDate(),
   },{
     _id:uuid(),
@@ -442,7 +442,7 @@ export const posts = [
         bookmarks: [],
         followers: [],
         following: [],
-        createdAt: formatDate(),
+        createdAt: formatDate(2021, 5, 15, 26, 30),
         updatedAt: formatDate()
       },
       {
@@ -470,7 +470,7 @@ export const posts = [
     file:"https://images.pexels.com/photos/1102915/pexels-photo-1102915.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
     userHandler:"mickeyMouse123",
-    createdAt: formatDate(),
+    createdAt: formatDate(2022, 5, 15, 26, 30),
     updatedAt: formatDate(),
   },
   

@@ -1,7 +1,7 @@
 export const initialState = {
   posts: [],
   users: [],
-  postId:null
+  postId: null,
 };
 
 export const DataReducer = (state, action) => {
@@ -46,33 +46,55 @@ export const DataReducer = (state, action) => {
             : data
         ),
       };
-      case "REMOVE_FOLLOWER": return {
-        ...state, users: state.users.map(el => el.username === action.payload.unfollowedUser.username ? {
-          ...el, followers: action.payload.unfollowedUser.followers
-        } : el)
-      }
-      case "POST_OPERATIONS": return {
-        ...state, posts: action.payload
-      }
+    case "REMOVE_FOLLOWER":
+      return {
+        ...state,
+        users: state.users.map((el) =>
+          el.username === action.payload.unfollowedUser.username
+            ? {
+                ...el,
+                followers: action.payload.unfollowedUser.followers,
+              }
+            : el
+        ),
+      };
+    case "POST_OPERATIONS":
+      return {
+        ...state,
+        posts: action.payload,
+      };
 
+    case "Add_NEW_USER":
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+      };
 
-      case "Add_NEW_USER":return{
-        ...state,users:[...state.users,action.payload]
-      }
-    
-      case "USER_OPERATIONS": return {
-        ...state, users: state.users.map(user => action.payload.username === user.username ? action.payload : user)
-      }
-      case "FOLLOWING_OPERATIONS": return {
-        ...state, users: state?.users?.map(el => el.username === action.payload.user?.username ? { ...el, following:  action.payload?.user?.following } : el)
-      }
+    case "USER_OPERATIONS":
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          action.payload.username === user.username ? action.payload : user
+        ),
+      };
+    case "FOLLOWING_OPERATIONS":
+      return {
+        ...state,
+        users: state?.users?.map((el) =>
+          el.username === action.payload.user?.username
+            ? { ...el, following: action.payload?.user?.following }
+            : el
+        ),
+      };
 
-      case "EDIT_POST":return{
-        ...state,postId:action.payload
-      }
+    case "EDIT_POST":
+      return {
+        ...state,
+        postId: action.payload,
+      };
     default:
       return {
-        state
+        state,
       };
   }
 };

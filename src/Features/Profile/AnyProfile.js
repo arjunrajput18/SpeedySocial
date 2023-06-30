@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import profile1 from "../../Assets/profile1.png";
 import "./Profile.css";
 import { useData } from "../../Context/DataContext";
 import { SinglePost } from "../../Components/SinglePost/SinglePost";
@@ -17,7 +16,8 @@ export const AnyProfile = () => {
   const {
     dataState: { users, posts },
     dataDispatch,
-    setIsLoading,darkMode
+    setIsLoading,
+    darkMode,
   } = useData();
   const [showFollowing, setShowFollowing] = useState("");
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -56,12 +56,17 @@ export const AnyProfile = () => {
     }
   };
 
-  // console.log(foundUser, "foundUser");
   return (
     <div className={`profile-outerContainer  ${darkMode && "bgDarkmode"}`}>
-    <div className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`} >
-      <div className={`profile-innerContainer  ${darkMode && "bgSecondaryDarkMode"}`}>
-         <img
+      <div
+        className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`}
+      >
+        <div
+          className={`profile-innerContainer  ${
+            darkMode && "bgSecondaryDarkMode"
+          }`}
+        >
+          <img
             src={foundUser?.profilePic}
             alt="img1"
             className="profile-user-logo"
@@ -72,11 +77,15 @@ export const AnyProfile = () => {
                 <h4>
                   {foundUser?.firstName} {foundUser?.lastName}
                 </h4>
-                <p  className={`single-profile-userId  ${darkMode && "btnDarkUsernname"}`}>{foundUser?.userHandler}</p>
+                <p
+                  className={`single-profile-userId  ${
+                    darkMode && "btnDarkUsernname"
+                  }`}
+                >
+                  {foundUser?.userHandler}
+                </p>
               </div>
               <div>
-                {/* <button className="profile-edit-btn">Edit</button> */}
-
                 {loggedInUser?.following?.some(
                   (el) => el.username === foundUser?.username
                 ) ? (
@@ -106,10 +115,16 @@ export const AnyProfile = () => {
 
             <div className="flex space-between margin-top-1 ">
               <span>{foundUsersPosts.length} Posts</span>{" "}
-              <span onClick={followerHandle} className="pointer  underline-hover">
+              <span
+                onClick={followerHandle}
+                className="pointer  underline-hover"
+              >
                 {foundUser?.followers.length} Followers
               </span>{" "}
-              <span onClick={followingHandle} className="pointer  underline-hover">
+              <span
+                onClick={followingHandle}
+                className="pointer  underline-hover"
+              >
                 {foundUser?.following.length} Following
               </span>
             </div>
@@ -126,19 +141,15 @@ export const AnyProfile = () => {
             {showFollowing === "followers" && (
               <div className="modalFollowing">
                 <div className="modalContent">
-              <ShowFollower
-                setShowFollowing={setShowFollowing}
-                foundUser={foundUser}
-              />
-              </div>
+                  <ShowFollower
+                    setShowFollowing={setShowFollowing}
+                    foundUser={foundUser}
+                  />
+                </div>
               </div>
             )}
             <div className="profile-link">
-              <a
-                href={foundUser.url}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href={foundUser.url} target="_blank" rel="noreferrer">
                 https://{foundUser.userHandler}.netlify.app/
               </a>
             </div>

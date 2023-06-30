@@ -1,7 +1,7 @@
 .profile-outerContainer {
   /* margin-top: 1rem; */
   background-color: var(--secondary);
-  
+
   /* border: solid; */
   padding-top: 0.8rem;
   min-height: 100vh;
@@ -12,7 +12,6 @@
 .profile-mainContainer {
   background-color: var(--secondary);
   /* height: 100vh; */
-
 }
 
 .profile-innerContainer {
@@ -40,7 +39,7 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
-.EditBtn{
+.EditBtn {
   background-color: #312d7a;
   padding: 0.7rem;
   color: white;
@@ -52,15 +51,15 @@
   -o-border-radius: 0.3rem;
   cursor: pointer;
 }
-.EditBtn:hover{
-background-color: var(--primary);
+.EditBtn:hover {
+  background-color: var(--primary);
 }
 .profile-heading {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
-.profile-innerHeading{
+.profile-innerHeading {
   display: flex;
   flex-direction: column;
 }
@@ -71,11 +70,9 @@ background-color: var(--primary);
 }
 .profile-link {
   color: blueviolet;
-  margin:0.5rem 0rem ;
+  margin: 0.5rem 0rem;
   text-decoration: none;
 }
-
-
 
 .modalFollowing {
   position: fixed;
@@ -83,30 +80,26 @@ background-color: var(--primary);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; 
+  z-index: 9999;
 }
 
 .modalContent {
-
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.profile-follow-hr{
+.profile-follow-hr {
   border-top: 1.4px solid #ccc;
-    display: flex;
-    /* align-self: flex-end; */
-
-  }
-.inner-profile-follow-count{
+  display: flex;
+}
+.inner-profile-follow-count {
   padding: 0.5rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
-
 }
