@@ -57,8 +57,7 @@ export const Profile = () => {
         className={`profile-mainContainer ${darkMode && "bgSecondaryDarkMode"}`}
       >
         <div
-          className={`profile-innerContainer  ${
-            darkMode && "bgSecondaryDarkMode"
+          className={`profile-innerContainer  ${darkMode && "bgSecondaryDarkMode"
           }`}
         >
           <img
