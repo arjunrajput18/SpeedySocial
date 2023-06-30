@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router";
 import { Home } from "./Features/Home/Home";
 import "./utils.css";
 import { MainContainer } from "./Components/MainContainer/MainContainer";
-// import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import { Profile } from "./Features/Profile/Profile";
@@ -13,24 +13,24 @@ import { Bookmark } from "./Features/Bookmark/Bookmark";
 import { Login } from "./Features/Login/Login";
 import { Signup } from "./Features/Login/Signup";
 import { AnyProfile } from "./Features/Profile/AnyProfile";
-import {PageNotFound} from "./Features/PageNotFound/PageNotFound"
-// import { SinglePost } from "./Components/SinglePost/SinglePost";
-// import { Toaster } from "react-hot-toast";
+import { PageNotFound } from "./Features/PageNotFound/PageNotFound";
+
 import { PostDetails } from "./Features/PostDetails/PostDetails";
 import { ToastContainer } from "react-toastify";
 import { Loader } from "./Components/Loader/Loader";
 import { useData } from "./Context/DataContext";
-// import './ToastContainer.css';
+
 function App() {
-  const {isLoading}=useData()
-  // console.log(isLoading,"isLoading")
+  const { isLoading } = useData();
+
   return (
     <div className="App">
       <ToastContainer
-  position="top-center" autoClose={1200}
-  reverseOrder={false}
-/>
-{isLoading && <Loader />}
+        position="top-center"
+        autoClose={1200}
+        reverseOrder={false}
+      />
+      {isLoading && <Loader />}
       <Routes>
         <Route
           path="/"
@@ -83,7 +83,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/mockman" element={<Mockman />} />
-        <Route path="*" element={<PageNotFound/>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

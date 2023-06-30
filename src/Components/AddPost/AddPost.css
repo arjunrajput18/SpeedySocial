@@ -96,8 +96,6 @@
   align-items: center;
 }
 
-
-
 .image-preview-container {
   display: flex;
   align-items: center;
@@ -126,8 +124,6 @@
   transform: translate(-50%, -50%);
   color: red;
 }
-
-
 
 .image-preview-button svg {
   font-size: 24px;

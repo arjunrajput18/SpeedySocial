@@ -10,12 +10,11 @@ import {
 import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useData } from "../../Context/DataContext";
-import { CiDark } from "react-icons/ci";
-// import {useData} from "../../Context/DataContext"
+
 export const MenuBar = () => {
   const { setIsLoggedIn } = useAuth();
   const {
@@ -40,12 +39,11 @@ export const MenuBar = () => {
     if (isActive && !darkMode) {
       return {
         color: isActive && " #8e44ad ",
-
       };
-    }else{
+    } else {
       return {
         color: isActive && "lightcoral",
-      }
+      };
     }
   };
 
@@ -53,16 +51,19 @@ export const MenuBar = () => {
   const handleNavigate = () => {
     navigate("/profile");
   };
-
-  // const socialUser=JSON.parse(localStorage.getItem("socialUser"))
-  // const userHandler=socialUser.userHandler
   return (
     <div className={`Menubar ${darkMode && "bgDarkmode"}`}>
       <ul className={`Menubar-list ${darkMode && "bgDarkmodeActive"}`}>
-        <li className={`Menubar-list-item size-1 ${darkMode && "bgDarkmodeActive"}`}>
+        <li
+          className={`Menubar-list-item size-1 ${
+            darkMode && "bgDarkmodeActive"
+          }`}
+        >
           <NavLink
             to={"/"}
-            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
+            className={`  ${
+              !darkMode ? "navlink-MenuBar" : "bgDarkmodeActive"
+            }`}
             style={getActiveStyle}
           >
             <ImHome />
@@ -72,7 +73,9 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/explore"}
-            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
+            className={`  ${
+              !darkMode ? "navlink-MenuBar" : "bgDarkmodeActive"
+            }`}
             style={getActiveStyle}
           >
             <MdOutlineExplore />
@@ -82,7 +85,9 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/bookmark"}
-            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
+            className={`  ${
+              !darkMode ? "navlink-MenuBar" : "bgDarkmodeActive"
+            }`}
             style={getActiveStyle}
           >
             <BsFillBookmarkHeartFill />
@@ -109,7 +114,9 @@ export const MenuBar = () => {
         <li className="Menubar-list-item size-1">
           <NavLink
             to={"/profile"}
-            className={`  ${!darkMode?"navlink-MenuBar":"bgDarkmodeActive" }`}
+            className={`  ${
+              !darkMode ? "navlink-MenuBar" : "bgDarkmodeActive"
+            }`}
             style={getActiveStyle}
           >
             <CgProfile />

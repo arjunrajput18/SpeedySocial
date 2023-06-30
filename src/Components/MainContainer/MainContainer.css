@@ -1,67 +1,63 @@
 .mainContainer {
-
   background-color: #edf2f6;
   margin-bottom: 3rem;
   position: relative;
-  min-height:100vh ;
+  min-height: 100vh;
   max-height: fit-content;
 }
-.dektop-followbar{
+.dektop-followbar {
   display: none;
 }
-.overComment{
-position: fixed;
-z-index: 1000;
-top: 0%;
-right: 0%;
-/* border: solid; */
-min-height: 100vh;
-max-height: 100%;
-width: 100%;
-background-color: rgba(2, 28, 28, 0.628);
-display: flex;
-justify-content: center;
-align-items: center;
-  
+.overComment {
+  position: fixed;
+  z-index: 1000;
+  top: 0%;
+  right: 0%;
+  min-height: 100vh;
+  max-height: 100%;
+  width: 100%;
+  background-color: rgba(2, 28, 28, 0.628);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.editBox-Main{
+.editBox-Main {
   position: absolute;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.457);
-  /* border: 5px solid red; */
-height: 100%;
-top: -4%;
-z-index: 10;
+
+  height: 100%;
+  top: -4%;
+  z-index: 10;
 }
-.editBox-bottom{
+.editBox-bottom {
   position: absolute;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.457);
-  /* border: 5px solid red; */
-height: 14vh;
-top: 96%;
-/* bottom: 2%; */
-z-index: 10;
+
+  height: 14vh;
+  top: 96%;
+
+  z-index: 10;
 }
 
 @media (min-width: 1020px) {
   .mainContainer {
     display: grid;
-  grid-template-columns: 1fr 2.5fr 1fr;
-  justify-content: center;
-  gap: 25px;
-  min-height:90vh ;
-  max-height: fit-content;
-  padding: 25px;
-  margin-bottom: 0rem;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    justify-content: center;
+    gap: 25px;
+    min-height: 90vh;
+    max-height: fit-content;
+    padding: 25px;
+    margin-bottom: 0rem;
   }
   .mainContainer:last-child {
     grid-column-end: span 2;
   }
-  .dektop-followbar{
+  .dektop-followbar {
     position: sticky;
     top: 15%;
-    /* right: 1%; */
     display: block;
     height: fit-content;
     z-index: 2;

@@ -9,7 +9,7 @@ import {
 } from "../../Services/DataServices";
 export const ShowFollower = ({ setShowFollowing,foundUser }) => {
   const {
-    dataState: { users, posts },darkMode,
+    dataState: { users },darkMode,
     dataDispatch,
   } = useData();
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
@@ -31,15 +31,14 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
     console.log({_id, socialToken, dataDispatch})
     getFollowHandler(_id, socialToken, dataDispatch);
   };
-//   console.log(loggedInUser.following, "llll");
+
   const handleUnfollow = (followUserId, socialToken, dataDispatch) => {
     console.log({ followUserId, socialToken });
     getUnfollowHandler(followUserId, socialToken, dataDispatch);
   };
-  const isFollowing =foundUser.following.find((user) => user.username ===  socialUser.username);
 
   console.log(loggedInUser.username,"loggedInUser")
-// console.log()
+
   return (
     <div className={`ShowFollowing-mainContainer  ${darkMode && "bgSecondaryDarkMode"}`}>
       <div className="ShowFollowing-innerContainer">
@@ -59,10 +58,8 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
         )}
         <div>
           {foundUser?.followers.map((data) =>  {
-          console.log(data.username,"sssssssssss")
-          
         return  (
-            <div className="followingUser">
+            <div className="followingUser" key={data._id}>
             <div className="flex">
             <div className="padding-5"  onClick={()=>handleNavigate(data.userHandler)}>
                 <img src={data?.profilePic} alt="img" height={30} width={30} />
@@ -72,7 +69,7 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
               </p>
             </div>
               <div className="padding-5">
-                {/* <button className="profile-edit-btn">Edit</button> */}
+              
 
                 {loggedInUser.username!== data.username && (foundUser?.following?.some(
                   (el) => el.username === data?.username

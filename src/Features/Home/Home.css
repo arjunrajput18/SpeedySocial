@@ -1,8 +1,5 @@
-
-
 .home {
   background-color: #edf2f6;
- 
   padding-top: 1rem;
   min-height: 100vh;
   max-height: fit-content;
@@ -12,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
   font-size: larger;
 }
@@ -23,14 +19,12 @@
   font-size: 1.1rem;
   border: none;
   border-radius: 0.4rem;
-  /* border-bottom: 2px solid var(--primary); */
 }
 
 .cgProfile-input-post {
   font-size: larger;
   background-color: white;
   border: none;
-  /* color: var(--primary); */
   position: absolute;
   left: 2%;
   display: flex;
@@ -41,8 +35,6 @@
 }
 
 .profile-logo-input {
-  /* background-color: var(--primary); */
-
   border: none;
   border-radius: 50%;
   color: var(--primary);
@@ -68,7 +60,6 @@
 .plus-logo-input:hover {
   box-shadow: 0px 2px 4px rgba(86, 175, 234, 0.7);
   border-radius: 1rem;
-
 }
 
 .trend-latest {
@@ -91,12 +82,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-weight: 500;
-  color:#8e44ad;
+  color: #8e44ad;
 }
 
 .btn-TL:hover {
   background-color: #f5f5f5;
-  color:#8e44ad;
+  color: #8e44ad;
   box-shadow: 0px 2px 4px rgba(86, 175, 234, 0.7);
 }
 
@@ -112,7 +103,6 @@
 
 .btn-L {
   border: none;
-  /* border-right: 2px solid black; */
 }
 
 .trending-btn svg,
@@ -120,32 +110,33 @@
   margin-right: 0.5rem;
   font-size: 1.2rem;
 }
-.trendingPhotosHeading{
-  color:#8e44ad;
+.trendingPhotosHeading {
+  color: #8e44ad;
   box-shadow: none;
   padding-top: 0;
   margin: 0;
+  padding: 0.5rem;
 }
 
 .follow-bar {
-  display: block; 
+  display: block;
 }
 
-.bgColor{
+.bgColor {
   background-color: #cccccc15;
   box-shadow: 0px 2px 4px rgba(86, 175, 234, 0.7);
 }
 @media (min-width: 1020px) {
-  .followbar-mobile{
+  .followbar-mobile {
     display: none;
   }
-  
+
   .home {
     display: flex;
     flex-direction: column;
     margin: 1rem;
   }
   .follow-bar {
-    display: none; /* Hide the FollowBar component */
+    display: none;
   }
 }

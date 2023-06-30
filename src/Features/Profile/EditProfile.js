@@ -3,14 +3,10 @@ import "./EditProfile.css";
 import profile1 from "../../Assets/profile1.png";
 import { useState } from "react";
 import { useData } from "../../Context/DataContext";
-import {
-  editUserHandler,
-  getUserData,
-  postUserData,
-} from "../../Services/DataServices";
+import { editUserHandler } from "../../Services/DataServices";
 import { toast } from "react-toastify";
 import { AiFillCamera } from "react-icons/ai";
-import { IoMdArrowRoundBack } from "react-icons/io";
+
 import { RxCross2 } from "react-icons/rx";
 
 export const EditProfile = ({ setEditBtn, editBtn }) => {
@@ -78,25 +74,25 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
     <div className={`editMainContainer ${darkMode && "bgDarkmode"}`}>
       <div className={`editInnerConatainer  ${darkMode && "bgDarkmode"}`}>
         <div className={`updateConatiner  ${darkMode && "bgDarkmode"}`}>
-        <RxCross2
-                  onClick={handleClose}
-                  className={`cross-icon  ${darkMode && "bgDarkmode"} pointer`}
-                />
+          <RxCross2
+            onClick={handleClose}
+            className={`cross-icon  ${darkMode && "bgDarkmode"} pointer`}
+          />
           <div>
             <p className={`avatarinfo  ${darkMode && "bgSecondaryDarkMode"}`}>
               Select Your Avatar
             </p>
-            {/* <input type="file" /> */}
           </div>
 
           <div className={`updateAvatarMain  ${darkMode && "bgDarkmode"}`}>
             <div className={`updateAvatar  ${darkMode && "bgDarkmode"}`}>
-              {avatars.map((data) => (
+              {avatars.map((data,i) => (
                 <div
                   onClick={() => handleAvatar(data)}
                   className={`imgAvatar ${
                     updatedProfile.profilePic === data && "imgAvatarSelected"
                   }  ${darkMode && "bgDarkmode"}`}
+                  key={i}
                 >
                   <img
                     src={data}
@@ -129,9 +125,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
                   width="200"
                   className={`edit-profile-icon  ${darkMode && "bgDarkmode"}`}
                 />
-                <span
-                  className={`edit-profile-camera-icon  `}
-                >
+                <span className={`edit-profile-camera-icon  `}>
                   <AiFillCamera />
                 </span>
               </label>
