@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+
 export const getPostData = async (dataDispatch, setIsLoading) => {
   try {
     const {
@@ -281,6 +283,7 @@ export const addCommentHandle = async (
 
     if (status === 200 || status === 201) {
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
+      toast.success("Comment Added Successfully!")
     }
   } catch (error) {
     console.log(error);
@@ -310,6 +313,7 @@ export const deleteCommentHandle = async (
 
     if (status === 200 || status === 201) {
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
+      toast.success("Comment Deleted Successfully!")
     }
   } catch (error) {
     console.log(error);
