@@ -269,7 +269,7 @@ export const posts = [
     }],
     username: "bugsbunny@gmail.com",
     profilePic:"https://www.giantbomb.com/a/uploads/scale_small/0/6087/2437349-pikachu.png",
-    userHandler:"arjunajput20",
+    userHandler:"bugsBunny123",
     createdAt:formatDate(2020, 5, 16, 26, 30),
     updatedAt: formatDate(),
   },
