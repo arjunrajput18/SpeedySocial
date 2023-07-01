@@ -149,8 +149,8 @@ export const AnyProfile = () => {
               </div>
             )}
             <div className="profile-link">
-              <a href={foundUser.url} target="_blank" rel="noreferrer">
-                https://{foundUser.userHandler}.netlify.app/
+              <a href={foundUser?.url} target="_blank" rel="noreferrer">
+                https://{foundUser?.userHandler}.netlify.app/
               </a>
             </div>
           </div>
@@ -159,7 +159,7 @@ export const AnyProfile = () => {
 
       <div className="posts">
         {foundUsersPosts?.map((post) => (
-          <SinglePost key={post.username} data={post} />
+          <SinglePost key={post?._id} data={post} />
         ))}
         {foundUsersPosts?.length === 0 && (
           <div className="anyProfileInner">
